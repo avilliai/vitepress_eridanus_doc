@@ -18,8 +18,8 @@ export default defineConfig({
       {
         text: '开发指南',
         items: [
-          { text: '框架', link: '/framework' },
-          { text: 'sdk', link: '/sdk' },
+          { text: '框架', link: '/framework/项目结构' },
+          { text: 'sdk', link: '/sdk/start' },
         ]
       },
     ],
