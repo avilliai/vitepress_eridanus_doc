@@ -6,6 +6,7 @@ export default defineConfig({
   title: "Eridanus",
   description: "异步机器人框架",
   themeConfig: {
+
     outline: {
       level: [2,6], // 显示2-4级标
     },
@@ -106,7 +107,8 @@ export default defineConfig({
       provider: 'local'
     },
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/avilliai/Eridanus' }
+      { icon: 'github', link: 'https://github.com/avilliai/Eridanus' },
+      {icon: '/qq.ico',link: 'https://qm.qq.com/q/hjhSSnlBDi'}
     ],
     footer: {
       message: 'Released under the MIT License.',
