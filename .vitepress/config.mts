@@ -72,6 +72,9 @@ export default defineConfig({
               {text: '雀魂助手',link:"/configuration/游戏服务/雀魂助手"},
               {text: '碧蓝档案助手',link:"/configuration/游戏服务/碧蓝档案"}
             ]},
+          {text: '群管',items: [
+              {text: '角色检测撤回',link:"/configuration/群管/角色检测"},
+            ]},
           {text: '系统功能',items: [
               {text: '定时任务',link:"/configuration/系统功能/定时任务"}
             ]}
