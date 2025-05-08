@@ -47,7 +47,6 @@ export default defineConfig({
               { text: 'ai对话', link: '/configuration/核心功能/ai对话' },
               {text: "语音合成",link:"/configuration/核心功能/文本转语音"},
               {text: "用户管理",link:"/configuration/核心功能/用户权限系统"},
-              {text: "群管",link:"/configuration/核心功能/群管"},
               {text: "黑名单/白名单",link:"/configuration/核心功能/黑白名单"},
             ]},
           {text: "ai绘画",items: [
@@ -74,6 +73,7 @@ export default defineConfig({
             ]},
           {text: '群管',items: [
               {text: '角色检测撤回',link:"/configuration/群管/角色检测"},
+              {text: '原版qq功能',link:"/configuration/群管/原版qq"}
             ]},
           {text: '系统功能',items: [
               {text: '定时任务',link:"/configuration/系统功能/定时任务"}
