@@ -112,7 +112,7 @@ export default defineConfig({
     ],
     footer: {
       message: 'Released under the MIT License.',
-      copyright: 'Copyright © 2019-2023 present Evan You',
+      copyright: `Copyright © 2019-${new Date().getFullYear()} present Evan You`,
       // 自动更新时间
       //copyright: `Copyright © 2019-${new Date().getFullYear()} present Evan You`,
     },
