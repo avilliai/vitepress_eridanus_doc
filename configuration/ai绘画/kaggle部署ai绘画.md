@@ -83,7 +83,7 @@ https://www.kaggle.com/code/xxxx/qqbot-simple-reforfsdafsf
 ```  
 这个【分享链接】我们待会会用到。
 ## 更多备用账号
-注册更多账号，记录好账号密码。    
+注册更多kaggle账号，记录好账号密码。    
 **你注册的所有账号都需要能够通过 email+密码 登录，并且完成了手机号验证**     
 验证码部分你可以找[接码平台](https://sms-activate.ru/?ref=12747914)，建议使用加拿大地区手机号。     
 **这些账号注册后，只要完成手机号验证就可以，不用别的操作。**    
@@ -108,8 +108,8 @@ git clone --depth 1 https://github.moeyy.xyz/https://github.com/avilliai/Acherna
 ### 编辑Achernar配置文件
 `Achernar/config.yaml`
 ```yaml
-proxy: ""     #frp不用管。登录kaggle时使用的代理。  
-quest_proxy: ""  #frp不用管。sd api请求时使用的代理地址，如果开启代理后，Achernar反代不能正常工作请填写此项。你代理软件的http代理地址。取决于具体情况，clash一般http://127.0.0.1:7890  
+proxy: ""     #别动这项。 
+quest_proxy: ""  #一般不用配。sd api请求时使用的代理地址，如果开启代理后，Achernar反代不能正常工作请填写此项。你代理软件的http代理地址。取决于具体情况，clash一般http://127.0.0.1:7890  
 port: 3529       
 headless: true   
 #在shared_notebook填入你记录的【分享链接】  
