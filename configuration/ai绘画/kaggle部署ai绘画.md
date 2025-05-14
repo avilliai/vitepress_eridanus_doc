@@ -27,7 +27,7 @@ hb.fuck.you:191980
 那我们就**记录**下面的内容。
 ```yaml
 http://hb.fuck.you:114514  #加上了http://
-http://hb.fuck.you:114580  #加上了http://
+http://hb.fuck.you:191980   #加上了http://
 ```
 打开配置文件`run/ai_generated_art/config.yaml` webui中则为`ai绘画.config`
 ```yaml
@@ -35,7 +35,7 @@ http://hb.fuck.you:114580  #加上了http://
 ai绘画:
   sdUrl:
     - 'http://hb.fuck.you:114514' 
-    - 'http://hb.fuck.you:114580'
+    - 'http://hb.fuck.you:191980'
   sd审核和反推api: 'http://hb.fuck.you:114514'        # 两个地址随便填一个
 # 注意，假设你的webui启动时设置了--api-auth 账号:密码 参数，那么假设你的sdapi是"http://127.0.0.1:7860"，改成 "http://127.0.0.1:7860 账号:密码" 这种格式
   sd画图: true
