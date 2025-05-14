@@ -142,6 +142,16 @@ url=f'{base_url}/sdapi/v1/txt2img
 
 Achernar的原型脚本和kaggle脚本均来自[spawner](https://github.com/spawner1145)
 ## 进阶配置
+### 如果你不用Achernar，可以使用手动启动脚本
+这里假设你已经搞好了前面的步骤，有了一个脚本了
+
+先确保你在用t4 x 2的显卡，然后点右上方save versions，如图设置
+![image](https://github.com/user-attachments/assets/45206cc9-be90-45b6-98d1-f400b48eb48b)
+点save，然后你会看到左下角有个黄标，这说明代码启动了
+![image](https://github.com/user-attachments/assets/7f66cc64-3a96-42bf-9722-a2f45df8cd62)
+点一下，然后点三个小圆点的那个，会看到open logs in viewer，你点一下就可以查看代码运行的状态了
+![image](https://github.com/user-attachments/assets/7a14b209-98d5-4155-9356-8afd3198599b)
+
 ### 关于kaggle笔记本的lora和大模型下载
 打开[c站civitai](https://civitai.com/)    
 注册一个账号（这个网站要梯子）   
