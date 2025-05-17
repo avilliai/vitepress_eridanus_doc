@@ -82,6 +82,8 @@ ai绘画:
 https://www.kaggle.com/code/xxxx/qqbot-simple-reforfsdafsf  
 ```  
 这个【分享链接】我们待会会用到。
+> 同一脚本如果save version次数过多，打开时会非常卡顿，将影响achernar正常工作。建议在save version超过30后更换新的shared_notebook链接。
+
 ## 更多备用账号
 注册更多kaggle账号，记录好账号密码。    
 **你注册的所有账号都需要能够通过 email+密码 登录，并且完成了手机号验证**     
