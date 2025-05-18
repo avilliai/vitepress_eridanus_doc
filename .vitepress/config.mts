@@ -75,6 +75,9 @@ export default defineConfig({
               {text: '角色检测撤回',link:"/configuration/群管/角色检测"},
               {text: '原版qq功能',link:"/configuration/群管/原版qq"}
             ]},
+          {text: '娱乐功能',items: [
+              {text: '蕾忍宗大学习',link:"/configuration/娱乐功能/蕾忍宗大学习"},
+            ]},
           {text: '系统功能',items: [
               {text: '定时任务',link:"/configuration/系统功能/定时任务"}
             ]}
