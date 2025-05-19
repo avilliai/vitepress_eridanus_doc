@@ -47,7 +47,9 @@ export default defineConfig({
               { text: 'ai对话', link: '/configuration/核心功能/ai对话' },
               {text: "语音合成",link:"/configuration/核心功能/文本转语音"},
               {text: "用户管理",link:"/configuration/核心功能/用户权限系统"},
+              {text: "群组管理",link:"/configuration/核心功能/群组管理"},
               {text: "黑名单/白名单",link:"/configuration/核心功能/黑白名单"},
+
             ]},
           {text: "ai绘画",items: [
               { text: 'ai绘画', link: '/configuration/ai绘画/ai绘画' },
