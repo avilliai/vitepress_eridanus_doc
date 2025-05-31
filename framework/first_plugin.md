@@ -2,7 +2,7 @@
 本文档将教你如何编写一个简单的插件，并将其集成到你的项目中。  
 在开始之前，我们假定
 - 你已经成功部署了Eridanus，并且能够连接到onebot实现(napcat/llob)
-- 你有一个ide并配置了Python环境(python3.11)，可以直接使用environments中的python解释器
+- 你有一个ide并配置了Python环境(python3.11)，直接使用environments中的python解释器也可以
 - 你学习了python的基本语法，可以编写简单的程序
 ## plugin加载
 首先，我们需要知道一个Plugin是如何被机器人加载的。   
@@ -129,7 +129,8 @@ async def call_chaijun(bot: ExtendBot,event,config: YAMLManager,num:int=1):
 
 ```
 ### 初始化声明
-plugin_description,dynamic_imports,function_declarations这三个变量是必须的，分别代表插件的描述、导入的函数路径、声明的函数。
+plugin_description,dynamic_imports,function_declarations这三个变量是必须的，分别代表插件的描述、导入的函数路径、声明的函数。    
+在__init__.py中写入    
 ```python
 plugin_description="柴郡表情包"
 

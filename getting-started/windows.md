@@ -1,16 +1,18 @@
 # windows快速部署
 
 ## 部署onebot实现
-常见选择是llob或napcat。
+常见选择是llob或napcat。    
+[其他选择](https://onebot.dev/ecosystem.html#onebot-%E5%AE%9E%E7%8E%B0-1)    
 ### llob或napcat
 - [napcat](https://napneko.github.io/) 优势：低占用，一键包启动方便。
     - 需要手动开启websocketsever服务(见后文)，端口为3001,accessToken留空不要填。
 - [llob](https://llonebot.github.io/zh-CN/guide/getting-started) 优势：部署后保持默认配置即可使用
 
-**接下来的教程以Napcat为例**。
-### 1.部署napcat
-请参照[napcat文档部署napcat](https://napneko.pages.dev/)
+**接下来的教程以Napcat为例**。    
+> 基本上，要做的就是在onebot实现侧，设置一个【websocket服务端】，端口3001，access_token为空，这样Eridanus才可以连接到它。   
 
+### 1.部署napcat
+请参照[napcat文档部署napcat](https://napneko.pages.dev/)    
 ### 2.配置napcat
 在webui配置ws服务器地址，端口为3001，token留空。
 ![ws1](/img_1.png)

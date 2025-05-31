@@ -1,7 +1,10 @@
 # 折腾版
 ## 部署onebot实现
-先安装onebot实现  
-在onebot实现，创建websocket服务端，端口3001，access_token留空    
+先安装onebot实现   
+你可以选择   
+[napcat](https://napneko.github.io/)，[llob](https://llonebot.github.io/zh-CN/guide/getting-started)，[其他onebot实现](https://onebot.dev/ecosystem.html#onebot-%E5%AE%9E%E7%8E%B0-1)     
+> 基本上，要做的就是部署onebot实现并在onebot实现侧，创建一个【websocket服务端】，端口3001，access_token为空，这样Eridanus才可以连接到它。   
+
 ## 部署Eridanus
 ```
 以下命令任选其一
