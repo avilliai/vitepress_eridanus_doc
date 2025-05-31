@@ -8,10 +8,11 @@
     - 需要手动开启websocketsever服务(见后文)，端口为3001,accessToken留空不要填。
 - [llob](https://llonebot.github.io/zh-CN/guide/getting-started) 优势：部署后保持默认配置即可使用
 
-**接下来的教程以Napcat为例**。
-### 1.部署napcat
-请参照[napcat文档部署napcat](https://napneko.pages.dev/)
+**接下来的教程以Napcat为例**。    
+> 基本上，要做的就是在onebot实现侧，设置一个【websocket服务端】，端口3001，access_token为空，这样Eridanus才可以连接到它。   
 
+### 1.部署napcat
+请参照[napcat文档部署napcat](https://napneko.pages.dev/)    
 ### 2.配置napcat
 在webui配置ws服务器地址，端口为3001，token留空。
 ![ws1](/img_1.png)
