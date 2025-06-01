@@ -1,7 +1,6 @@
 # 折腾版
 ## 部署onebot实现
-常见选择是llob或napcat。    
-[napcat](https://napneko.github.io/),[llob](https://llonebot.github.io/zh-CN/guide/getting-started),[Lagrange.OneBot](https://lagrangedev.github.io/Lagrange.Doc/v1/Lagrange.OneBot/Config/),[其他选择](https://onebot.dev/ecosystem.html#onebot-%E5%AE%9E%E7%8E%B0-1)     
+[napcat](https://napneko.github.io/) ,[llob](https://llonebot.github.io/zh-CN/guide/getting-started) ,[Lagrange.OneBot](https://lagrangedev.github.io/Lagrange.Doc/v1/Lagrange.OneBot/Config/) ,[其他选择](https://onebot.dev/ecosystem.html#onebot-%E5%AE%9E%E7%8E%B0-1)     
 **请在napcat/llob/Lagrange.OneBot/其他选择中任选其一部署**。    
 > 基本上，要做的就是在onebot实现侧，设置一个【websocket服务端】，端口3001，access_token为空，这样Eridanus才可以连接到它。   
 
