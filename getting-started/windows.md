@@ -31,7 +31,13 @@ Please Edit the appsettings.json to set configs and press any key to continue`
         }
     ]
 ```
-在Lagrange.OneBot.exe窗口回车，完成扫码登录。
+在Lagrange.OneBot.exe窗口回车，完成扫码登录。   
+> Lagrange.onebot的消息格式与napcat/llob等存在部分不一致，因此需要修改Eridanus配置文件以适配。    
+```
+#搭建Eridanus后，在run/common_config/basic_config.yaml中，将adapter.name修改为Lagrange
+adapter:
+  name: "Lagrange"   #兼容性选项，如果用Lagrange，则必须填Lagrange，用其他onebot实现则不用动
+```
 ## 快速部署Eridanus
 从Eridanus [release](https://github.com/avilliai/Eridanus/releases) 下载最新整合包并解压  
 如果下载过慢，可前往qq群913122269下载  
