@@ -15,12 +15,19 @@ def main(bot,config):
 `bot`参数是一个`Bot`对象，它代表了机器人的实例，你可以通过它来发送消息、获取用户信息、获取群组信息等。   
 `config`参数是一个YAMLManager对象，它包含了机器人的配置文件。
 ## Hello World
-在run目录下创建一个新的文件夹(比如`a_example`)，并在其中创建一个`__init__.py`文件，里面可以不用写任何东西。 
+在run目录下创建一个新的文件夹(比如`a_example`)，并在其中创建一个`__init__.py`文件。   
 ```yaml
 run/
 ├─a_example
 │     ├─example.py
 │     ├─__init__.py
+```    
+__init__.py中写入下面三行
+```python
+plugin_description="插件名称"
+from framework_common.framework_util.main_func_detector import load_main_functions
+entrance_func=load_main_functions(__file__)
+
 ```
 example.py中写入
 ```python
@@ -133,6 +140,9 @@ plugin_description,dynamic_imports,function_declarations这三个变量是必须
 在__init__.py中写入    
 ```python
 plugin_description="柴郡表情包"
+
+from framework_common.framework_util.main_func_detector import load_main_functions
+entrance_func=load_main_functions(__file__)
 
 dynamic_imports = {   #写明函数的导入路径，以及函数名
     "run.a_example.func_collection": 
