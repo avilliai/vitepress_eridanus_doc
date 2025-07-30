@@ -141,8 +141,6 @@ plugin_description,dynamic_imports,function_declarations这三个变量是必须
 ```python
 plugin_description="柴郡表情包"
 
-from framework_common.framework_util.main_func_detector import load_main_functions
-entrance_func=load_main_functions(__file__)
 
 dynamic_imports = {   #写明函数的导入路径，以及函数名
     "run.a_example.func_collection": 
