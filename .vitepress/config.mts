@@ -95,6 +95,8 @@ export default defineConfig({
           {text: 'config对象',link:"/framework/config对象"},
           { text: '开发工具', items: [
               { text: 'utils', link: 'framework/framework_common/utils' },
+                  { text: 'utils', link: 'framework/framework_common/RedisCacheManager' },
+                  { text: 'utils', link: 'framework/framework_common/绘图框架' },
             ] },
         ],
       },
