@@ -212,6 +212,7 @@ ai绘画:
 ```yaml
 反推和审核使用模型可选:'wd14-vit-v2-git'，'wd14-convnext-v2-git'，'wd14-swinv2-v2-git'，'wd-vit-v3-git'，'wd14-convnext-v3-git'，
 'wd14-swinv2-v3-git'，'wd14-large-v3-git'，'wd14-eva02-large-v3-git'
-前提是你webui安装的插件是spawner1145的https://github.com/spawner1145/stable-diffusion-webui-wd14-tagger.git(新增，也可以单独启动https://github.com/spawner1145/wd14-inference-webui.git这个项目把他的网址当作api用)
+前提是你webui安装的插件是spawner1145的https://github.com/spawner1145/stable-diffusion-webui-wd14-tagger.git
+(也可以单独启动https://github.com/spawner1145/wd14-inference-webui.git这个项目把他的网址当作api用)
 否则只能使用'wd14-vit-v2-git'
 ```
