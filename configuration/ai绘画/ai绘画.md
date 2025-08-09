@@ -18,7 +18,7 @@ n3 prompt  #比如 n3 an anime girlish
 ```yaml
 tag
 ```
-然后发送图片；或者引用图片使用
+然后发送图片；或者引用图片使用，需要先部署`https://github.com/spawner1145/wd14-inference-webui.git`或者给`webui安装https://github.com/spawner1145/stable-diffusion-webui-wd14-tagger.git`插件
 ### 重绘
 ```yaml
 重绘 prompt   # 比如 重绘 1girl,solo,loli
@@ -212,6 +212,6 @@ ai绘画:
 ```yaml
 反推和审核使用模型可选:'wd14-vit-v2-git'，'wd14-convnext-v2-git'，'wd14-swinv2-v2-git'，'wd-vit-v3-git'，'wd14-convnext-v3-git'，
 'wd14-swinv2-v3-git'，'wd14-large-v3-git'，'wd14-eva02-large-v3-git'
-前提是你安装的插件是spawner1145的https://github.com/spawner1145/stable-diffusion-webui-wd14-tagger.git
+前提是你安装的插件是spawner1145的https://github.com/spawner1145/stable-diffusion-webui-wd14-tagger.git(新增，也可以单独启动https://github.com/spawner1145/wd14-inference-webui.git这个项目把他的网址当作api用)
 否则只能使用'wd14-vit-v2-git'
 ```
