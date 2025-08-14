@@ -1,8 +1,12 @@
 # 快速部署Eridanus
+## 教程
 [windows快速部署](/getting-started/windows.md)  
 [linux快速部署](/getting-started/linux.md)  
 [没苦硬吃版](/getting-started/glidthelily.md)  
-[交流群](https://qm.qq.com/q/hjhSSnlBDi)  
+## 社群
+[qq3群](https://qm.qq.com/q/hjhSSnlBDi)       
+[qq4群](https://qm.qq.com/q/xgT88qQOWG)    
+
 
 eridanus的部署流程并不复杂。  
 windows和linux快速部署的引导已相当完善。  
