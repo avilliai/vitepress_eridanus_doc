@@ -134,7 +134,11 @@ llm:
 ### 2、配置正向代理/反向代理(二选一)
 只配置apikey，但不配置proxy是不行的。
 #### 反向代理
-反向代理配置难度较低，建议使用。
+反向代理配置难度较低，建议使用。    
+> 2025.8.14，目前Eridanus用户数量不断增长，我个人搭建和提供的反代明显已经不够用了。
+> 建议根据下面的教程自行搭建反代，一键搭建没啥难的。
+
+[反代搭建教程](https://simonmy.com/posts/%E4%BD%BF%E7%94%A8netlify%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86google-palm-api.html)
 ```yaml
 一些你可以使用的反代地址，不保证全都能用。
 https://fastidious-brigadeiros-12c15a.netlify.app
@@ -154,7 +158,7 @@ llm:
 ```
 #### 正向代理
 取决于你自己的代理软件，我不能给你一个准确答案。如果你看不懂就老老实实用反代。  
-文件来源`run/ai_llm/config.yaml`它在webui中的名称为`AI LLM Plugin.config`
+文件来源`run/ai_llm/config.yaml`它在webui中的名称为`AI LLM Plugin.config`    
 ```yaml
 #省略了其他配置项，不代表你可以随便删除其他配置项。
 llm:
