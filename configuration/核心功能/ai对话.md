@@ -138,23 +138,18 @@ llm:
 > 2025.8.14，目前Eridanus用户数量不断增长，我个人搭建和提供的反代明显已经不够用了。
 > 建议根据下面的教程自行搭建反代，一键搭建没啥难的。
 
-[反代搭建教程](https://simonmy.com/posts/%E4%BD%BF%E7%94%A8netlify%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86google-palm-api.html)
-```yaml
-一些你可以使用的反代地址，不保证全都能用。
-https://fastidious-brigadeiros-12c15a.netlify.app
-https://stately-sfogliatella-a98769.netlify.app
-https://calm-cucurucho-2a0171.netlify.app
-https://lustrous-granita-f670fd.netlify.app
+[反代搭建教程](https://simonmy.com/posts/%E4%BD%BF%E7%94%A8netlify%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86google-palm-api.html)     
 
-如果你想要搭建自己的反向代理，自行查看https://simonmy.com/posts/%E4%BD%BF%E7%94%A8netlify%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86google-palm-api.html。
-```
+我们为用户提供了一些反代，在群公告。但由于用户体量庞大，不保证所有人都能用上，因此仍建议自行搭建。
+[qq3群](https://qm.qq.com/q/hjhSSnlBDi)       
+[qq4群](https://qm.qq.com/q/xgT88qQOWG)  
 ```yaml
 #省略了其他配置项，不代表你可以随便删除其他配置项。
 llm:
   model: gemini 
   enable_proxy: False
   gemini:
-    base_url: https://fastidious-brigadeiros-12c15a.netlify.app  #填写了一个反代地址
+    base_url: https://xxxxxx.netlify.app  #填写反代地址
 ```
 #### 正向代理
 取决于你自己的代理软件，我不能给你一个准确答案。如果你看不懂就老老实实用反代。  
