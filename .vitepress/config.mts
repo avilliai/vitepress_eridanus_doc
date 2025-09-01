@@ -54,7 +54,8 @@ export default defineConfig({
           {text: "ai绘画",items: [
               { text: 'ai绘画', link: '/configuration/ai绘画/ai绘画' },
               { text: 'kaggle部署sd服务端', link: '/configuration/ai绘画/kaggle部署ai绘画' },
-              {text: "ai图片甄别",link:"/configuration/ai绘画/ai图片甄别"}
+              {text: "ai图片甄别",link:"/configuration/ai绘画/ai图片甄别"},
+              {text: "nano banana",link: "/configuration/ai绘画/nano_banana.md"}
             ]},
           {text: "资源搜索",items: [
               { text: 'zlibrary', link: '/configuration/资源搜索/zlibrary' },
