@@ -140,9 +140,9 @@ llm:
 
 [反代搭建教程](https://simonmy.com/posts/%E4%BD%BF%E7%94%A8netlify%E5%8F%8D%E5%90%91%E4%BB%A3%E7%90%86google-palm-api.html)     
 
-我们为用户提供了一些反代，在群公告。但由于用户体量庞大，不保证所有人都能用上，因此仍建议自行搭建。
+我们为用户提供了一些反代，在群公告。但由于用户体量庞大，不保证所有人都能用上，因此仍建议自行搭建。     
 [qq3群](https://qm.qq.com/q/hjhSSnlBDi)       
-[qq4群](https://qm.qq.com/q/xgT88qQOWG)  
+[qq4群](https://qm.qq.com/q/xgT88qQOWG)   
 ```yaml
 #省略了其他配置项，不代表你可以随便删除其他配置项。
 llm:
