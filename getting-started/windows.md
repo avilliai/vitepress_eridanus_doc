@@ -1,4 +1,10 @@
-# windows快速部署
+---
+next:
+  text: 'WebUI初次使用'
+  link: '/configuration/webui/初次使用'
+---
+
+# Windows快速部署
 
 ## 部署onebot实现    
 [napcat](https://napneko.github.io/)  ,[llob](https://llonebot.github.io/zh-CN/guide/getting-started)  ,[Lagrange.OneBot](https://lagrangedev.github.io/Lagrange.Doc/v1/Lagrange.OneBot/Config/)  ,[其他选择](https://onebot.dev/ecosystem.html#onebot-%E5%AE%9E%E7%8E%B0-1)     
@@ -44,6 +50,4 @@ adapter:
 - 解压整合包
 - 运行【克隆仓库.exe】，选择一个源克隆。
 - 进入Eridanus目录，运行【启动脚本.bat】
-- 启动eridanus后，浏览器输入`http://localhost:5007`  
-
-**Eridanus webui的初始账号密码均为eridanus**
+- 启动eridanus后，访问WebUI进行下一步操作。参阅[WebUI初次使用](/configuration/webui/初次使用.md)
