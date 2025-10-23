@@ -33,7 +33,12 @@ export default defineConfig({
           { text: 'windows快速部署', link: '/getting-started/windows' },
           { text: 'linux快速部署', link: '/getting-started/linux' },
           { text: '没苦硬吃', link: '/getting-started/glidthelily' },
-
+          {
+            text: 'WebUI使用', items: [
+              { text: '初次使用', link: "/configuration/webui/初次使用.md" },
+              { text: 'WebUI介绍', link: "/configuration/webui/介绍.md" }
+            ]
+          }
         ],
       },
       {
@@ -100,12 +105,6 @@ export default defineConfig({
               { text: '定时任务', link: "/configuration/系统功能/定时任务" }
             ]
           },
-          {
-            text: 'WebUI使用', items: [
-              { text: '初次使用', link: "/configuration/webui/初次使用.md" },
-              { text: 'WebUI介绍', link: "/configuration/webui/介绍.md" }
-            ]
-          }
         ],
       },
       {
