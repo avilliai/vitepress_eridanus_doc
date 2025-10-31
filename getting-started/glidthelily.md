@@ -12,7 +12,6 @@
 ### llob
 保持默认即可
 ### Lagrange.OneBot
-(推荐Lagrange.OneBot，它可能比其他几个更加稳定)    
 [Lagrange.OneBot文档](https://lagrangedev.github.io/Lagrange.Doc/v1/Lagrange.OneBot/Config/)     
 从[release下载](https://github.com/LagrangeDev/Lagrange.Core/releases)     
 运行`Lagrange.OneBot.exe`，会提示`No exist config file, create it now...
