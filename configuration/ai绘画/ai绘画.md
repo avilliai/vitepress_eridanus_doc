@@ -1,6 +1,3 @@
----
-sidebar_position: 5
----
 # AI绘画
 ## 指令
 ### novel_ai绘图指令
