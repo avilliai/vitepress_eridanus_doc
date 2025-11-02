@@ -144,6 +144,9 @@ url=f'{base_url}/sdapi/v1/txt2img
 
 Achernar的原型脚本和kaggle脚本均来自[spawner](https://github.com/spawner1145)
 ## 进阶配置
+### 隧道太慢，生成一张图片等太久？
+在启动参数中添加：`--enable-webp` 即可。添加该参数之后，所有请求的图片都会以webp格式返回，这会大大提高单张图片传输速度。但是会损失一定的图片质量，以及图片的元数据信息。
+![image](/ai_draw/args.png)
 ### 如果你不用Achernar，可以使用手动启动脚本
 这里假设你已经搞好了前面的步骤，有了一个脚本了
 
