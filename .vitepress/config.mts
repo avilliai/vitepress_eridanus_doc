@@ -29,10 +29,15 @@ export default defineConfig({
         //分组标题1
         text: '快速开始', collapsed: false,
         items: [
-          { text: '快速部署', link: '/getting-started' },
-          { text: 'windows快速部署', link: '/getting-started/windows' },
-          { text: 'linux快速部署', link: '/getting-started/linux' },
-          { text: '没苦硬吃', link: '/getting-started/glidthelily' },
+          {
+            text: '部署', items: [
+              { text: '在开始之前', link: '/getting-started' },
+              { text: 'WebUI介绍', link: "/configuration/webui/介绍.md" },
+              { text: 'windows快速部署', link: '/getting-started/windows' },
+              { text: 'linux快速部署', link: '/getting-started/linux' },
+              { text: '没苦硬吃', link: '/getting-started/glidthelily' },
+            ]
+          },
           {
             text: 'WebUI使用', items: [
               { text: '初次使用', link: "/configuration/webui/初次使用.md" },
