@@ -32,7 +32,6 @@ export default defineConfig({
           {
             text: '部署', items: [
               { text: '在开始之前', link: '/getting-started' },
-              { text: 'WebUI介绍', link: "/configuration/webui/介绍.md" },
               { text: 'windows快速部署', link: '/getting-started/windows' },
               { text: 'linux快速部署', link: '/getting-started/linux' },
               { text: '没苦硬吃', link: '/getting-started/glidthelily' },
