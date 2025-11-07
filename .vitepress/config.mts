@@ -29,10 +29,14 @@ export default defineConfig({
         //分组标题1
         text: '快速开始', collapsed: false,
         items: [
-          { text: '快速部署', link: '/getting-started' },
-          { text: 'windows快速部署', link: '/getting-started/windows' },
-          { text: 'linux快速部署', link: '/getting-started/linux' },
-          { text: '没苦硬吃', link: '/getting-started/glidthelily' },
+          {
+            text: '部署', items: [
+              { text: '在开始之前', link: '/getting-started' },
+              { text: 'windows快速部署', link: '/getting-started/windows' },
+              { text: 'linux快速部署', link: '/getting-started/linux' },
+              { text: '没苦硬吃', link: '/getting-started/glidthelily' },
+            ]
+          },
           {
             text: 'WebUI使用', items: [
               { text: '初次使用', link: "/configuration/webui/初次使用.md" },
@@ -111,7 +115,7 @@ export default defineConfig({
               {text: '天气查询',link: "/configuration/娱乐功能/天气查询" },
               {text: '娶群友',link: "/configuration/娱乐功能/娶群友" },
               {text: '涩图',link: "/configuration/娱乐功能/涩图" },
-              {text: '轮盘赌与决斗',link: "/configuration/娱乐功能/轮盘赌与决斗" },
+              {text: '轮盘赌与决斗',link: "/configuration/娱乐功能/轮盘赌" },
               {text: '运势与塔罗',link: "/configuration/娱乐功能/运势与塔罗" },
               {text: '🦌',link: "/configuration/娱乐功能/🦌" },
               {text: '没人用的功能',link: "/configuration/娱乐功能/没人用的功能集合" }
@@ -121,7 +125,8 @@ export default defineConfig({
             text: '系统功能', items: [
               { text: '定时任务', link: "/configuration/系统功能/定时任务" },
               { text: 'qq空间', link: "/configuration/系统功能/qq空间" },
-              {text: '自定义回复', link: "/configuration/系统功能/自定义回复" }
+              {text: '自定义回复', link: "/configuration/系统功能/自定义回复" },
+              {text: 'ai插件编写', link: "/configuration/系统功能/ai插件编写" }
             ]
           },
         ],
