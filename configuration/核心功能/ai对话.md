@@ -298,10 +298,10 @@ llm:
   model: openai #模型大类选择openai。
   system: "你现在是一只猫娘，你的名字是{bot_name}，我的名字是{用户}，是你的主人。"
   func_calling: true #kimi支持函数调用功能，可以开启。
-  openai:        
-    api_keys:   #继续像这样添加apikey
+  openai:
+    enable_official_sdk: false   #是否使用官方sdk，如果不使用，则为直接发送post请求。
+    api_keys:   
       - sk-pibXoRr***********************vNUq1 #这是个示例，你需要替换为你自己申请的apikey
     model: moonshot-v1-8k #选择使用的模型，这里是moonshot-v1-8k，其他模型需要查看kimi文档。
-    #在请求地址部分，一般都是base_url+/v1/chat/completions
-    quest_url: https://api.moonshot.cn/v1/chat/completions   #完整调用地址。只填base_url不行
+    quest_url: https://api.moonshot.cn/v1/chat/completions   #当【enable_official_sdk】为false时，需要填完整url。
 ```

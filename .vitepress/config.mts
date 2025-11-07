@@ -155,6 +155,21 @@ export default defineConfig({
           { text: '消息组件', link: "/sdk/消息组件" }
         ],
       },
+      {
+        text: '常见问题', collapsed: false,
+        items: [
+          {
+            text: '蠢问题',collapsed: true, items: [
+              { text: '更新失败', link: '/issues/蠢问题/更新失败' },
+            ]
+          },
+          {
+            text: '好问题',collapsed: true, items: [
+              { text: '没见着', link: '/issues/好问题/没见着' },
+            ]
+          },
+        ],
+      },
     ],
     search: {
       provider: 'local'
