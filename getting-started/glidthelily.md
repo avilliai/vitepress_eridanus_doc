@@ -10,8 +10,11 @@
 ![ws1](/img_1.png)
 ![ws2](/img_2.png)
 ### llob
-保持默认配置即可    
-请参照[llob文档部署llob](https://llonebot.github.io/zh-CN/guide/getting-started)
+参照[llob官方文档](https://llonebot.github.io/zh-CN/guide/getting-started) 部署llob     
+部署完成后，打开`http://localhost:3080`，这是llob的webui。接下来启用ws服务端。    
+![ws1](/onebot/llob1.png)
+![ws2](/onebot/llob2.png)
+
 ### Lagrange.OneBot
 [Lagrange.OneBot文档](https://lagrangedev.github.io/Lagrange.Doc/v1/Lagrange.OneBot/Config/)     
 从[release下载](https://github.com/LagrangeDev/Lagrange.Core/releases)     

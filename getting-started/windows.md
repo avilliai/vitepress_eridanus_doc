@@ -12,8 +12,10 @@ next:
 > 基本上，要做的就是在onebot实现侧，设置一个【websocket服务端】，端口3001，access_token为空，这样Eridanus才可以连接到它。
 
 ### llob
-保持默认配置即可    
-[llob](https://llonebot.github.io/zh-CN/guide/getting-started)
+参照[llob官方文档](https://llonebot.github.io/zh-CN/guide/getting-started) 部署llob     
+部署完成后，打开`http://localhost:3080`，这是llob的webui。接下来启用ws服务端。    
+![ws1](/onebot/llob1.png)
+![ws2](/onebot/llob2.png)
 
 ### Lagrange.OneBot
 
