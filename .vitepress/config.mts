@@ -170,7 +170,7 @@ export default defineConfig({
           },
           {
             text: '好问题',collapsed: true, items: [
-              { text: '没见着', link: '/issues/好问题/没见着' },
+              { text: '为google cloud设置结算信息', link: '/issues/好问题/为google cloud设置结算信息.md' },
             ]
           },
         ],
