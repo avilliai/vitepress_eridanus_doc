@@ -34,7 +34,7 @@
 2. [Lagrange](https://lagrangedev.github.io/Lagrange.Doc/v1/Lagrange.OneBot/Config/) 近期似乎不可用
 ### 稳定方案 | docker文件夹映射
 经实测，目前最稳定的是docker napcat    
-如果Eridanus被安装在了napcat所在容器外(不建议在napcat所在容器内安装Eridanus，会很麻烦)，将出现napcat找不到要发送文件的情况。此时我们需要在安装napcat时增加文件夹映射。     
+如果Eridanus被安装在了napcat所在容器外~~【不建议在napcat所在容器内安装Eridanus，会很麻烦】~~，将导致napcat找不到Eridanus要发送的文件资源。此时我们需要在部署napcat时增加文件夹映射。     
 ```
 docker run -d \
   -e NAPCAT_GID=$(id -g) \
