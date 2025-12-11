@@ -118,6 +118,7 @@ export default defineConfig({
               {text: '轮盘赌与决斗',link: "/configuration/娱乐功能/轮盘赌" },
               {text: '运势与塔罗',link: "/configuration/娱乐功能/运势与塔罗" },
               {text: '🦌',link: "/configuration/娱乐功能/🦌" },
+              {text: 'Grok视频生成',link: "/configuration/娱乐功能/Grok视频生成" },
               {text: '没人用的功能',link: "/configuration/娱乐功能/没人用的功能集合" }
             ]
           },
