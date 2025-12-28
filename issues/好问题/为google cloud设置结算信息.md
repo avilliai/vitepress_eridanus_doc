@@ -2,8 +2,11 @@
 # 如何在google cloud设置结算信息
 本教程用于说明，如何在没有visa卡的情况下，白嫖谷歌的300刀赠金。
 ## 虚拟信用卡
-整张一次性的验证用卡，大概要花三块多人民币。微信/alipay均可     
-[申请虚拟信用卡](https://shop.misacard.com/?cid=-10)    
+整张一次性的验证用卡，大概要花三块多人民币。微信/alipay均可。以下是虚拟卡商家，任选一个：   
+🔹 [nikoers.com](https://nikoers.com/)  
+🔹 [chatgptcard.xyz](https://chatgptcard.xyz/)  
+🔹 [www.holy-card.com](https://www.holy-card.com/)  
+🔹 [shop.bmoplus.com](https://shop.bmoplus.com/)    
 ![img.png](/google_cloud/img1.png)     
 激活后如上，这些信息待会会用到。  
 ## 填写信息
