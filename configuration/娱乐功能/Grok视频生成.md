@@ -68,10 +68,8 @@ cd grok2api
 大部分用户都是普通账户，类型选择默认的ssoBasic即可。    
 >![Grok演示图](/Grok8.png)
 > 
-接下来，打开位于“<span style="color: green;">Eridanus\run\grok2api</span>”目录下的“<span style="color: green;">grok2api_Video_image.py</span>”脚本。
-
-将里面的api秘钥，填写成与你grok2api配置的一样即可。    
->![Grok演示图](/Grok9.png)
+接下来，打开`Eridanus/run/grok2api/config.yaml`，或在webui中打开grok2api.config。     
+将里面的`API_KEY: "xai-26QZ1aXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXPj8bH64GgT"`，填写成与你grok2api配置的apikey。    
 
  填写完后就可以在群里面测试啦！`此处指令已更改，以开头最新指令为准`
 >![Grok演示图](/Grok10.png)  
