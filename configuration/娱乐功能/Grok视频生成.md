@@ -1,6 +1,6 @@
 # Grok2API图片视频生成
 ::: info 使用方法   
-触发指令：/视频
+触发指令：/视频、/图片
 
 取消指令：取消、退出、/cancel
 
@@ -14,45 +14,64 @@
 > 确认登录账号了后，在此界面按下键盘的<span style="color: green;">F12</span>，或是用鼠标在此界面，右键点击<span style="color: green;">检查</span>进入开发者。
 
 它的右边会出现这样一个界面，如图。
+
 >![Grok演示图](/Grok2.png)
 > 接下来请点击箭头所指的<span style="color: green;">应用程序</span>选项上。
 > 
 它会出现这个界面，如图。
 >![Grok演示图](/Grok3.png)
-> 按照箭头上面的步骤完成后，接下来就可以去创建API秘钥了，
+> 按照箭头上面的步骤完成后，接下来就可以去创建API秘钥了（其实sso和sso-rw随便记一个就行了，他们都一样的。）
 > 
-打开[API秘钥创建页面](https://console.x.ai/team/473d5d36-c88f-402a-97a4-14c1f2e52d9a/api-keys)，生成自己的API秘钥后，就可以部署Grok2API了。
+打开[API秘钥创建页面](https://console.x.ai/team/473d5d36-c88f-402a-97a4-14c1f2e52d9a/api-keys)，生成自己的API秘钥后，就可以接下来的部署工作了。
 > 
 # Grok2API部署教程，步骤二
-下载我上传好的[Grok2API压缩包](https://wwbqn.lanzouw.com/io9eb3dbnt9e)，或者你也可以去[Github](https://github.com/chenyme/grok2api)上下载，二选一吧。
+在群里面下载，或者[点击下载](https://wwbqn.lanzouw.com/if8683hryf9g)（密码：123456）名为“<span style="color: green;">一键部署及启动Grok2api</span>”的部署脚本，将它放在一个地方，随便在哪都行，然后双击运行它，程序会自动帮你下载部署，你只需要等待部署成功即可。
 
-这里以我做好的安装包为例，解压完后找到<span style="color: green;">启动</span>这个程序，双击运行它，它会自动下载所需依赖，下载完成后按提示操作即可。（注意：如果你是在Github上下载的，则没有我说的<span style="color: green;">启动</span>程序。）
+或者你也可以去[Github](https://github.com/chenyme/grok2api)上自行下载部署，二选一吧。
 
-运行成功后，会是这样的，如图。
->这期间不要关闭这个窗口！！！
->![Grok演示图](/Grok4.png)
-> 
-接下来打开浏览器，输入这个网址：http://127.0.0.1:8001/login 进入Grok2API的登录界面。
 
-注：登录账号和登录密码都是<span style="color: green;">admin</span>
 
-进入管理界面后，先进入配置界面，配置必要的内容，如图。
+部署成功后，按照窗口显示的网址进入这个界面，如图。
 >![Grok演示图](/Grok5.png)
->
-接下来只需要配置这两个内容就行了，其他的保持默认即可，如图。
+> 
+点击屏幕上方的配置管理选项，填写你的APi秘钥和代理地址就可以了，其他内容保持默认。
 >![Grok演示图](/Grok6.png)
 > 
-接下来，回到上一页，点击添加，如图。
 >![Grok演示图](/Grok7.png)
+> 其他内容保持默认即可。
 > 
-然后按照图片的操作填写就行了。
+接下来，回到Token列表，点击添加，添加刚才所记录的cookie信息即可。
+大部分用户都是普通账户，类型选择默认的ssoBasic即可。
 >![Grok演示图](/Grok8.png)
+> 
+接下来，打开位于“<span style="color: green;">Eridanus\run\grok2api</span>”目录下的“<span style="color: green;">grok2api_Video_image.py</span>”脚本。
 
-添加完成后，可以在测试一下，如果没问题的就会是这样，如图。
+将里面的api秘钥，填写成与你grok2api配置的一样即可。
 >![Grok演示图](/Grok9.png)
 
-接下来就可以在群里面测试啦！
+ 填写完后就可以在群里面测试啦！
 >![Grok演示图](/Grok10.png)
+> 
+# 常见问题以及注意事项！！！！必看！！！！
+grouk2api是支持添加多账号的，也就是填写对应账号的cookie就行。
+
+但是要注意，如果你登出账号，那么这个账号的cookie就会失效，你需要重新添加这个账号的cookie才行。
+
+那我们要怎么才能在不退出原本账号的情况下，登录新的grok账号获取cookie呢？
+
+有的兄弟有的。
+
+方法一：换浏览器即可，一个账号一个浏览器。
+
+方法二：我这里以Edge浏览器为例，点击左上角的头像，再在弹出的窗口点击：<span style="color: green;">添加其他配置文件----设置新的工作或学校个人资料</span>
+
+这样你就有了一个新的浏览器账户了，这个账户不需要登录以及同步微软数据，只需要按上面的步骤重新获取一遍cookie即可。
+
+获取完后切记不要登出，否则会导致cookie失效，想要添加其他账号以此类推即可。
+>![Grok演示图](/Grok11.png)
+
+添加其他账户需要更换api秘钥吗？
+> 不需要。
 
 
 
