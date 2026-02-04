@@ -27,7 +27,13 @@ environments\MinGit\cmd\git.exe clone https://github.com/chenyme/grok2api
 cd grok2api
 ..\environments\Python311\python.exe -m pip install -U uv
 ..\environments\Python311\python.exe -m uv sync
+..\environments\Python311\python.exe -m uv run main.py
 ```
+以后的启动命令：在grok2api目录打开cmd，输入
+```
+..\environments\Python311\python.exe -m uv run main.py
+```
+如果你嫌麻烦，新建个`启动脚本.bat`把这行命令写进去，以后双击就完事了。
 ### 脚本
 `使用此脚本需要你自己环境变量中有python和git。此脚本由功能作者提供。`    
 在群里面下载，或者[点击下载](https://wwbqn.lanzouw.com/if8683hryf9g)（密码：123456）名为“<span style="color: green;">一键部署及启动Grok2api</span>”的部署脚本，将它放在一个地方，随便在哪都行，然后双击运行它，程序会自动帮你下载部署，你只需要等待部署成功即可。
