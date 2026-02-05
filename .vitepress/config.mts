@@ -58,6 +58,7 @@ export default defineConfig({
               { text: "用户管理", link: "/configuration/核心功能/用户权限系统" },
               { text: "群组管理", link: "/configuration/核心功能/群组管理" },
               { text: "黑名单/白名单", link: "/configuration/核心功能/黑白名单" },
+              { text: "对接business2api",link: "/configuration/核心功能/对接business2api"
 
             ]
           },
