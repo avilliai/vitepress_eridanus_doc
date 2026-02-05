@@ -67,8 +67,8 @@ allow-lan: true
 log-level: info
 secret: ''
 external-controller: 0.0.0.0:9090
-
 ```
+如果你从来没接触过clash，也不知道去哪买订阅。用这个[sailing.pro](https://my.sailingnet.pro/zh/auth/signup?referrer=9Q3veQMx)。
 ### mihomo面板怎么进
 和business2api一样，在部署完mihomo镜像后，需要注册个域名。     
 打开[https://metacubexd.pages.dev/](https://metacubexd.pages.dev/)将域名输入进去即可，不用带端口。
