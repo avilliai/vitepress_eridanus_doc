@@ -148,6 +148,7 @@ export default defineConfig({
               { text: '绘图框架', link: 'framework/framework_common/绘图框架' },
             ]
           },
+          { text: 'comfyui接入实战', link: "/framework/comfyui接入实战" },
         ],
       },
       {
