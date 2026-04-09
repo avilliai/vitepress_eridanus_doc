@@ -213,3 +213,6 @@ ai绘画:
 (也可以单独启动https://github.com/spawner1145/wd14-inference-webui.git这个项目把他的网址当作api用)
 否则只能使用'wd14-vit-v2-git'
 ```
+
+### 更加进阶的部分
+在bot框架中已经支持了调用comfyui api的工作流，但是接comfyui(下简称cui)可能需要一定的代码基础和对框架的了解，如果你有兴趣，这部分将会在[comfyui接入实战](/framework/comfyui接入实战.md)中介绍
