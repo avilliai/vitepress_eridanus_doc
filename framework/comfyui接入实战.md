@@ -160,6 +160,7 @@ from .comfy_api.workflow import ComfyWorkflow
 ```python
 COMFYUI_URLS = ["http://127.0.0.1:8188", "http://127.0.0.1:114514"]
 ```
+如果你装了comfyui-login插件，使用token@http://127.0.0.1:8188这种格式
 
 定义轮询指针
 ```python
