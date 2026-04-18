@@ -8,7 +8,7 @@
 :::
 
     
-配置文件在webui中为`AA.v2 MaiRepy 新版ai对话.config`，在项目文件夹中为`run/mai_reply/config.yaml`。
+配置文件在webui中为`mai_reply 新版ai对话.config`，在项目文件夹中为`run/mai_reply/config.yaml`。
 ```yaml
 
 enable: True  # 开启后将自动禁用旧版ai回复
