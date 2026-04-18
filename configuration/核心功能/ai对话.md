@@ -1,7 +1,7 @@
 # ai对话
 ::: warning 弃用警告   
-不再建议参考此页面配置  
-我们重构出了ai对话v2，新的配置方式更为简单，且兼容性更好。  
+不再建议配置此插件  
+我们重构出了[ai对话.v2](https://eridanus.netlify.app/configuration/%E6%A0%B8%E5%BF%83%E5%8A%9F%E8%83%BD/%E6%96%B0%E7%89%88ai%E5%AF%B9%E8%AF%9D.html)，新的配置方式更为简单，且兼容性更好。  
 :::
 
 
