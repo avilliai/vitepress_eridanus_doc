@@ -53,7 +53,8 @@ export default defineConfig({
           { text: '基础配置', link: '/configuration/基础配置' },
           {
             text: '核心功能', collapsed: true, items: [
-              { text: 'ai对话', link: '/configuration/核心功能/ai对话' },
+                { text: 'ai对话.v2', link: '/configuration/核心功能/新版ai对话' },
+              { text: 'ai对话.v1', link: '/configuration/核心功能/ai对话' },
               { text: "语音合成", link: "/configuration/核心功能/文本转语音" },
               { text: "用户管理", link: "/configuration/核心功能/用户权限系统" },
               { text: "群组管理", link: "/configuration/核心功能/群组管理" },
