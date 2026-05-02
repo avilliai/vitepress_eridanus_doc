@@ -121,7 +121,8 @@ export default defineConfig({
               {text: '运势与塔罗',link: "/configuration/娱乐功能/运势与塔罗" },
               {text: '🦌',link: "/configuration/娱乐功能/🦌" },
               {text: 'Grok视频生成',link: "/configuration/娱乐功能/Grok视频生成" },
-              {text: '没人用的功能',link: "/configuration/娱乐功能/没人用的功能集合" }
+              {text: '没人用的功能',link: "/configuration/娱乐功能/没人用的功能集合" },
+              {text: 'gptimage2',link: "/configuration/娱乐功能/gptimage2"}
             ]
           },
           {
