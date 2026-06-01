@@ -60,3 +60,6 @@ adapter:
   ws_client:   #机器人作为websocket客户端
     ws_link: ""  #bot的websocket请求地址
 ```
+## 特性
+与webui共享聊天窗口。    
+桌宠聊天记录会与webui聊天界面同步
