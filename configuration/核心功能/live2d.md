@@ -1,5 +1,8 @@
 # Live2D
 ![img.png](l2d.png)
+
+实验性功能。动画播放尚且不完善。    
+桌宠与webui共享后端，因而可调用大部分Eridanus能通过函数调用触发的功能
 ## 启用
 
 ::: warning 记事本编辑
