@@ -62,9 +62,6 @@ adapter:
   ws_client:   #机器人作为websocket客户端
     ws_link: ""  #bot的websocket请求地址
 ```
-## 特性
-与webui共享聊天窗口。    
-桌宠聊天记录会与webui聊天界面同步
 ## 在浏览器中使用
 手动打开`Eridanus/run/live2d/config.yaml`
 ```yaml
@@ -72,3 +69,7 @@ webui_enable: true         # 开启后浏览器访问 http://localhost:5007/live
 webui_password: "eridanus"  #鉴权密钥
 ```
 重启bot，随后浏览器访问`http://localhost:5007/live2dchat`
+## 特性
+与webui共享聊天窗口。    
+桌宠聊天记录会与webui聊天界面同步
+桌宠聊天记录会同master在qq的聊天记录同步
