@@ -1,8 +1,10 @@
 # Live2D
 
-
+::: warning 缓慢更新中
 实验性功能。动画播放尚且不完善。    
 桌宠与webui共享后端，因而可调用大部分Eridanus能通过函数调用触发的功能
+:::
+
 ![l2d.png](/l2d.png)
 ## 启用
 
@@ -63,3 +65,10 @@ adapter:
 ## 特性
 与webui共享聊天窗口。    
 桌宠聊天记录会与webui聊天界面同步
+## 在浏览器中使用
+手动打开`Eridanus/run/live2d/config.yaml`
+```yaml
+webui_enable: true         # 开启后浏览器访问 http://localhost:5007/live2dchat 即网页版桌宠（与 WebUI、桌宠共用对话后端/上下文）
+webui_password: "eridanus"  #鉴权密钥
+```
+重启bot，随后浏览器访问`http://localhost:5007/live2dchat`
