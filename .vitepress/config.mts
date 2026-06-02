@@ -78,7 +78,8 @@ export default defineConfig({
               { text: "asmr", link: "/configuration/资源搜索/asmr" },
               { text: "JMComic", link: "/configuration/资源搜索/jmcomic" },
               { text: "iwara", link: "/configuration/资源搜索/iwara" },
-              { text: '搜图',link: '/configuration/资源搜索/搜图' }
+              { text: '搜图',link: '/configuration/资源搜索/搜图' },
+              { text: "telegram贴纸下载",link: '/configuration/资源搜索/telegram贴纸下载'}
             ]
           },
           {
