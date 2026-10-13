@@ -35,7 +35,8 @@ export default defineConfig({
           items: [
             { text: '基础配置中心', link: '/configuration/基础配置' },
             { text: '部署须知与安全提示', link: '/configuration/须知' },
-            { text: '用户注册与鉴权管理', link: '/configuration/基础系统/用户与权限系统' },
+            { text: '用户注册与个人资产', link: '/configuration/基础系统/用户注册与个人资产' },
+            { text: '权限管理与角色体系', link: '/configuration/基础系统/权限管理与角色体系' },
             { text: '黑白名单与群管控制', link: '/configuration/基础系统/黑白名单与群管' }
           ]
         },
@@ -56,7 +57,8 @@ export default defineConfig({
             { text: '九宫格表情包制作', link: '/configuration/AI创作工坊/九宫格表情包制作' },
             { text: 'NovelAI 专业绘画 (NAI3/NAI4)', link: '/configuration/AI创作工坊/NovelAI绘画' },
             { text: 'Stable Diffusion 专业绘图', link: '/configuration/AI创作工坊/StableDiffusion绘画' },
-            { text: 'NanoBanana 与视觉改图', link: '/configuration/AI创作工坊/NanoBanana与Qwen改图' },
+            { text: 'Gemini Nano-Banana 改图', link: '/configuration/AI创作工坊/NanoBanana图像编辑' },
+            { text: 'Qwen 通义万相自然语言生图', link: '/configuration/AI创作工坊/Qwen自然语言生图' },
             { text: 'Suno 音乐创作', link: '/configuration/AI创作工坊/Suno音乐生成' },
             { text: 'AI 图片甄别检测', link: '/configuration/AI创作工坊/AI图甄别' }
           ]
@@ -67,6 +69,7 @@ export default defineConfig({
             { text: 'Bangumi 番剧与 ACG 检索', link: '/configuration/ACG与游戏助手/Bangumi番剧查询' },
             { text: 'Galgame 资料库与推荐', link: '/configuration/ACG与游戏助手/Galgame资料查询' },
             { text: '蔚蓝档案游戏助手 (Blue Archive)', link: '/configuration/ACG与游戏助手/蔚蓝档案游戏助手' },
+            { text: '二次元角色识别与以图识番', link: '/configuration/ACG与游戏助手/角色识别与以图识番' },
             { text: 'Steam 视奸与游戏查询', link: '/configuration/ACG与游戏助手/Steam视奸与游戏查询' },
             { text: '森空岛与明日方舟 (含Epic限免)', link: '/configuration/ACG与游戏助手/森空岛与明日方舟' },
             { text: '米游社全家桶与绝区零', link: '/configuration/ACG与游戏助手/米游社与绝区零' },
@@ -91,7 +94,8 @@ export default defineConfig({
           items: [
             { text: 'ASMR 音声检索与试听', link: '/configuration/媒体与资源收集/ASMR音声检索' },
             { text: 'Z-Library 图书检索与下载', link: '/configuration/媒体与资源收集/ZLibrary图书检索' },
-            { text: 'B站动态解析与媒体下载', link: '/configuration/媒体与资源收集/B站动态解析与媒体下载' },
+            { text: 'B站 UP主动态监听与推送', link: '/configuration/媒体与资源收集/B站UP主动态监听' },
+            { text: '全网音视频多平台下载', link: '/configuration/媒体与资源收集/全网音视频多平台下载' },
             { text: 'Iwara 视频解析与下载', link: '/configuration/媒体与资源收集/Iwara视频解析' },
             { text: 'Telegram 贴纸包转存与下载', link: '/configuration/媒体与资源收集/Telegram贴纸转存' },
             { text: 'JM 漫画与绅士资源', link: '/configuration/媒体与资源收集/JM漫画与绅士资源' }
