@@ -40,32 +40,8 @@ ffmpeg -version
 
 ---
 
-## 2. Playwright：无头浏览器网页渲染器
 
-Eridanus 的许多精美插件（如 B 站动态订阅、微博热搜卡片、签到面板、以及部分需要模拟登录抓取网页内容的插件）使用了现代化的 **Playwright** 浏览器内核进行高精度页面绘制与截图。
-
-### 安装与内核下载
-
-依赖安装完成后，还需要为 Playwright 下载对应的 Chromium 浏览器内核文件：
-
-```bash
-# 在已激活虚拟环境的终端中运行：
-playwright install chromium
-```
-
-如果你是在 Linux 服务器上，可能还会缺少一些图形底层库，直接运行 Playwright 提供的依赖安装命令即可一键补全：
-
-```bash
-playwright install-deps chromium
-```
-
-::: tip 为什么是 Chromium？
-Eridanus 默认针对 Chromium 做了无头渲染性能调优（包括禁用硬件加速沙箱、内存优化参数与高 DPI 渲染），只需安装 Chromium 内核即可，不需要下载 Firefox 或 WebKit，节省服务器磁盘空间。
-:::
-
----
-
-## 3. 中文字体库（Linux 防乱码必备）
+## 2. 中文字体库（Linux 防乱码必备）
 
 在 Linux 系统上，无头浏览器截图或 PIL 渲染卡片时，如果系统没有安装中文字体，生成的图片文字就会变成难看的方框豆腐块！
 

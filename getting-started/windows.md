@@ -84,4 +84,4 @@ python main.py
 ```
 
 终端刷刷刷滚过插件加载提示，并显示 WebUI 服务就绪后，你就已经成功连通机器人啦！    
-接下来记得前往 **[进阶配置（FFmpeg与Playwright）](/getting-started/glidthelily)** 把语音转码和浏览器截图装好哦~
+接下来记得前往 **[进阶配置（FFmpeg）](/getting-started/glidthelily)** 把语音转码和浏览器截图装好哦~
