@@ -7,7 +7,7 @@ export default defineConfig({
     ['link', { rel: 'icon', href: '/logo.ico' }]
   ],
   themeConfig: {
-    logo: '/logo.ico',
+    logo: '/eridanus.svg',
     nav: [
       { text: '首页', link: '/' },
       { text: '新手部署', link: '/getting-started/' },
