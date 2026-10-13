@@ -1,4 +1,4 @@
-import { defineConfig } from 'vitepress'
+﻿import { defineConfig } from 'vitepress'
 
 export default defineConfig({
   title: "Eridanus",
@@ -54,7 +54,8 @@ export default defineConfig({
           items: [
             { text: 'GPT-Image2 图像生成与编辑', link: '/configuration/AI创作工坊/GPTImage2图像生成与编辑' },
             { text: '九宫格表情包制作', link: '/configuration/AI创作工坊/九宫格表情包制作' },
-            { text: 'NovelAI 与 SD 专业绘图', link: '/configuration/AI创作工坊/NovelAI与SD绘画' },
+            { text: 'NovelAI 专业绘画 (NAI3/NAI4)', link: '/configuration/AI创作工坊/NovelAI绘画' },
+            { text: 'Stable Diffusion 专业绘图', link: '/configuration/AI创作工坊/StableDiffusion绘画' },
             { text: 'NanoBanana 与视觉改图', link: '/configuration/AI创作工坊/NanoBanana与Qwen改图' },
             { text: 'Suno 音乐创作', link: '/configuration/AI创作工坊/Suno音乐生成' },
             { text: 'AI 图片甄别检测', link: '/configuration/AI创作工坊/AI图甄别' }
@@ -63,23 +64,26 @@ export default defineConfig({
         {
           text: '🎮 ACG 与游戏助手',
           items: [
+            { text: 'Bangumi 番剧与 ACG 检索', link: '/configuration/ACG与游戏助手/Bangumi番剧查询' },
+            { text: 'Galgame 资料库与推荐', link: '/configuration/ACG与游戏助手/Galgame资料查询' },
+            { text: '蔚蓝档案游戏助手 (Blue Archive)', link: '/configuration/ACG与游戏助手/蔚蓝档案游戏助手' },
             { text: 'Steam 视奸与游戏查询', link: '/configuration/ACG与游戏助手/Steam视奸与游戏查询' },
             { text: '森空岛与明日方舟 (含Epic限免)', link: '/configuration/ACG与游戏助手/森空岛与明日方舟' },
             { text: '米游社全家桶与绝区零', link: '/configuration/ACG与游戏助手/米游社与绝区零' },
-            { text: '雀魂战绩卡查询', link: '/configuration/ACG与游戏助手/雀魂战绩卡' },
-            { text: 'Bangumi 番剧与 Galgame 库', link: '/configuration/ACG与游戏助手/Bangumi番剧与Galgame' }
+            { text: '雀魂战绩卡查询', link: '/configuration/ACG与游戏助手/雀魂战绩卡' }
           ]
         },
         {
           text: '🎉 群聊娱乐与制图',
           items: [
+            { text: '消息伪造转发 (聊天记录生成器)', link: '/configuration/群聊娱乐与制图/消息伪造转发' },
+            { text: '群发言统计与水群排行榜', link: '/configuration/群聊娱乐与制图/群发言统计排行榜' },
             { text: '娶群友与后宫管理', link: '/configuration/群聊娱乐与制图/娶群友与后宫管理' },
             { text: '戒鹿打卡与排行榜', link: '/configuration/群聊娱乐与制图/戒鹿打卡与排行榜' },
             { text: '表情包与奥义图制作', link: '/configuration/群聊娱乐与制图/表情包与奥义图制作' },
             { text: '俄罗斯轮盘赌决斗', link: '/configuration/群聊娱乐与制图/俄罗斯轮盘赌决斗' },
             { text: '井字棋对战', link: '/configuration/群聊娱乐与制图/井字棋对战' },
-            { text: '运势、塔罗与日常功能', link: '/configuration/群聊娱乐与制图/运势塔罗与日常功能' },
-            { text: '伪造转发与发言统计', link: '/configuration/群聊娱乐与制图/伪造转发与发言统计' }
+            { text: '运势、塔罗与日常功能', link: '/configuration/群聊娱乐与制图/运势塔罗与日常功能' }
           ]
         },
         {

@@ -5,6 +5,17 @@
 
 ---
 
+## 🤖 AI 智能对话联动 (Function Calling)    
+
+当启用 `mai_reply` 的工具调用（`func_calling: true`）时，音视频下载与网易云解析均可由大模型自主识别链接并调用工具处理：    
+
+| 注册工具名称 | 对应功能说明 | 触发示例 |
+| :--- | :--- | :--- |
+| `download_video` | 多平台视频解析与无水印直链下载（B站、YouTube 等） | *“帮我把这个视频下载下来：https://www.bilibili.com/video/BVxxx”* |
+| `parse_cloud_music` | 网易云音乐歌曲解析、无损音频提取与分享 | *“解析一下这首网易云音乐链接”* |    
+
+---
+
 ## 1. 哔哩哔哩 UP 主动态监听与推送 (Bilibili Dynamic)
 
 支持多群独立监听、实时轮询、自动解析专栏、视频与图文动态并推送到指定群聊。    

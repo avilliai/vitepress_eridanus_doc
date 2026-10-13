@@ -5,6 +5,17 @@ Eridanus 接入了 Iwara 视频资源解析模块（位于 `run/resource_collect
 
 ---
 
+## 🤖 AI 智能对话联动 (Function Calling)    
+
+当启用 `mai_reply` 的工具调用（`func_calling: true`）时，支持在聊天中由 AI 自动查询 Iwara 视频与榜单：    
+
+| 注册工具名称 | 对应功能说明 | 触发示例 |
+| :--- | :--- | :--- |
+| `iwara_search` | 搜索 Iwara 视频资源（按关键词、作者、标签） | *“帮我找一下 iwara 上最新的原神 MMD 视频”* |
+| `iwara_tendency` | 获取 Iwara 热门趋势与每日/每周热榜 | *“看看今天 iwara 热度榜前几名是什么”* |    
+
+---
+
 ## 核心特性
 
 - **原画无损解析**：提取高清 1080P/2K MP4 视频直链。    

@@ -5,6 +5,16 @@ Eridanus 内置了 Telegram 贴纸一键解析下载器（位于 `run/resource_c
 
 ---
 
+## 🤖 AI 智能对话联动 (Function Calling)    
+
+当启用 `mai_reply` 的工具调用（`func_calling: true`）时，支持直接发送 Telegram 贴纸包链接让 AI 自主调用转存工具下载：    
+
+| 注册工具名称 | 对应功能说明 | 触发示例 |
+| :--- | :--- | :--- |
+| `telegram_stickers_download` | 解析 Telegram 贴纸包链接并打包下载转存为本地表情 | *“帮我把这个 tg 贴纸包存下来：https://t.me/addstickers/xxx”* |    
+
+---
+
 ## 核心特性
 
 - **静态与动态全兼容**：支持 WebP 静态表情包以及 TGS / WEBM 动态贴纸。    
@@ -18,7 +28,7 @@ Eridanus 内置了 Telegram 贴纸一键解析下载器（位于 `run/resource_c
 
 ```yaml
 telegram:
-  tg_bot_token: "123456789:ABCdefGhIJKlmNoPQRsTUVwxyZ" # 你的 Telegram Bot Token
+  tg_bot_token: "" # 你的 Telegram Bot Token
 ```
 
 ---
