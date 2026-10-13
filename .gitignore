@@ -24,3 +24,11 @@ pnpm-debug.log*
 # vscode
 .vscode/*
 .history/
+# vitepress build cache & output
+.vitepress/dist/
+.vitepress/cache/
+
+# python temp generators & cache
+*.py
+__pycache__/
+.idea/

@@ -4,186 +4,169 @@ import { defineConfig } from 'vitepress'
 export default defineConfig({
   base: '/',
   title: "Eridanus",
-  description: "异步机器人框架",
+  description: "基于 OneBot v11 的高扩展智能聊天机器人",
   themeConfig: {
-
     outline: {
-      level: [2, 6], // 显示2-4级标
+      level: [2, 6],
     },
     darkModeSwitchLabel: '深浅模式',
     logo: '/logo.ico',
-    // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: 'Home', link: '/' },
-      { text: '快速开始', link: '/getting-started' },
+      { text: '首页', link: '/' },
+      { text: '快速开始', link: '/getting-started/' },
+      { text: '功能与配置', link: '/configuration/须知' },
       {
         text: '开发指南',
         items: [
-          { text: '框架', link: '/framework/项目结构' },
-          { text: 'sdk', link: '/sdk/start' },
+          { text: '框架开发', link: '/framework/项目结构' },
+          { text: 'SDK 开发', link: '/sdk/start' },
         ]
       },
+      { text: '常见问题', link: '/issues/蠢问题/更新失败' },
     ],
     sidebar: [
       {
-        //分组标题1
-        text: '快速开始', collapsed: false,
+        text: '快速开始',
+        collapsed: false,
         items: [
           {
-            text: '部署', items: [
-              { text: '在开始之前', link: '/getting-started' },
-              { text: 'windows快速部署', link: '/getting-started/windows' },
-              { text: 'linux快速部署', link: '/getting-started/linux' },
-              { text: '没苦硬吃', link: '/getting-started/glidthelily' },
+            text: '部署指引',
+            items: [
+              { text: '在开始之前', link: '/getting-started/' },
+              { text: 'Windows 快速部署', link: '/getting-started/windows' },
+              { text: 'Linux 快速部署', link: '/getting-started/linux' },
+              { text: 'OneBot 协议与适配器 (SnowLuma 首选)', link: '/getting-started/glidthelily' },
             ]
           },
           {
-            text: 'WebUI使用', items: [
-              { text: '初次使用', link: "/configuration/webui/初次使用.md" },
-              { text: 'WebUI介绍', link: "/configuration/webui/介绍.md" }
+            text: 'WebUI 控制面板',
+            items: [
+              { text: 'WebUI 介绍', link: '/configuration/webui/介绍' },
+              { text: '初次使用与面板配置', link: '/configuration/webui/初次使用' },
             ]
           }
         ],
       },
       {
-        //分组标题2
-        text: '功能及配置', collapsed: false,
+        text: '功能与配置指南',
+        collapsed: false,
         items: [
-          { text: '须知', link: '/configuration/须知' },
-          { text: '基础配置', link: '/configuration/基础配置' },
           {
-            text: '核心功能', collapsed: true, items: [
-                { text: 'ai对话.v2', link: '/configuration/核心功能/新版ai对话' },
-              { text: 'ai对话.v1', link: '/configuration/核心功能/ai对话' },
-              { text: "语音合成", link: "/configuration/核心功能/文本转语音" },
-              { text: "用户管理", link: "/configuration/核心功能/用户权限系统" },
-              { text: "群组管理", link: "/configuration/核心功能/群组管理" },
-              { text: "黑名单/白名单", link: "/configuration/核心功能/黑白名单" },
-              { text: "live2d",link: "/configuration/核心功能/live2d" },
-
+            text: '基础系统与安全',
+            items: [
+              { text: '配置须知', link: '/configuration/须知' },
+              { text: '核心基础配置 (YAML)', link: '/configuration/基础配置' },
+              { text: '用户与权限系统', link: '/configuration/基础系统/用户与权限系统' },
+              { text: '黑白名单与群管安全', link: '/configuration/基础系统/黑白名单与群管' },
             ]
           },
           {
-            text: "ai绘画", items: [
-              { text: 'ai绘画', link: '/configuration/ai绘画/ai绘画' },
-              { text: 'kaggle部署sd服务端', link: '/configuration/ai绘画/kaggle部署ai绘画' },
-              { text: "danbooru", link: "/configuration/ai绘画/danbooru" },
-              { text: "ai图片甄别", link: "/configuration/ai绘画/ai图片甄别" },
-              { text: "nano banana", link: "/configuration/ai绘画/nano_banana" }
+            text: 'AI 对话与语音交互',
+            collapsed: false,
+            items: [
+              { text: '新版 AI 对话 (MaiReply)', link: '/configuration/AI对话与语音/新版AI对话_MaiReply' },
+              { text: '经典 AI 对话 (Legacy)', link: '/configuration/AI对话与语音/经典AI对话' },
+              { text: '文本转语音 (TTS)', link: '/configuration/AI对话与语音/文本转语音_TTS' },
+              { text: 'Live2D 桌宠与网页形象', link: '/configuration/AI对话与语音/Live2D桌宠与网页形象' },
+              { text: 'CLI 编程与运维助手', link: '/configuration/AI对话与语音/CLI编程助手' },
             ]
           },
           {
-            text: "资源搜索", items: [
-              { text: 'zlibrary', link: '/configuration/资源搜索/zlibrary' },
-              { text: "asmr", link: "/configuration/资源搜索/asmr" },
-              { text: "JMComic", link: "/configuration/资源搜索/jmcomic" },
-              { text: "iwara", link: "/configuration/资源搜索/iwara" },
-              { text: '搜图',link: '/configuration/资源搜索/搜图' },
-              { text: "telegram贴纸下载",link: '/configuration/资源搜索/telegram贴纸下载'}
+            text: 'AI 创作工坊',
+            collapsed: false,
+            items: [
+              { text: 'NovelAI 与 SD 绘图', link: '/configuration/AI创作工坊/NovelAI与SD绘画' },
+              { text: 'NanoBanana 与 Qwen 智能改图', link: '/configuration/AI创作工坊/NanoBanana与Qwen改图' },
+              { text: 'GPTImage2 生图与九宫格表情包', link: '/configuration/AI创作工坊/GPTImage2生图与九宫格表情包' },
+              { text: 'Suno 音乐生成与 AI 鉴图', link: '/configuration/AI创作工坊/Suno音乐生成与AI鉴图' },
             ]
           },
           {
-            text: '媒体服务', items: [
-              { text: '链接解析', link: "/configuration/媒体服务/链接解析" },
-              { text: "视频下载", link: "/configuration/媒体服务/视频下载" },
-              { text: 'b站动态订阅', link: "/configuration/媒体服务/bili动态订阅" },
-              { text: 'bangumi查询', link: "/configuration/媒体服务/bangumi" },
-              {text: '点歌', link: "/configuration/媒体服务/点歌" },
-              {text: '随机asmr',link: "/configuration/媒体服务/随机asmr" }
+            text: 'ACG 与游戏助手',
+            collapsed: false,
+            items: [
+              { text: 'Steam 视奸与游戏查询', link: '/configuration/ACG与游戏助手/Steam视奸与游戏查询' },
+              { text: '雀魂战绩卡', link: '/configuration/ACG与游戏助手/雀魂战绩卡' },
+              { text: '森空岛与明日方舟', link: '/configuration/ACG与游戏助手/森空岛与明日方舟' },
+              { text: '米游社与绝区零', link: '/configuration/ACG与游戏助手/米游社与绝区零' },
+              { text: 'Bangumi 番剧与 Galgame', link: '/configuration/ACG与游戏助手/Bangumi番剧与Galgame' },
             ]
           },
           {
-            text: '游戏服务', items: [
-              { text: 'steam', link: "/configuration/游戏服务/steam" },
-              { text: '雀魂', link: "/configuration/游戏服务/雀魂助手" },
-              { text: '碧蓝档案', link: "/configuration/游戏服务/碧蓝档案" },
-              { text: '森空岛', link: "/configuration/游戏服务/森空岛" },
-              { text: '绝区零', link: "/configuration/游戏服务/绝区零" }
+            text: '媒体与资源收集',
+            collapsed: false,
+            items: [
+              { text: 'B站动态解析与媒体下载', link: '/configuration/媒体与资源收集/B站动态解析与媒体下载' },
+              { text: 'JM 漫画与绅士资源', link: '/configuration/媒体与资源收集/JM漫画与绅士资源' },
+              { text: 'ASMR 音声与 ZLibrary', link: '/configuration/媒体与资源收集/ASMR音声与ZLibrary' },
+              { text: 'Iwara 与 Telegram 贴纸', link: '/configuration/媒体与资源收集/Iwara与Telegram贴纸' },
             ]
           },
           {
-            text: '群管', items: [
-              { text: '角色检测撤回', link: "/configuration/群管/角色检测" },
-              { text: '原版qq功能', link: "/configuration/群管/原版qq" },
-              { text: '消息记录', link: "/configuration/群管/消息记录" },
-              { text: '防自言自语插件', link: "/configuration/群管/防自言自语插件" }
+            text: '群聊娱乐与制图',
+            collapsed: false,
+            items: [
+              { text: '运势塔罗与日常功能', link: '/configuration/群聊娱乐与制图/运势塔罗与日常功能' },
+              { text: '表情包与奥义图制作', link: '/configuration/群聊娱乐与制图/表情包与奥义图制作' },
+              { text: '娶群友与戒鹿管理', link: '/configuration/群聊娱乐与制图/娶群友与戒鹿管理' },
+              { text: '轮盘赌与井字棋对战', link: '/configuration/群聊娱乐与制图/轮盘赌与井字棋对战' },
+              { text: '伪造转发与发言统计', link: '/configuration/群聊娱乐与制图/伪造转发与发言统计' },
             ]
           },
           {
-            text: '娱乐功能', items: [
-              { text: '蕾忍宗大学习', link: "/configuration/娱乐功能/蕾忍宗大学习" },
-              { text: '五子棋', link: "/configuration/娱乐功能/五子棋" },
-              {text: '伪造聊天记录', link: "/configuration/娱乐功能/伪造聊天记录" },
-              {text: '制图功能', link: "/configuration/娱乐功能/制图功能" },
-              {text: '天气查询',link: "/configuration/娱乐功能/天气查询" },
-              {text: '娶群友',link: "/configuration/娱乐功能/娶群友" },
-              {text: '涩图',link: "/configuration/娱乐功能/涩图" },
-              {text: '轮盘赌与决斗',link: "/configuration/娱乐功能/轮盘赌" },
-              {text: '运势与塔罗',link: "/configuration/娱乐功能/运势与塔罗" },
-              {text: '🦌',link: "/configuration/娱乐功能/🦌" },
-              {text: 'Grok视频生成',link: "/configuration/娱乐功能/Grok视频生成" },
-              {text: '没人用的功能',link: "/configuration/娱乐功能/没人用的功能集合" },
-              {text: 'gptimage2',link: "/configuration/娱乐功能/gptimage2"}
-            ]
-          },
-          {
-            text: '系统功能', items: [
-              { text: '定时任务', link: "/configuration/系统功能/定时任务" },
-              { text: 'qq空间', link: "/configuration/系统功能/qq空间" },
-              {text: '自定义回复', link: "/configuration/系统功能/自定义回复" },
-              {text: 'ai插件编写', link: "/configuration/系统功能/ai插件编写" }
+            text: '自动化与系统任务',
+            collapsed: false,
+            items: [
+              { text: '跨时区动态定时任务', link: '/configuration/自动化与系统任务/跨时区动态定时任务' },
+              { text: '自定义词库回复', link: '/configuration/自动化与系统任务/自定义词库回复' },
+              { text: 'QQ 空间自动冲浪', link: '/configuration/自动化与系统任务/QQ空间自动冲浪' },
+              { text: 'Git 更新监控与提醒', link: '/configuration/自动化与系统任务/Git更新监控与提醒' },
             ]
           },
         ],
       },
       {
-        //分组标题3
-        text: '从框架继续开发', collapsed: false,
+        text: '从框架继续开发',
+        collapsed: false,
         items: [
           { text: '项目结构', link: '/framework/项目结构' },
           { text: '第一个插件', link: '/framework/first_plugin' },
-          { text: "事件与消息", link: "/framework/消息与事件" },
-          { text: 'config对象', link: "/framework/config对象" },
+          { text: '事件与消息', link: '/framework/消息与事件' },
+          { text: 'config 对象', link: '/framework/config对象' },
           {
-            text: '开发工具', items: [
-              { text: 'utils', link: 'framework/framework_common/utils' },
-              { text: 'RedisCacheManager', link: 'framework/framework_common/RedisCacheManager' },
-              { text: '绘图框架', link: 'framework/framework_common/绘图框架' },
+            text: '开发工具库',
+            items: [
+              { text: '框架通用工具 (utils)', link: '/framework/framework_common/utils' },
+              { text: 'Redis 缓存管理器', link: '/framework/framework_common/RedisCacheManager' },
+              { text: '绘图框架', link: '/framework/framework_common/绘图框架' },
             ]
           },
-          { text: 'comfyui接入实战', link: "/framework/comfyui接入实战" },
+          { text: 'ComfyUI 接入实战', link: '/framework/comfyui接入实战' },
         ],
       },
       {
-        //分组标题2
-        text: '从sdk开始开发', collapsed: false,
+        text: '从 SDK 开始开发',
+        collapsed: false,
         items: [
-          { text: 'sdk介绍', link: '/sdk/start' },
-          { text: "第一个功能", link: "/sdk/第一个功能" },
-          { text: "bot对象", link: "/sdk/bot对象" },
-          { text: '事件', link: "/sdk/事件" },
-          { text: '消息链', link: "/sdk/消息链" },
-          { text: '消息组件', link: "/sdk/消息组件" }
+          { text: 'SDK 介绍', link: '/sdk/start' },
+          { text: '第一个功能', link: '/sdk/第一个功能' },
+          { text: 'Bot 对象', link: '/sdk/bot对象' },
+          { text: '事件系统', link: '/sdk/事件' },
+          { text: '消息链', link: '/sdk/消息链' },
+          { text: '消息组件', link: '/sdk/消息组件' },
         ],
       },
       {
-        text: '常见问题', collapsed: false,
+        text: '常见问题与排查',
+        collapsed: true,
         items: [
-          {
-            text: '蠢问题',collapsed: true, items: [
-              { text: '更新失败', link: '/issues/蠢问题/更新失败' },
-            ]
-          },
-          {
-            text: '好问题',collapsed: true, items: [
-              { text: '为google cloud设置结算信息', link: '/issues/好问题/为google cloud设置结算信息.md' },
-            ]
-          },
+          { text: '更新失败与依赖冲突', link: '/issues/蠢问题/更新失败' },
+          { text: '为 Google Cloud 设置结算信息', link: '/issues/好问题/为google cloud设置结算信息' },
         ],
       },
     ],
     search: {
-      provider: 'local'
+      provider: 'local',
     },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/avilliai/Eridanus' },
@@ -191,9 +174,7 @@ export default defineConfig({
     ],
     footer: {
       message: 'Released under the MIT License.',
-      copyright: `Copyright © 2019-${new Date().getFullYear()} present Evan You`,
-      // 自动更新时间
-      //copyright: `Copyright © 2019-${new Date().getFullYear()} present Evan You`,
+      copyright: `Copyright © 2019-${new Date().getFullYear()} Eridanus Project`,
     },
   },
   head: [
@@ -202,5 +183,4 @@ export default defineConfig({
   sitemap: {
     hostname: 'https://github.com/avilliai/Eridanus',
   },
-
 })

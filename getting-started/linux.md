@@ -1,118 +1,115 @@
-# linux 快速部署教程
+---
+prev:
+  text: 'Windows 环境部署'
+  link: '/getting-started/windows'
+next:
+  text: '进阶环境配置'
+  link: '/getting-started/glidthelily'
+---
 
+# Linux 服务器部署
 
-::: warning 小白警告
-如果你选择使用`Linux`，请确保你有一定的`Linux`使用经验，能够自行解决可能遇到的问题。
-否则推荐使用`Windows`系统进行部署。
-:::
+想把 Yucca 放在云服务器或 NAS 上 24 小时不间断陪伴群友？Linux 绝对是最稳的选择！    
+下面以 **Ubuntu 22.04 / Debian 12** 为例，带你一步到位部署 Eridanus~    
 
-## 1. 安装机器人本体
+---
 
-[机器人本体部署脚本](https://gitee.com/laixi_lingdun/eridanus_deploy)
+## 1. 安装系统基础包与中文字体
 
-
-执行完成**机器人本体部署脚本**后，请前往`安装目录/start`，执行`./gui.sh`启动机器人管理界面。
-
-::: tip onebot安装
-机器人脚本只是负责安装机器人本体，你需要参考下面教程安装`onebot`实现机器人与平台对接。
-:::
-
-
-
-
-## 2. 安装onebot
-**onebot实现** 市面上较多请自行选择。本**教程**和**机器人项目**不对任何**onebot实现负责**。
-本文只针对`Napcat`进行说明，如果你是使用其他onebot请参考对应教程。
-
-这里有一份更详细的教程可供参考
-
-[安装教程.pdf](../部署文档.pdf)
-
-
-这里给出一些onebot的安装地址：
-1. [Napcat](https://napcat.napneko.icu/guide/boot/Shell)
-2. [Lagrange](https://lagrangedev.github.io/Lagrange.Doc/v1/Lagrange.OneBot/Config/) 近期似乎不可用
-### 稳定方案 | docker文件夹映射
-经实测，目前最稳定的是docker napcat    
-如果Eridanus被安装在了napcat所在容器外(~~不建议在napcat所在容器内安装Eridanus，会很麻烦~~)，将导致napcat找不到Eridanus要发送的文件资源。此时我们需要在部署napcat时增加文件夹映射。     
-```
-docker run -d \
-  -e NAPCAT_GID=$(id -g) \
-  -e NAPCAT_UID=$(id -u) \
-  -p 3000:3000 \
-  -p 3001:3001 \
-  -p 6099:6099 \
-  -v /root/Eridanus/data:/root/Eridanus/data \
-  --name napcat \
-  --restart=always \
-  mlikiowa/napcat-docker:latest
-```
-我们加上了`-v /root/Eridanus/data:/root/Eridanus/data \`参数，笔者的Eridanus安装在/root/Eridanus，你需要根据你的Eridanus实际安装位置进行调整。仅映射data文件夹即可。
-## 3. 配置onebot
-以`Napcat`为例，假设你已经安装好了`Napcat`。
-
-请进入你的onebot的配置界面。
-### 1. 新建配置
-
-根据图片所示，新建一个**WebSocket服务器**配置
-
-![新建配置](/onebot/1.png)
-
-## 2. 配置参数
-根据**图片所示**，填写参数。
-![配置参数](/onebot/2.png)
-::: tip Token
-请保留 **Token** 中填写的内容，后续需要用到。
-:::
-
-## 3. 配置Eridanus
-
-> 配置管理员账户
-
-在启动`Eridanus`机器人后，在机器人的日志中你可以看到`webui`的**地址**和**账户密码**
-
-在浏览器中访问`webui`，输入账户密码登录。
-
-然后根据图片所示进入设置界面修改机器人的管理员账户。
-
-
-![配置参数](/onebot/3.png)
-
-
-
-
-> 配置OneBot连接
-
-找到`ws_link`这一配置选项，填写你的`onebot`的`WebSocket`地址和`Token`
-例如：
+Linux 服务器默认往往没有中文字体和 `ffmpeg`，如果不装字体，Playwright 渲染出来的菜单、B站动态和签到卡片会变成方块“豆腐块”哦！    
 
 ```bash
-ws://127.0.0.1:3001?access_token={aMCj...}
+sudo apt update && sudo apt install -y \
+    git curl wget ffmpeg \
+    python3 python3-venv python3-pip \
+    fonts-noto-cjk fonts-wqy-microhei fonts-wqy-zenhei \
+    libnss3 libatk1.0-0 libatk-bridge2.0-0 libcups2 libdrm2 \
+    libxkbcommon0 libxcomposite1 libxdamage1 libxfixes3 libxrandr2 \
+    libgbm1 libasound2
 ```
 
+---
 
-`{aMCj...}`**需要替换**为你实际填写的`Token`。
+## 2. 部署 OneBot v11 协议端
 
-![配置参数](/onebot/3.1.png)
+在 Linux 上，同样推荐使用 **[SnowLuma](https://snowluma.github.io/zh/)** 或 **NapCatQQ (Docker / Shell)**：    
+- 按照 [SnowLuma 官方文档](https://snowluma.github.io/zh/) 启动实例并扫码登录；    
+- 配置 **反向 WebSocket (WebSocket Client)** 连接到 `ws://127.0.0.1:5007`。    
 
-## 4. 重启机器人
-点击保存之后，重启机器人。您可以在你的管理员账户中看到机器人主动发送的消息，表示连接成功。
+---
 
-至此机器人已经全部部署完成。
+## 3. 拉取 Eridanus 并配置虚拟环境
 
-## 安全配置项
+```bash
+# 1. 克隆仓库
+git clone https://github.com/AOrbitron/Eridanus.git
+cd Eridanus
 
-安全配置不是部署部分，但强烈建议配置以保障机器人和服务器的安全。
+# 2. 创建并激活虚拟环境
+python3 -m venv .venv
+source .venv/bin/activate
 
-### 1. 修改`webui`默认管理员账户密码
+# 3. 安装 Python 依赖
+pip install --upgrade pip
+pip install -r requirements.txt
 
-![配置参数](/onebot/webuipasswd.png)
+# 4. 安装 Playwright Chromium 及系统依赖
+playwright install chromium
+playwright install-deps chromium
+```
 
+---
 
-### 2. 修改`onebot`的默认端口
+## 4. 启动与后台守护进程 (systemd)
 
-请参考对应`onebot`的教程修改默认端口，然后把`Eridanus`中的`ws_link`配置项也一并修改。
+先在前台测试运行一次，确认没有报错：    
 
-防止端口扫描导致的安全问题。
+```bash
+source .venv/bin/activate
+python main.py
+```
 
-更进一步如果你的机器人和`onebot`不在同一台服务器上，可以考虑把`onebot的端口`只允许机器人服务器访问本地访问。
+测试正常后，可以创建 `/etc/systemd/system/eridanus.service` 让它开机自启、崩溃自动重启：    
+
+```ini
+[Unit]
+Description=Eridanus Bot Service
+After=network.target
+
+[Service]
+Type=simple
+User=root
+WorkingDirectory=/root/Eridanus
+ExecStart=/root/Eridanus/.venv/bin/python /root/Eridanus/main.py
+Restart=always
+RestartSec=5
+Environment="PYTHONIOENCODING=utf-8"
+
+[Install]
+WantedBy=multi-user.target
+```
+
+启用并查看日志：    
+
+```bash
+sudo systemctl daemon-reload
+sudo systemctl enable --now eridanus
+sudo journalctl -u eridanus -f
+```
+
+---
+
+## 5. Linux 下如何更新代码且不丢配置？
+
+Eridanus 根目录自带了配置备份与智能合并工具 `tool.py`！在 Linux 上更新时，只需执行：    
+
+```bash
+# 1. 备份所有 YAML 配置到 ../backup_config
+python tool.py backup
+
+# 2. 拉取最新代码
+git pull
+
+# 3. 将你的旧配置与新版配置智能合并（保留你的设置，自动补齐新字段）
+python tool.py merge
+```

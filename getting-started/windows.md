@@ -1,57 +1,67 @@
 ---
 next:
-  text: 'WebUI初次使用'
-  link: '/configuration/webui/初次使用'
+  text: 'Linux 环境部署'
+  link: '/getting-started/linux'
 ---
 
-# Windows快速部署
+# Windows 环境部署
 
-## 部署onebot实现    
-[napcat](https://napneko.github.io/)  ,[llob](https://llonebot.github.io/zh-CN/guide/getting-started)  ,[Lagrange.OneBot](https://lagrangedev.github.io/Lagrange.Doc/v1/Lagrange.OneBot/Config/)  ,[其他选择](https://onebot.dev/ecosystem.html#onebot-%E5%AE%9E%E7%8E%B0-1)     
-**请在napcat/llob/Lagrange.OneBot/其他选择中任选其一部署**。    
-> 基本上，要做的就是在onebot实现侧，设置一个【websocket服务端】，端口3001，access_token为空，这样Eridanus才可以连接到它。
+在 Windows 上部署 Eridanus，你有两条路可以选：    
+如果你不想折腾 Python 环境，直接用 **开箱即用的一键整合包** 就好；如果你是开发者或想随时跟进 Git 最新分支，也可以选择 **源码手动部署**~    
 
-### llob
-参照[llob官方文档](https://llonebot.github.io/zh-CN/guide/getting-started) 部署llob     
-部署完成后，打开`http://localhost:3080`，这是llob的webui。接下来启用ws服务端。    
-![ws1](/onebot/llob1.png)
-![ws2](/onebot/llob2.png)
+---
 
-### Lagrange.OneBot
+## 方式一：使用 Windows 一键整合包（最推荐新手）
 
-[Lagrange.OneBot文档](https://lagrangedev.github.io/Lagrange.Doc/v1/Lagrange.OneBot/Config/)     
-从[release下载](https://github.com/LagrangeDev/Lagrange.Core/releases)     
-运行`Lagrange.OneBot.exe`，会提示`No exist config file, create it now...
-Please Edit the appsettings.json to set configs and press any key to continue`    
-此时打开生成的`appsettings.json`,找到`Implementations`项，修改为下面这样并保存       
+我们已经把 Python 运行环境、Git、常用依赖和启动/更新脚本都打包好啦！    
+
+1. **下载与解压**    
+   - 前往 [Eridanus Releases 页面](https://github.com/avilliai/Eridanus/releases) 或开发群（`913122269`）群文件下载最新整合包。    
+   - 解压到任意**不含中文和空格**的路径下。    
+2. **认识根目录下的 `.bat` 快捷脚本**    
+   - `启动Eridanus.bat`：直接启动 Eridanus 主程序与 WebUI（默认监听 `http://127.0.0.1:5007`）。    
+   - `更新Eridanus.bat`：一键拉取远程仓库最新代码，并自动调用 `tool.py` 无损合并你的本地 `yaml` 配置文件（绝不会弄丢你的 API Key 和开关设置！）。    
+   - `强制更新Eridanus.bat`：当本地代码冲突时，先备份你的 YAML 配置、强制对齐远程最新代码，再自动还原并合并配置。    
+   - `环境补全.bat`：当新版本增加了 Python 第三方库时，双击它即可自动补齐 `requirements.txt` 依赖。    
+3. **配置 OneBot 协议端**    
+   - 启动 **[SnowLuma](https://snowluma.github.io/zh/)** 或 NapCatQQ，将反向 WebSocket 地址指向 `ws://127.0.0.1:5007`。    
+   - 双击 `启动Eridanus.bat`，浏览器打开 `http://127.0.0.1:5007` 即可进入 WebUI 后台！    
+
+---
+
+## 方式二：从 Git 源码手动部署
+
+如果你喜欢自己掌控 Python 虚拟环境，按下面几步走就行：    
+
+### 1. 准备基础环境
+- **Python 3.10 ~ 3.12**（推荐 **Python 3.11**，安装时勾选 `Add Python to PATH`）    
+- **Git**（用于拉取仓库以及 `git_update_notifier` 插件检测更新）    
+
+### 2. 克隆仓库并安装依赖
+
+打开终端（PowerShell 或 CMD），执行：    
+
+```powershell
+# 1. 克隆 Eridanus 仓库
+git clone https://github.com/AOrbitron/Eridanus.git
+cd Eridanus
+
+# 2. (推荐) 创建并激活虚拟环境
+python -m venv .venv
+.\.venv\Scripts\activate
+
+# 3. 安装项目依赖
+pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
+
+# 4. 安装 Playwright Chromium 内核 (用于网页截图、B站动态、菜单与卡片渲染)
+playwright install chromium
 ```
-    "Implementations": [
-        {
-            "Type": "ForwardWebSocket",
-            "Host": "127.0.0.1",
-            "Port": 3001,
-            "HeartBeatInterval": 5000,
-            "HeartBeatEnable": true,
-            "AccessToken": "",
-        }
-    ]
+
+### 3. 启动 Eridanus
+
+```powershell
+python main.py
 ```
-在Lagrange.OneBot.exe窗口回车，完成扫码登录。   
-> Lagrange.onebot的消息格式与napcat/llob等存在部分不一致，因此需要修改Eridanus配置文件以适配。    
-```
-#后续搭建Eridanus后，在run/common_config/basic_config.yaml中，将adapter.name修改为Lagrange
-adapter:
-  name: "Lagrange"   #兼容性选项，如果用Lagrange，则必须填Lagrange，用其他onebot实现则不用动
-```
-### napcat
-请参照[napcat文档部署napcat](https://napneko.pages.dev/)     
-在webui配置ws服务器地址，端口为3001，token留空。
-![ws1](/img_1.png)
-![ws2](/img_2.png)
-## 快速部署Eridanus
-从Eridanus [release](https://github.com/avilliai/Eridanus/releases) 下载最新整合包并解压  
-如果下载过慢，可前往qq群913122269下载  
-- 解压整合包
-- 运行【克隆仓库.exe】，选择一个源克隆。
-- 进入Eridanus目录，运行【启动脚本.bat】
-- 启动eridanus后，访问WebUI进行下一步操作。参阅[WebUI初次使用](/configuration/webui/初次使用.md)
+
+首次启动时，Eridanus 会自动扫描 `run/` 目录下的所有插件，并在 `5007` 端口启动 WebUI 服务器。    
+接下来请阅读 **[进阶配置（FFmpeg 与 Playwright）](/getting-started/glidthelily)** 或直接进入 **[WebUI 初次使用](/configuration/webui/初次使用)** 吧！    
