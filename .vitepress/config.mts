@@ -53,7 +53,7 @@ export default defineConfig({
         {
           text: '🎨 AI 创作工坊',
           items: [
-            { text: 'GPT-Image2 图像生成与编辑', link: '/configuration/AI创作工坊/GPTImage2图像生成与编辑' },
+            { text: 'GPT-Image2 绘画工坊', link: '/configuration/AI创作工坊/GPTImage2绘画工坊' },
             { text: '九宫格表情包制作', link: '/configuration/AI创作工坊/九宫格表情包制作' },
             { text: 'NovelAI 专业绘画 (NAI3/NAI4)', link: '/configuration/AI创作工坊/NovelAI绘画' },
             { text: 'Stable Diffusion 专业绘图', link: '/configuration/AI创作工坊/StableDiffusion绘画' },
@@ -70,9 +70,12 @@ export default defineConfig({
             { text: 'Galgame 资料库与推荐', link: '/configuration/ACG与游戏助手/Galgame资料查询' },
             { text: '蔚蓝档案游戏助手 (Blue Archive)', link: '/configuration/ACG与游戏助手/蔚蓝档案游戏助手' },
             { text: '二次元角色识别与以图识番', link: '/configuration/ACG与游戏助手/角色识别与以图识番' },
-            { text: 'Steam 视奸与游戏查询', link: '/configuration/ACG与游戏助手/Steam视奸与游戏查询' },
-            { text: '森空岛与明日方舟 (含Epic限免)', link: '/configuration/ACG与游戏助手/森空岛与明日方舟' },
-            { text: '米游社全家桶与绝区零', link: '/configuration/ACG与游戏助手/米游社与绝区零' },
+            { text: 'Steam 好友动态视奸', link: '/configuration/ACG与游戏助手/Steam好友动态视奸' },
+            { text: 'Steam 游戏资料与史低查询', link: '/configuration/ACG与游戏助手/Steam游戏资料与史低查询' },
+            { text: 'Epic 喜加一周免监控', link: '/configuration/ACG与游戏助手/Epic喜加一周免' },
+            { text: '森空岛明日方舟助手', link: '/configuration/ACG与游戏助手/森空岛明日方舟助手' },
+            { text: '米游社全家桶签到助手', link: '/configuration/ACG与游戏助手/米游社助手' },
+            { text: '绝区零游戏助手', link: '/configuration/ACG与游戏助手/绝区零游戏助手' },
             { text: '雀魂战绩卡查询', link: '/configuration/ACG与游戏助手/雀魂战绩卡' }
           ]
         },
@@ -81,12 +84,15 @@ export default defineConfig({
           items: [
             { text: '消息伪造转发 (聊天记录生成器)', link: '/configuration/群聊娱乐与制图/消息伪造转发' },
             { text: '群发言统计与水群排行榜', link: '/configuration/群聊娱乐与制图/群发言统计排行榜' },
-            { text: '娶群友与后宫管理', link: '/configuration/群聊娱乐与制图/娶群友与后宫管理' },
-            { text: '戒鹿打卡与排行榜', link: '/configuration/群聊娱乐与制图/戒鹿打卡与排行榜' },
-            { text: '表情包与奥义图制作', link: '/configuration/群聊娱乐与制图/表情包与奥义图制作' },
+            { text: '海量表情包制作', link: '/configuration/群聊娱乐与制图/海量表情包制作' },
+            { text: '二次元奥义图制作', link: '/configuration/群聊娱乐与制图/二次元奥义图制作' },
+            { text: 'Emoji 表情合成 (Emojimix)', link: '/configuration/群聊娱乐与制图/Emoji表情合成' },
+            { text: '娶群友互动系统 (后宫管理)', link: '/configuration/群聊娱乐与制图/娶群友互动系统' },
+            { text: '戒鹿打卡助手', link: '/configuration/群聊娱乐与制图/戒鹿打卡助手' },
             { text: '俄罗斯轮盘赌决斗', link: '/configuration/群聊娱乐与制图/俄罗斯轮盘赌决斗' },
             { text: '井字棋对战', link: '/configuration/群聊娱乐与制图/井字棋对战' },
-            { text: '运势、塔罗与日常功能', link: '/configuration/群聊娱乐与制图/运势塔罗与日常功能' }
+            { text: '运势与多主题塔罗', link: '/configuration/群聊娱乐与制图/运势与多主题塔罗' },
+            { text: '日常实用工具箱 (天气/点歌/搜图)', link: '/configuration/群聊娱乐与制图/日常实用工具箱' }
           ]
         },
         {
