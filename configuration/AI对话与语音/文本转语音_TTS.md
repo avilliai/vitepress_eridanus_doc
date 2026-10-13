@@ -22,7 +22,7 @@ Eridanus 采用基于 **GPT-SoVITS** 的高表现力语音合成系统 `run/tts_
 
 ```yaml
 gpt_sovits:
-  api_base: "http://apollodorus.xyz:3529/tts"  # TTS 服务端接口地址
+  api_base: ""  # TTS 服务端接口地址
   api_key: ""   # 留空为直连，非空为带 Bearer 鉴权网关
   ref_audio_path: "output/slicer_opt/output.wav_0009342720_0009558400.wav" # 参考音频
   ref_text: "怎么啊？如果有你在也不放心，那就干脆给我也装个限制器或者炸弹喽。" # 参考音频文本
@@ -41,8 +41,8 @@ gpt_sovits:
 ## 触发与使用指令
 
 - **独立语音合成指令**（由 `run/ai_voice/text2voice.py` 提供）：    
-  - `/说 <你想让机器人说的话>`    
-  - 示例：`/说 赖哥快点去洗澡啦，水都放好了！`    
+  - `/xxx说 <你想让机器人说的话>`    
+  - 示例：`/达妮娅说 快点去洗澡啦，水都放好了！`    
 
 
 ![Online VITS 语音引擎配置](/onlinevits.png)    

@@ -1,6 +1,6 @@
 # 快速开始 Eridanus
 
-哈喽！欢迎来到 Eridanus 的世界，这里是你的全能型机器人小助手~    
+哈喽！欢迎来到 Eridanus 的世界~    
 既然你点开了这份文档，那我就把整个 Eridanus 的架构和部署流程给你讲得明明白白，保证你不会在配置里迷路哦！    
 
 ## Eridanus 是怎么工作的？
@@ -10,8 +10,8 @@ Eridanus 是一个基于 Python 开发的 **机器人大脑（服务端/插件�
 而要让这个“大脑”真正在 QQ 里收发消息，还需要搭配一个 **OneBot v11 协议端（身体）** 来登录你的 QQ 小号。    
 
 它们两个通过 **WebSocket** 牵手通信：    
-1. **OneBot 协议端**收到群聊/私聊消息，通过 WebSocket 把事件推送给 Eridanus；    
-2. **Eridanus** 处理完逻辑后，再把要发送的文字、语音、图片指令发回 OneBot 协议端。    
+1. **OneBot 协议端**收到群聊/私聊消息，通过 WebSocket 把事件推送给 Eridanus； <——它是websocket server       
+2. **Eridanus** 处理完逻辑后，再把要发送的文字、语音、图片指令发回 OneBot 协议端。    <——它是websocket client
 
 ---
 
@@ -32,13 +32,11 @@ Eridanus 是一个基于 Python 开发的 **机器人大脑（服务端/插件�
 
 ### OneBot 连接方式怎么配？
 
-Eridanus 默认在 **`5007`** 端口启动一个集成了 **WebUI + OneBot 反向 WebSocket 服务端** 的中枢（`run/common_config/basic_config.yaml` 中 `conn_mode: server`）。    
+Eridanus 在`run/common_config/basic_config.yaml` 中 默认连接`ws://127.0.0.1:3001`）。    
 因此最省心的连接方式是：    
-1. 在 **SnowLuma**（或 NapCat / Lagrange）中新建一个 **反向 WebSocket (WebSocket Client)** 连接；    
-2. 连接地址填写：`ws://127.0.0.1:5007` ；    
-3. 如果你在 Eridanus 的 `basic_config.yaml` -> `server_config.ws_token` 中设置了 Token（默认为 `Eridanus`），记得在 OneBot 端的 Access Token 里填上相同的值哦（本机 `127.0.0.1` 连接默认免鉴权）！    
-
-*（当然，如果你更习惯让 OneBot 开正向 WS 服务端，也可以把 Eridanus 的 `conn_mode` 改为 `client`，并在 `client_config.ws_url` 填写 OneBot 的地址~ ）*    
+1. 在 **SnowLuma**（或 NapCat / Lagrange）中新建一个 ** WebSocket服务端 (WebSocket server)** 连接；    
+2. 这个服务端运行在：`3001` 端口，并且为了最省事，我们需要把token设置为空     
+    
 
 ---
 

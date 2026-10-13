@@ -34,6 +34,7 @@ export default defineConfig({
           text: '⚙️ 核心配置与基础系统',
           items: [
             { text: '基础配置中心', link: '/configuration/基础配置' },
+            { text: 'YAML 字段与插件配置', link: '/configuration/YAML字段与插件配置' },
             { text: '部署须知与安全提示', link: '/configuration/须知' },
             { text: '用户注册与个人资产', link: '/configuration/基础系统/用户注册与个人资产' },
             { text: '权限管理与角色体系', link: '/configuration/基础系统/权限管理与角色体系' },
@@ -144,6 +145,7 @@ export default defineConfig({
             { text: '公共工具库 (framework_common)', link: '/framework/framework_common/utils' },
             { text: '生命周期与元事件流', link: '/framework/生命周期与事件' },
             { text: '高级插件工程实践', link: '/framework/first_plugin' }
+            ,{ text: 'Function calling 工具调用链', link: '/framework/function-calling' }
           ]
         }
       ]

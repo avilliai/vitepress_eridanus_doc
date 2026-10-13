@@ -19,13 +19,11 @@ next:
    - 前往 [Eridanus Releases 页面](https://github.com/avilliai/Eridanus/releases) 或开发群（`913122269`）群文件下载最新整合包。    
    - 解压到任意**不含中文和空格**的路径下。    
 2. **认识根目录下的 `.bat` 快捷脚本**    
-   - `启动Eridanus.bat`：直接启动 Eridanus 主程序与 WebUI（默认监听 `http://127.0.0.1:5007`）。    
-   - `更新Eridanus.bat`：一键拉取远程仓库最新代码，并自动调用 `tool.py` 无损合并你的本地 `yaml` 配置文件（绝不会弄丢你的 API Key 和开关设置！）。    
-   - `强制更新Eridanus.bat`：当本地代码冲突时，先备份你的 YAML 配置、强制对齐远程最新代码，再自动还原并合并配置。    
-   - `环境补全.bat`：当新版本增加了 Python 第三方库时，双击它即可自动补齐 `requirements.txt` 依赖。    
+   - `启动脚本.bat`：直接启动 Eridanus 主程序与 WebUI（默认监听 `http://127.0.0.1:5007`）。    
+   - `更新脚本.bat`：一键拉取远程仓库最新代码，并自动调用 `tool.py` 无损合并你的本地 `yaml` 配置文件（绝不会弄丢你的 API Key 和开关设置！）。     
 3. **配置 OneBot 协议端**    
-   - 启动 **[SnowLuma](https://snowluma.github.io/zh/)** 或 NapCatQQ，将反向 WebSocket 地址指向 `ws://127.0.0.1:5007`。    
-   - 双击 `启动Eridanus.bat`，浏览器打开 `http://127.0.0.1:5007` 即可进入 WebUI 后台！    
+   - 启动 **[SnowLuma](https://snowluma.github.io/zh/)** 或 NapCatQQ，并设置一个运行在 `3001` 端口，且鉴权token为空的ws服务端。    
+   - 双击 `启动脚本.bat`，浏览器打开 `http://127.0.0.1:5007` 即可进入 WebUI 后台！    
 
 ---
 
@@ -43,7 +41,7 @@ next:
 
 ```powershell
 # 1. 克隆 Eridanus 仓库
-git clone https://github.com/AOrbitron/Eridanus.git
+git clone --depth 1 https://github.com/AOrbitron/Eridanus.git
 cd Eridanus
 
 # 2. (推荐) 创建并激活虚拟环境
@@ -53,8 +51,6 @@ python -m venv .venv
 # 3. 安装项目依赖
 pip install -r requirements.txt -i https://pypi.tuna.tsinghua.edu.cn/simple
 
-# 4. 安装 Playwright Chromium 内核 (用于网页截图、B站动态、菜单与卡片渲染)
-playwright install chromium
 ```
 
 ### 3. 启动 Eridanus
@@ -64,7 +60,7 @@ python main.py
 ```
 
 首次启动时，Eridanus 会自动扫描 `run/` 目录下的所有插件，并在 `5007` 端口启动 WebUI 服务器。    
-接下来请阅读 **[进阶配置（FFmpeg 与 Playwright）](/getting-started/glidthelily)** 或直接进入 **[WebUI 初次使用](/configuration/webui/初次使用)** 吧！    
+接下来请阅读 **[进阶配置（FFmpeg）](/getting-started/glidthelily)** 或直接进入 **[WebUI 初次使用](/configuration/webui/初次使用)** 吧！    
 
 
 ![OneBot 协议端配置与连接流程](/onebot/1.png)    

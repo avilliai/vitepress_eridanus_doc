@@ -16,7 +16,7 @@ next:
 
 ## 1. 安装系统基础包与中文字体
 
-Linux 服务器默认往往没有中文字体和 `ffmpeg`，如果不装字体，Playwright 渲染出来的菜单、B站动态和签到卡片会变成方块“豆腐块”哦！    
+Linux 服务器默认往往没有中文字体和 `ffmpeg`，如果不装字体，渲染出来的菜单、B站动态和签到卡片会变成方块“豆腐块”哦！    
 
 ```bash
 sudo apt update && sudo apt install -y \
@@ -34,7 +34,7 @@ sudo apt update && sudo apt install -y \
 
 在 Linux 上，同样推荐使用 **[SnowLuma](https://snowluma.github.io/zh/)** 或 **NapCatQQ (Docker / Shell)**：    
 - 按照 [SnowLuma 官方文档](https://snowluma.github.io/zh/) 启动实例并扫码登录；    
-- 配置 **反向 WebSocket (WebSocket Client)** 连接到 `ws://127.0.0.1:5007`。    
+- 配置 **websocker server** 端口 `3001`，token清空。    
 
 ---
 
@@ -42,7 +42,7 @@ sudo apt update && sudo apt install -y \
 
 ```bash
 # 1. 克隆仓库
-git clone https://github.com/AOrbitron/Eridanus.git
+git clone --depth 1 https://github.com/AOrbitron/Eridanus.git
 cd Eridanus
 
 # 2. 创建并激活虚拟环境
@@ -53,9 +53,6 @@ source .venv/bin/activate
 pip install --upgrade pip
 pip install -r requirements.txt
 
-# 4. 安装 Playwright Chromium 及系统依赖
-playwright install chromium
-playwright install-deps chromium
 ```
 
 ---
@@ -104,12 +101,6 @@ sudo journalctl -u eridanus -f
 Eridanus 根目录自带了配置备份与智能合并工具 `tool.py`！在 Linux 上更新时，只需执行：    
 
 ```bash
-# 1. 备份所有 YAML 配置到 ../backup_config
-python tool.py backup
-
-# 2. 拉取最新代码
-git pull
-
-# 3. 将你的旧配置与新版配置智能合并（保留你的设置，自动补齐新字段）
-python tool.py merge
+python tool.py 
 ```
+更省事的做法是直接告诉你的bot，让它自己更新
