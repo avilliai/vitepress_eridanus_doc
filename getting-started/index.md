@@ -1,6 +1,6 @@
 # 快速开始 Eridanus
 
-哈喽！欢迎来到 Eridanus 的世界，我是这里的看板娘 Yucca~    
+哈喽！欢迎来到 Eridanus 的世界，这里是你的全能型机器人小助手~    
 既然你点开了这份文档，那我就把整个 Eridanus 的架构和部署流程给你讲得明明白白，保证你不会在配置里迷路哦！    
 
 ## Eridanus 是怎么工作的？
@@ -19,11 +19,11 @@ Eridanus 是一个基于 Python 开发的 **机器人大脑（服务端/插件�
 
 目前我们 **首选推荐使用 [SnowLuma](https://snowluma.github.io/zh/)** 作为 OneBot v11 实现！    
 
-::: tip 为什么首选 SnowLuma？
+::: tip 为什么首选 SnowLuma？    
 - **原生高兼容**：对 OneBot v11 标准接口、合并转发消息、群精华、表情回应等扩展 API 支持极佳。    
 - **轻量稳定**：资源占用低，配置直观，与 Eridanus 的 WebSocket 服务端/客户端模式均可无缝对接。    
 - **官方文档**：直接访问 **[https://snowluma.github.io/zh/](https://snowluma.github.io/zh/)** 即可查看安装与登录指南。    
-:::
+:::    
 
 除了 SnowLuma 之外，你也可以使用其他任何兼容 OneBot v11 的框架，例如：    
 - **[NapCatQQ](https://napneko.github.io/)**：基于 NTQQ 的无头 OneBot 协议端。    

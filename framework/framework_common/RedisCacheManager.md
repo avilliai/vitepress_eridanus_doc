@@ -1,13 +1,13 @@
 # redis缓存管理器
 
-先来看redis的工作原理
-![raw300](/img_11.png)
+先来看redis的工作原理    
+![raw300](/img_11.png)    
 
-由于业务需要，我们需要将一些数据缓存到redis中，以提高访问速度。比如在ai对话时获取用户信息，在Eridanus中，获取用户信息的操作十分频繁。        
-但直接连接数据库有一个问题是会导致数据库压力过大，所以我们可以将用户信息缓存到redis中，这样当用户再次访问时，直接从redis中获取即可。      
+由于业务需要，我们需要将一些数据缓存到redis中，以提高访问速度。比如在ai对话时获取用户信息，在Eridanus中，获取用户信息的操作十分频繁。    
+但直接连接数据库有一个问题是会导致数据库压力过大，所以我们可以将用户信息缓存到redis中，这样当用户再次访问时，直接从redis中获取即可。    
 ## RedisCacheManager
 RedisCacheManager是Eridanus框架中用于管理redis缓存的类。我们将通过一个简单的业务需求来演示RedisCacheManager的使用。    
-比如在一个web场景中，缓存用户对主体颜色的偏好。
+比如在一个web场景中，缓存用户对主体颜色的偏好。    
 ```python
 from typing import Optional
 
@@ -48,7 +48,7 @@ cache_user_settings(1001, user_settings)  # 设置key和balue
 retrieved_settings = get_user_settings(1001)  # 通过key获取缓存
 print(retrieved_settings)  # 输出: {'theme': 'dark', 'language': 'en'}
 ```
-好的，恭喜你学会redis了，快去逝世吧！
+好的，恭喜你学会redis了，快去逝世吧！    
 ## RedisCacheManager类
 ```python
 class RedisCacheManager:

@@ -1,7 +1,7 @@
 # Steam 视奸监控与游戏查询
 
 群友又在偷偷通宵打游戏不睡觉？或者背着你偷偷开黑？    
-快让 Yucca 开启 **Steam 视奸与活动跟踪系统**（位于 `run/anime_game_service/SteamSnooping.py` 与 `run/acg_infromation/steam_service.py`），全天候抓包群友的摸鱼实况！    
+开启 **Steam 视奸与活动跟踪系统**（位于 `run/anime_game_service/SteamSnooping.py` 与 `run/acg_infromation/steam_service.py`），全天候抓包群友的摸鱼实况！    
 
 ---
 

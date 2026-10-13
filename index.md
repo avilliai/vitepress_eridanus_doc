@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "Eridanus"
   text: "基于 OneBot v11 的高扩展智能聊天机器人"
-  tagline: "这里是 Yucca 的领地哦~ 一站式打通 MaiReply 深度人格对话、AI 绘画与改图、跨时区定时任务、ACG 查询与 QQ 空间自主社交！"
+  tagline: "全能型多模态二次元 QQ 机器人框架~ 一站式打通 MaiReply 深度人格对话、AI 绘画与改图、跨时区定时任务、ACG 查询与自主社交！"
   image:
     src: /logo.jpg
     alt: Eridanus Logo

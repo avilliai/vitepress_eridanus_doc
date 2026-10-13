@@ -1,15 +1,15 @@
 ---
-prev:
-  text: 'Linux 环境部署'
-  link: '/getting-started/linux'
-next:
-  text: '配置须知'
-  link: '/configuration/须知'
+prev:    
+  text: 'Linux 环境部署'    
+  link: '/getting-started/linux'    
+next:    
+  text: '配置须知'    
+  link: '/configuration/须知'    
 ---
 
 # 进阶配置：FFmpeg 与 Playwright 渲染引擎
 
-把 Eridanus 跑起来之后，如果你想让 Yucca 发语音、点歌、解析 B 站/油管视频，或者生成漂亮的图形化菜单、雀魂战绩卡、森空岛/绝区零面板，那下面这两件“神器”一定要配好哦~    
+把 Eridanus 跑起来之后，如果你想让机器人发语音、点歌、解析 B 站/油管视频，或者生成漂亮的图形化菜单、雀魂战绩卡、森空岛/绝区零面板，那下面这两件“神器”一定要配好哦~    
 
 ---
 
@@ -38,11 +38,11 @@ Eridanus 中的 **图形菜单 (`/remenu`)**、**用户资料卡**、**B站动�
 playwright install chromium
 ```
 
-::: tip 国内下载太慢怎么办？
+::: tip 国内下载太慢怎么办？    
 可以先设置国内镜像源再执行安装：    
 - **PowerShell**: `$env:PLAYWRIGHT_DOWNLOAD_HOST="https://npmmirror.com/mirrors/playwright"; playwright install chromium`    
 - **Linux**: `PLAYWRIGHT_DOWNLOAD_HOST=https://npmmirror.com/mirrors/playwright playwright install chromium`    
-:::
+:::    
 
 ---
 
@@ -53,3 +53,6 @@ playwright install chromium
 
 - **自动备份**：`python tool.py backup` 会把 `run/` 和 `data/` 下的所有 `.yaml` 配置备份到上级目录 `../backup_config`；    
 - **无损合并**：`python tool.py merge` 会以新版本的 YAML 结构为模板，把你备份中的旧配置值递归填回去，同时自动保留新版本新增的配置项（包括 `scheduled_tasks` 的任务列表也会按 `type + time + group_id/user_id` 智能去重合并）！    
+
+
+![Playwright 浏览器环境依赖](/playwright.png)    

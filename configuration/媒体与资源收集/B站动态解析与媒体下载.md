@@ -69,7 +69,7 @@
 
 ## 4. 网易云高音质音乐解析与下载 (CloudMusic)
 
-由 
+由    
 run/streaming_media/cloud_music_parsing.py 驱动的无损音乐解析神器：    
 
 ### 触发指令全集

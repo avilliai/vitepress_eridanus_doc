@@ -1,15 +1,15 @@
 ---
-prev:
-  text: 'Windows 环境部署'
-  link: '/getting-started/windows'
-next:
-  text: '进阶环境配置'
-  link: '/getting-started/glidthelily'
+prev:    
+  text: 'Windows 环境部署'    
+  link: '/getting-started/windows'    
+next:    
+  text: '进阶环境配置'    
+  link: '/getting-started/glidthelily'    
 ---
 
 # Linux 服务器部署
 
-想把 Yucca 放在云服务器或 NAS 上 24 小时不间断陪伴群友？Linux 绝对是最稳的选择！    
+想把 Bot 部署在云服务器或 NAS 上 24 小时不间断陪伴群友？Linux 绝对是最稳的选择！    
 下面以 **Ubuntu 22.04 / Debian 12** 为例，带你一步到位部署 Eridanus~    
 
 ---

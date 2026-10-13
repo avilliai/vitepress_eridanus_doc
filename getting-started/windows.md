@@ -1,7 +1,7 @@
 ---
-next:
-  text: 'Linux 环境部署'
-  link: '/getting-started/linux'
+next:    
+  text: 'Linux 环境部署'    
+  link: '/getting-started/linux'    
 ---
 
 # Windows 环境部署
@@ -65,3 +65,6 @@ python main.py
 
 首次启动时，Eridanus 会自动扫描 `run/` 目录下的所有插件，并在 `5007` 端口启动 WebUI 服务器。    
 接下来请阅读 **[进阶配置（FFmpeg 与 Playwright）](/getting-started/glidthelily)** 或直接进入 **[WebUI 初次使用](/configuration/webui/初次使用)** 吧！    
+
+
+![OneBot 协议端配置与连接流程](/onebot/1.png)    

@@ -33,3 +33,8 @@ Eridanus 内置了完善的绘图分发矩阵（位于 `run/ai_generated_art`）
 - **模型切换（仅 SD 模式）**：    
   - `setsd <模型名称>`：切换 SD 基底模型。    
   - `ckpt2 <模型名称>`：快捷切换次级权重。    
+
+
+![AI 生图与对话互动效果](/aiDrawAndChat.png)    
+
+![生图参数示例](/ai_draw/args.png)    

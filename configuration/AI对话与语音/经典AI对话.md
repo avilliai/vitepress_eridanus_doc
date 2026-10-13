@@ -20,7 +20,7 @@
 ```yaml
 llm:
   model: openai          # 模型大类：openai 或 gemini，或使用 default 内置接口
-  chara_file_name: yucca.txt  # 默认角色卡文件名，位于 data/system/chara/
+  chara_file_name: default.txt  # 默认角色卡文件名，位于 data/system/chara/
   retries: 6             # 请求失败自动重试次数
   stream: true           # 是否流式传输
 
@@ -40,4 +40,4 @@ llm:
 ## 常用指令
 
 - **日常聊天**：群内 `@机器人 <内容>` 或私聊直接对话。    
-- **切换人设**：`/切人设 <角色卡名称>`（例如 `/切人设 yucca.txt`）。    
+- **切换人设**：`/切人设 <角色卡名称>`（例如 `/切人设 default.txt`）。    
