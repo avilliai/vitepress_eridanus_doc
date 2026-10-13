@@ -1,6 +1,6 @@
 # YAMLManager 与动态配置系统
 
-（指尖轻轻在 YAML 文件上划过，眨了眨眼）在很多老旧的机器人框架里，改个配置就得把整个进程杀掉重启？在 Eridanus 这里可不用这么憋屈哦！
+在很多老旧的机器人框架里，改个配置就得把整个进程杀掉重启？在 Eridanus 这里可不用这么憋屈哦！
 
 Eridanus 的配置系统基于 `framework_common/framework_util/yamlLoader.py` 中的 `YAMLManager` 构建。它不仅将 `run/` 下所有零散的 `config.yaml` 自动聚合为一个面向对象的属性树，还内置了基于 **Watchdog** 的文件监视器与**毫秒级防抖热重载**机制。
 

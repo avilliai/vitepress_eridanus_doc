@@ -1,4 +1,38 @@
-﻿import { defineConfig } from 'vitepress'
+import { defineConfig } from 'vitepress'
+
+const devSidebar = [
+  {
+    text: '🛠️ Eridanus 开发者 SDK',
+    items: [
+      { text: 'SDK 架构概览', link: '/sdk/start' },
+      { text: 'Bot 核心对象与 API', link: '/sdk/bot对象' },
+      { text: '事件系统与处理器', link: '/sdk/事件' },
+      { text: '消息链与构建', link: '/sdk/消息链' },
+      { text: '消息组件全解', link: '/sdk/消息组件' },
+      { text: '编写你的第一个插件', link: '/sdk/第一个功能' }
+    ]
+  },
+  {
+    text: '🧱 框架架构与进阶深入',
+    items: [
+      { text: '项目架构与目录拓扑', link: '/framework/项目结构' },
+      { text: 'Config 配置管理对象', link: '/framework/config对象' },
+      { text: '生命周期与元事件流', link: '/framework/生命周期与事件' },
+      { text: '消息路由与黑白名单过滤', link: '/framework/消息与事件' },
+      { text: 'Function Calling 工具调用链', link: '/framework/function-calling' },
+      { text: '高级插件工程实践', link: '/framework/first_plugin' }
+    ]
+  },
+  {
+    text: '🧰 公共服务与实战库 (framework_common)',
+    items: [
+      { text: '通用工具库 (utils / 日志 / 依赖热装)', link: '/framework/framework_common/utils' },
+      { text: 'Redis 缓存管理器 (RedisCacheManager)', link: '/framework/framework_common/RedisCacheManager' },
+      { text: 'manshuo_draw 声明式绘图框架', link: '/framework/framework_common/绘图框架' },
+      { text: 'ComfyUI 工作流接入实战', link: '/framework/comfyui接入实战' }
+    ]
+  }
+]
 
 export default defineConfig({
   title: "Eridanus",
@@ -13,7 +47,8 @@ export default defineConfig({
       { text: '新手部署', link: '/getting-started/' },
       { text: '功能手册', link: '/configuration/基础配置' },
       { text: 'WebUI 控制台', link: '/configuration/webui/介绍' },
-      { text: '框架开发 SDK', link: '/sdk/start' }
+      { text: '框架开发 SDK', link: '/sdk/start' },
+      { text: '进阶架构', link: '/framework/项目结构' }
     ],
 
     sidebar: {
@@ -125,30 +160,8 @@ export default defineConfig({
           ]
         }
       ],
-      '/sdk/': [
-        {
-          text: '🛠️ Eridanus 开发者 SDK',
-          items: [
-            { text: 'SDK 架构概览', link: '/sdk/start' },
-            { text: 'Bot 核心对象与 API', link: '/sdk/bot对象' },
-            { text: '事件系统与处理器', link: '/sdk/事件' },
-            { text: '消息链与构建', link: '/sdk/消息链' },
-            { text: '消息组件全解', link: '/sdk/消息组件' },
-            { text: '编写你的第一个插件', link: '/sdk/第一个功能' }
-          ]
-        },
-        {
-          text: '🧱 框架深入与公共服务',
-          items: [
-            { text: '项目架构与目录拓扑', link: '/framework/项目结构' },
-            { text: 'Config 配置管理对象', link: '/framework/config对象' },
-            { text: '公共工具库 (framework_common)', link: '/framework/framework_common/utils' },
-            { text: '生命周期与元事件流', link: '/framework/生命周期与事件' },
-            { text: '高级插件工程实践', link: '/framework/first_plugin' }
-            ,{ text: 'Function calling 工具调用链', link: '/framework/function-calling' }
-          ]
-        }
-      ]
+      '/sdk/': devSidebar,
+      '/framework/': devSidebar
     },
 
     socialLinks: [

@@ -1,6 +1,6 @@
 # ComfyUI 图像工作流深度接入实战
 
-（轻挽衣袖，眼神中透着自信与专注）如果说 WebUI 的 SD 绘图是老老实实按模子烤蛋糕，那 ComfyUI 就是随心所欲拼装魔法回路的顶级工坊！无论是高精度的 ControlNet、FLUX 极速渲染、还是多重二次元 LoRA 叠加，只要通过 API 工作流，都能无缝接入 Eridanus！
+如果说 WebUI 的 SD 绘图是老老实实按模子烤蛋糕，那 ComfyUI 就是随心所欲拼装魔法回路的顶级工坊！无论是高精度的 ControlNet、FLUX 极速渲染、还是多重二次元 LoRA 叠加，只要通过 API 工作流，都能无缝接入 Eridanus！
 
 本篇实战将结合源码，手把手教你如何将 ComfyUI 的节点图导出为 API 并由机器人驱动生图。
 
