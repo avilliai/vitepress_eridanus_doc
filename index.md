@@ -4,7 +4,7 @@ layout: home
 hero:
   name: "Eridanus"
   text: "基于 OneBot v11 的高扩展智能聊天机器人"
-  tagline: "全能型多模态机器人框架~ 一站式打通 MaiReply 深度人格对话、AI 创作改图、跨时区定时任务、ACG 娱乐与二次开发扩展！"
+  tagline: "全能型多模态机器人框架"
   image:
     src: /eridanus.svg
     alt: Eridanus Logo
@@ -21,7 +21,7 @@ hero:
 
 features:
   - title: "🧠 MaiReply 拟人人格与长程记忆引擎"
-    details: "具备长期好感度进化、6大结构化记忆槽位、自主情绪演化、主动发起话题与聊天后预约回访机制，搭配 50+ 原生 Function Calling 工具，绝不是死板的复读机！"
+    details: "具备长期好感度进化、6大结构化记忆槽位、自主情绪演化、主动发起话题与聊天后预约回访机制，搭配 50+ 原生 Function Calling 工具"
   - title: "⏰ 跨时区智能定时任务调度系统"
     details: "根据用户所在城市自动换算时区差异化推送早晚安；支持自然语言让 Bot 安排备忘闹钟或定时执行任意插件（睡前 ASMR、每日推歌），SQLite 持久化重启无忧。"
   - title: "🎨 多模态 AI 创意与语音工坊"
