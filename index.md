@@ -1,4 +1,4 @@
----
+﻿---
 layout: home
 
 hero:
@@ -29,3 +29,4 @@ features:
   - title: "🎮 ACG 娱乐与资源百宝箱"
     details: "内置 Steam 好友视奸播报、森空岛/终末地/米游社/绝区零签到查询、雀魂战绩、B站动态订阅与视频解析、JM 本子、ASMR.one、Z-Library 搜书与 QQ 空间自动冲浪。"
 ---
+

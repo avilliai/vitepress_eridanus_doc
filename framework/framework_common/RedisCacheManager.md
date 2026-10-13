@@ -1,4 +1,4 @@
-# redis缓存管理器
+﻿# redis缓存管理器
 
 先来看redis的工作原理    
 ![raw300](/img_11.png)    
@@ -101,3 +101,4 @@ class RedisCacheManager:
     def __repr__(self):
         return f"RedisCacheManager(db_number={self.db_number}, connected={self.is_connected()})"
 ```
+

@@ -1,4 +1,4 @@
----
+﻿---
 prev:    
   text: 'Windows 环境部署'    
   link: '/getting-started/windows'    
@@ -104,3 +104,7 @@ Eridanus 根目录自带了配置备份与智能合并工具 `tool.py`！在 Lin
 python tool.py 
 ```
 更省事的做法是直接告诉你的bot，让它自己更新
+
+
+
+

@@ -1,4 +1,4 @@
-# 框架通用工具 (framework_common)
+﻿# 框架通用工具 (framework_common)
 
 `framework_common` 下集成了 Eridanus 运行所需的各种框架级基础设施。善用这些工具可以避免重复造轮子！    
 
@@ -75,3 +75,7 @@ from framework_common.utils.install_and_import import install_and_import
 
 watchdog = install_and_import("watchdog")
 ```
+
+
+
+

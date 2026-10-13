@@ -1,48 +1,46 @@
-# Z-Library 图书检索与下载
+# Z-Library 图书检索
 
-海量原版小说、技术书籍与学术资料随心畅读！    
-Eridanus 封装了 Z-Library 电子书检索模块（位于 `run/resource_collector/resource_search.py`），群聊中即可一键搜书并下载推送电子书文件！    
+别以为我整天只知道吃喝玩乐，知识的海洋里也有我替你搜集的好书哦~
 
----
+本模块通过集成 Z-Library 检索与下载接口，让群友或私聊用户能够快捷查找专业书籍、外文原版书或流行小说，并支持通过提取码直接下载电子书文件。
 
-## 🤖 AI 智能对话联动 (Function Calling)    
+## 源码入口与核心配置
 
-当启用 `mai_reply` 的工具调用（`func_calling: true`）时，无需输入固定指令，直接通过自然语言问答即可由大模型自动调取以下工具检索并下载电子书：    
+- **代码入口**：`run/resource_collector/resource_search.py`
+- **配置文件路径**：`run/resource_collector/config.yaml`
+- **底层工具声明**：`search_book_info` 与 `call_download_book`
 
-| 注册工具名称 | 对应功能说明 | 触发示例 |
-| :--- | :--- | :--- |
-| `search_book_info` | 搜索 Z-Library 图书信息（支持书名、作者、格式筛选） | *“帮我在 zlib 上查一下《三体》有没有 epub 格式”*、*“搜一下阿加莎克里斯蒂的书”* |
-| `call_download_book` | 根据图书哈希 ID 或信息下载指定书籍并发送至聊天 | *“帮我下载刚才找到的那本计算机网络”* |    
-
----
-
-## 核心特性
-
-- **全网书籍检索**：覆盖中英日文图书，返回书名、作者、格式、文件大小与唯一标识。    
-- **一键下载推送**：凭借书本 ID 与哈希校验码，直接将选中的电子书下载后发送到群聊或私聊中！    
-
----
-
-## 配置文件详解
-
-配置文件位于 `run/resource_collector/config.yaml`：    
+配置片段如下：
 
 ```yaml
-zlibrary:
-  username: "your_zlib_account"
-  password: "your_password"
-  api_key: "your_api_token"
+z_library:       # 填入你的 zlib 账号，此功能必须开启代理网络环境
+  search_num: 4        # 搜索返回结果数量，默认 4 本书
+  email: ""            # Z-Library 注册邮箱
+  password: ""         # Z-Library 账号密码
+  search_operate_level: 0    # 书籍搜索所需最低权限等级
+  download_operate_level: 998  # 书籍下载所需权限等级（默认极高，防带宽被刷爆）
 ```
 
----
+## 源码里真正支持的触发指令
 
-## 触发指令与使用方式
+源码在 `GroupMessageEvent` 与 `PrivateMessageEvent` 下统一监听，支持群聊与私聊：
 
-- **搜书指令**：    
-  - `搜书 <书名或关键词>`    
-  - 例如：`搜书 深入理解计算机系统`    
-  - Bot 会列出搜索结果列表，展示书名、作者、格式、`book_id` 以及专属 `hash`；    
-- **下载书籍**：    
-  - `下载书 <book_id> <hash>`    
-  - 例如：`下载书 1234567 89abcdef01`    
-  - 系统在后台调用直链下载引擎抓取电子书文件，并直接下发到聊天窗口中！    
+| 指令格式 | 示例 | 作用说明 |
+| :--- | :--- | :--- |
+| `搜书<关键词>` | `搜书 深入理解计算机系统` | 检索图书，返回匹配的书名、作者、年份、格式、ID 与专属 hash |
+| `下载书 <id> <hash>` | `下载书 12345678 abcd1234ef` | 依据搜索结果给出的 ID 与 Hash 提取电子书文件并回传 |
+
+> **注意传参格式**：`下载书` 后面必须用**空格**隔开 `<id>` 和 `<hash>`，代码是靠空格切片解析参数的哦！
+
+## 如果你想做什么，应该改哪里？
+
+1. **刚部署完搜书报错“未配置账号”**：
+   - 打开 `run/resource_collector/config.yaml`；
+   - 在 `z_library.email` 和 `z_library.password` 填入你在 Z-Library 可正常登录的账号与密码。
+2. **想允许普通群友也能自由下载书籍**：
+   - 默认的 `download_operate_level: 998` 接近 Master 级别；
+   - 如果群内服务器带宽宽裕，可以将 `download_operate_level` 调低至 `0` 或 `10`。
+3. **搜书出来的结果太多刷屏**：
+   - 修改 `z_library.search_num` 为 `2` 或 `3`，保持输出卡片整洁。
+4. **下载经常出现连接超时或网络重置**：
+   - 检查 `run/common_config/basic_config.yaml` 中的 `proxy` 是否已正确配置，Z-Library 域名通常需要稳定的境外节点才能访问。

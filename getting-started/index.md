@@ -1,4 +1,5 @@
-# 快速开始 Eridanus
+﻿# 快速开始 Eridanus
+
 
 哈喽！欢迎来到 Eridanus 的世界~    
 既然你点开了这份文档，那我就把整个 Eridanus 的架构和部署流程给你讲得明明白白，保证你不会在配置里迷路哦！    
@@ -47,3 +48,6 @@ Eridanus 在`run/common_config/basic_config.yaml` 中 默认连接`ws://127.0.0.
 - **[🧴 Windows 环境部署（支持一键整合包 & 源码部署）](/getting-started/windows)**    
 - **[🐧 Linux 服务器部署](/getting-started/linux)**    
 - **[✨ 进阶配置：FFmpeg 语音/视频支持与 Playwright 浏览器渲染](/getting-started/glidthelily)**    
+
+
+

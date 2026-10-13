@@ -1,4 +1,4 @@
-# YAMLManager 与配置系统
+﻿# YAMLManager 与配置系统
 
 在 Eridanus 中，配置文件不是一次性读入的死数据，而是具备**多文件聚合**与**毫秒级防抖热重载**的动态配置对象。    
 
@@ -39,3 +39,7 @@ def on_config_updated(new_yaml_dict):
 
 config.register_callback("my_plugin", on_config_updated)
 ```
+
+
+
+

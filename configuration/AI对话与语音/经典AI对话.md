@@ -1,43 +1,50 @@
-# 经典 AI 对话（ai_llm）
+# 经典 AI 对话模式（ai_llm）
 
-如果你不需要复杂的 MaiReply 记忆槽位与主动关怀链，只想配置一个轻量、极速响应、直连大模型 API 的问答机器人，那么经典的 **ai_llm** 插件（位于 `run/ai_llm`）就是最稳定坚固的基石。    
+（托着腮帮子，翻了翻旧记事本）这是 Eridanus 早期最稳重踏实的经典对话核心啦~ 
 
----
+如果你不需要复杂的群聊拟真情绪和长程记忆槽位，只想要一个专注且听话的问答助手、或者需要多 API Key 自动轮询、深度思考 CoT 思维链展示，那这个经典模块依然非常耐用哦。
 
-## 核心特性
+核心代码位于：`run/ai_llm/`  
+配置文件位于：`run/ai_llm/config.yaml`
 
-- **双协议直连**：原生支持 OpenAI 规范接口（DeepSeek、ChatGPT、Claude 兼容）与 Google Gemini 原生 API。    
-- **思维链（CoT）可视化**：支持 DeepSeek-Reasoner 等推理模型的思维链输出开关。    
-- **敏感词与反逆向过滤**：内置轻量级安全过滤，防止 Prompt 越狱与不良注入。    
-- **酒馆角色卡原生支持**：直接将酒馆导出的 Character Card 放入 `data/system/chara/` 即可无缝加载。    
+::: tip 注意生效条件
+如果你的 `run/mai_reply/config.yaml` 开启了 `enable: true`，MaiReply 会自动接管对话系统。想要回退使用经典对话模块，记得先去 MaiReply 里将 `enable` 设为 `false` 哦。
+:::
 
----
-
-## 配置文件详解
-
-配置文件位于 `run/ai_llm/config.yaml`：    
+## 核心配置片段一览
 
 ```yaml
 llm:
-  model: openai          # 模型大类：openai 或 gemini，或使用 default 内置接口
-  chara_file_name: default.txt  # 默认角色卡文件名，位于 data/system/chara/
-  retries: 6             # 请求失败自动重试次数
-  stream: true           # 是否流式传输
+  model: "openai"              # 模型大类：openai、gemini、default（内置模型）
+  chara_file_name: "猫娘.txt"  # 人设文件名，存放于 data/system/chara/ 目录
+  自动清理无效apikey: false
+  retries: 6                   # 请求失败时的自动重试次数
+  stream: true                 # 是否使用流式传输
+  func_calling: false          # 经典模式下的函数调用开关
 
-  openai:
-    enable_official_sdk: true
-    api_keys:
-      - "YOUR_API_KEY"
-    model: "deepseek-reasoner"
-    quest_url: "https://api.deepseek.com"
+  openai:                      # 兼容所有 OpenAI 标准接口格式
+    enable_official_sdk: true  # 是否使用官方 SDK（关闭则直接发 HTTP POST）
+    api_keys:                  # 支持配置多个 API Key 轮流调用
+      - "sk-xxxxxxxxxxxxxxxxxxxxxxxx"
+    model: "deepseek-reasoner" # 可选用 deepseek-chat、gpt-4o 等
+    quest_url: "https://api.deepseek.com" # 填入 base_url
     temperature: 1.0
     max_tokens: 2048
-    CoT: true            # 是否展示思维链内容
+    CoT: true                  # 是否在消息中直接展示模型思考过程（思维链）
+
+  prefix:                      # 触发前缀，留空则支持 @ 触发
+    - ""
+
+core:
+  ai_reply_group: true         # 是否开启群聊回复
+  ai_reply_private: true       # 是否开启私聊回复
 ```
 
----
+## 如果你想做什么，应该改哪里？
 
-## 常用指令
-
-- **日常聊天**：群内 `@机器人 <内容>` 或私聊直接对话。    
-- **切换人设**：`/切人设 <角色卡名称>`（例如 `/切人设 default.txt`）。    
+- **想用 DeepSeek R1 这种推理大模型看它的解题思考？**
+  - 把 `openai.model` 改为 `"deepseek-reasoner"`，`quest_url` 填入 `"https://api.deepseek.com"`，并且把 `openai.CoT` 设为 `true`，这样推理过程就会完整带出来了。
+- **有多个 API Key 怕单号限流？**
+  - 在 `openai.api_keys` 列表中一行一个添加多个 Key，请求时系统会自动进行轮询与健康检查。
+- **想通过特定前缀才触发，不想被无脑艾特？**
+  - 在 `llm.prefix` 列表里填入你的专属前缀，例如 `["/ai", "提问"]`。

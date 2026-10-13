@@ -1,50 +1,43 @@
-# Steam好友动态视奸
+# Steam 好友动态视奸
 
-由 `run/anime_game_service/SteamSnooping.py` 驱动，为群聊提供全自动的 Steam 好友游戏状态跟踪、新玩游戏广播与深度名片生成。    
+（悄悄猫在门缝边往里瞧）群友说他去睡觉了，结果转头就在 Steam 启动了黑神话悟空或者小红车？哼哼，一切伪装都逃不过我的法眼！
 
----
+本插件能够周期性巡逻你和好友的 Steam 在线状态，谁偷偷启动了游戏、玩了多久、什么时候下线，都会被自动播报到群里。
 
-## 核心特性
+核心代码位于：`run/anime_game_service/SteamSnooping.py`  
+配置文件位于：`run/anime_game_service/config.yaml` 的 `steamsnooping` 区块
 
-- **好友游戏动态轮询**：后台定时轮询已监听用户，当群友启动游戏或切换新游戏时，自动在群内发送趣味提示。    
-- **个人游戏名片生成**：渲染包含玩家头像、近期游玩时长、常玩游戏统计的高清信息卡片。    
-- **群聊视奸名单管理**：支持单人加入/移出监听，或群管一键将全群已绑定成员加入视奸列表。    
+## 源码里真正支持的交互指令
 
----
+指令均不区分大小写，支持以下完整管理链路：
 
-## 真实指令列表
+- `steambind <SteamID/好友代码>`：将当前 QQ 绑定到指定的 Steam 账号
+- `steaminfo` 或 `steaminfo <SteamID>`：查询绑定的 Steam 账号状态、个人主页与近期游玩记录
+- `steamadd <SteamID>`：将某位好友加入本群的动态视奸监听列表
+- `steamremove <SteamID>`：将指定好友移出监听列表
+- `steamaddall`：一键把绑定的 Steam 账号的好友列表全员加入本群视奸！
+- `steamremoveall`：一键清空本群的所有视奸监听目标
+- `steamcheck`：立即查看当前本群正在监听的好友实时状态与游玩游戏
+- `steamhelp` 或 `steam帮助`：查看指令速查菜单
 
-### 1. 绑定与解绑 Steam 账号
-- **绑定指令**：    
-  - `steambind <SteamID64或好友代码>`    
-  - 示例：`steambind 76561198xxxxxxxx` 或 `steambind 123456789`    
-- **解绑指令**：    
-  - `steamunbind`    
+## 核心配置片段一览（`run/anime_game_service/config.yaml`）
 
-### 2. 个人游戏名片与数据
-- **查看个人/他人名片**：    
-  - `steaminfo`（查询自己）    
-  - `steaminfo <SteamID64>`（指定ID）    
-  - 发送 `steaminfo` 并 `@群友`（查询对应群友的游戏数据）    
+```yaml
+steamsnooping:
+  is_snooping: false    # 是否开启 Steam 视奸轮询后台播报（开启请设为 true）
+  steam_api_key:        # Steam Web API Key，前往 https://steamcommunity.com/dev/apikey 免费申请
+    - "YOUR_STEAM_API_KEY_HERE"
 
-### 3. 群聊视奸名单操作
-- **添加当前群监听**：    
-  - `steamadd`（将自己加入本群视奸名单）    
-  - `steamadd <SteamID64>`（添加指定 Steam 用户到本群名单）    
-- **移出当前群监听**：    
-  - `steamremove`（将自己从本群视奸名单移除）    
-  - `steamremove <SteamID64>`（移除指定 Steam 用户）    
-- **群管全员操作**：    
-  - `steamcheck`：查看本群当前已加入视奸的用户清单及监听状态    
-  - `steamaddall`：一键将所有已绑定账号的群友全部加入本群视奸列表    
-  - `steamremoveall`：清空本群视奸列表    
-- **指令帮助**：    
-  - `steamhelp` 或 `steam帮助`    
+  game_white:           # 游戏播报白名单/免打扰名单（名单内的软件启动时不发群播报）
+    - "Wallpaper Engine" # 壁纸引擎常驻不播报
+    - "MyDockFinder"
+    - "DSX"
+    - "Source SDK"
+```
 
----
+## 如果你想修改，应该改哪里？
 
-## 🤖 AI 智能对话联动 (Function Calling)
-
-在 `mai_reply` 智能对话中，群友可直接自然语言互动：    
-- 注册工具：`anime_game_service_func_collection`    
-- 对话示例：*“查查赖哥最近在 Steam 玩了什么游戏”*、*“看看群里谁又在偷偷摸鱼打游戏”*
+- **好友启动游戏却没有群播报？**
+  - 首先确认 `steamsnooping.is_snooping` 改成了 `true`；其次好友的 Steam 隐私设置必须对公开开放“游戏详情”，如果对方设为完全私密，Steam API 也是拿不到状态的哦。
+- **不想让 Wallpaper Engine 这种挂机软件天天刷屏？**
+  - 在 `game_white` 列表里加上软件的准确英文名称即可自动静音。

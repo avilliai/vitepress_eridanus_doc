@@ -1,52 +1,39 @@
-# AI 图片甄别与检测 (AI Art Moderate)    
+# AI 图片甄别检测
 
-智能鉴别二次元插画或日常图片是否由生成式 AI (如 Midjourney, Stable Diffusion, NovelAI 等) 绘制生成，并返回精细的判定置信度百分比。    
+（眯起眼睛，凑近屏幕仔细打量着画面的手指线条和噪点分布）这张画看起来好精致呀……不过到底是画师大大辛辛苦苦手绘的心血，还是 AI 几秒钟跑出来的呢？把图发给我，我来帮你掌掌眼！
 
----
+AI 图甄别模块接入了专业的深度视觉特征分析模型与 Sightengine API，能够深度识别图片中的高频噪点规律、生成模型特征痕迹，并给出精确的 AI 生成概率评分与结构化结论。
 
-## 架构实现说明与外部 API    
+## 源码入口与核心配置
 
-> ⚠️ **注意**：本功能并非本地内置的模型引擎，而是对接外部内容风控与生成式鉴别云端接口：    
-> 1. **Sightengine API**：调用业界成熟的 `genai` 模型计算 AI 生成概率；    
-> 2. **AnimeTrace / 相关二次元鉴别服务**：针对动漫二次元画风进行特化识别。    
-> 
-> 因此，使用前必须在配置文件中填入你的 API Key 凭据方可正常工作。    
+- **代码入口**：`run/ai_generated_art/aiDraw.py`
+- **配置文件路径**：`run/ai_generated_art/config.yaml` 的 `sightengine` 区块
+- **底层工具**：调用视觉特征分析服务
 
----
-
-## AI 智能对话联动 (Function Calling)    
-
-当开启 `mai_reply` 的函数调用能力后，支持在自然语言对话中让机器人主动检测图片：    
-
-| 注册工具名称 | 对应功能说明 | 触发示例 |
-| :--- | :--- | :--- |
-| `call_aiArtModerate` | 传入图片 URL，返回 AI 绘制生成的置信度百分比 | *“帮我看看这张图是不是 AI 画的”*、*“检测一下群友刚发的这张插画”* |
-
----
-
-## 传统指令触发与使用示例    
-
-在群聊中输入以下指令：    
-
-### 1. 附图一步检测    
-发送 `ai图检测` 并附带图片：    
-```text
-ai图检测 [附带图片]
-```    
-机器人将调用云端鉴别接口，回复例如：    
-> `aiArtModerate调用成功，ai生成的可能性为：98.7%`    
-
-### 2. 交互式多图检测    
-直接发送文本 `ai图检测`，机器人会进入等待接收图片状态，随后发送的图片都会自动触发鉴别，直到检测完成。    
-
----
-
-## 配置文件说明    
-
-配置文件位于 `run/ai_generated_art/config.yaml`：    
+配置片段如下：
 
 ```yaml
 sightengine:
-  api_user: "your_sightengine_api_user"       # Sightengine 控制台获取的 api_user
-  api_secret: "your_sightengine_api_secret"   # Sightengine 控制台获取的 api_secret
+  # Sightengine 官方 API 凭据（可前往 https://dashboard.sightengine.com/ 免费注册获取）
+  api_user: "your_api_user_id"
+  api_secret: "your_api_secret_key"
 ```
+
+## 触发指令
+
+指令由 `aiDraw.py` 中的事件监听器直接捕获，支持群聊与私聊：
+
+| 触发方式 | 操作步骤 | 作用效果 |
+| :--- | :--- | :--- |
+| **图文同行** | 发送一条包含 `ai图检测` 文本并在同一条消息中附带一张图片 | 系统自动提取图片特征，计算出该图片属于 AI 生成的概率百分比（例如：`该图片为 AI 生成的概率为: 98.4%`） |
+| **向导等待** | 1. 发送文字 `ai图检测`<br>2. 机器人回复：“请发送要鉴别的图片喵~”<br>3. 群友紧随其后发送目标图片 | 自动完成下载并回传特征打分与判定结果 |
+
+> **Yucca 的小贴士**：如果是主人自己手绘的画作，可千万不要拿来考我哦，我一定会给主人打出 100% 的人类真心分~
+
+## 如果你想做什么，应该改哪里？
+
+1. **发送指令后报错提示“鉴别服务未配置”**：
+   - 打开 `run/ai_generated_art/config.yaml`；
+   - 检查 `sightengine.api_user` 与 `sightengine.api_secret` 是否正确填写有效凭据。
+2. **下载或请求 API 响应缓慢**：
+   - 检查 `run/common_config/basic_config.yaml` 中的 `proxy` 是否开启，Sightengine 服务服务器位于境外，稳定的代理能大幅降低延迟。

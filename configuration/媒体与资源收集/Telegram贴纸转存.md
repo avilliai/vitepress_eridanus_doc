@@ -1,45 +1,42 @@
-# Telegram 贴纸包转存与下载
+# Telegram 贴纸转存
 
-Telegram 上有很多神仙画风的动漫表情包想导入 QQ？    
-Eridanus 内置了 Telegram 贴纸一键解析下载器（位于 `run/resource_collector/tg_sticker.py`），自动批量下载贴纸并转码打包！    
+Telegram 上的群友表情包是不是比 QQ 好玩多了？看到好看的贴纸包不用眼馋，丢个链接给我，我把整包表情都给你打包扒下来！
 
----
+该功能支持解析 Telegram Sticker 贴纸包链接，自动遍历其中所有表情并打包转换为群友可直接使用的格式。
 
-## 🤖 AI 智能对话联动 (Function Calling)    
+## 源码入口与核心配置
 
-当启用 `mai_reply` 的工具调用（`func_calling: true`）时，支持直接发送 Telegram 贴纸包链接让 AI 自主调用转存工具下载：    
+- **代码入口**：`run/resource_collector/tg_sticker.py`
+- **配置文件路径**：`run/resource_collector/config.yaml`
+- **底层工具**：`run/resource_collector/__init__.py` 声明的 `telegram_stickers_download`
 
-| 注册工具名称 | 对应功能说明 | 触发示例 |
-| :--- | :--- | :--- |
-| `telegram_stickers_download` | 解析 Telegram 贴纸包链接并打包下载转存为本地表情 | *“帮我把这个 tg 贴纸包存下来：https://t.me/addstickers/xxx”* |    
-
----
-
-## 核心特性
-
-- **静态与动态全兼容**：支持 WebP 静态表情包以及 TGS / WEBM 动态贴纸。    
-- **批量转码与打包**：自动将贴纸包整套拉取并打包为压缩包或逐张发送。    
-
----
-
-## 配置文件详解
-
-配置文件位于 `run/resource_collector/config.yaml`：    
+配置片段如下：
 
 ```yaml
-telegram:
-  tg_bot_token: "" # 你的 Telegram Bot Token
+telegram_stickers:
+  bot_token: ""   # Telegram Bot Token（前往 @BotFather 申请后填入）
 ```
 
----
+> **重要依赖**：由于下载 Telegram 资源必须走 Telegram 官方 API，因此除了配置上面的 `bot_token` 外，`run/common_config/basic_config.yaml` 中的 `proxy` 也必须配置好可用的代理端口！
 
-## 触发指令与使用方式
+## 源码里真正支持的触发指令
 
-- **指令格式**：    
-  - `下载tg贴纸 <贴纸包链接或包名>`    
-- **使用示例**：    
-  - `下载tg贴纸 https://t.me/addstickers/menhera_chan`    
-  - `下载tg贴纸 menhera_chan`    
-- **执行流程**：    
-  - Bot 会自动通过 Telegram Bot API 获取该贴纸包内全部 Sticker 文件；    
-  - 下载完成后保存至本地缓存并打包发送给用户，方便一键保存或批量导入！    
+源码在 `tg_sticker.py` 中通过正则提取消息：
+
+| 指令格式 | 示例 | 作用说明 |
+| :--- | :--- | :--- |
+| `下载tg贴纸 <链接>` | `下载tg贴纸 https://t.me/addstickers/LineCat_by_bot` | 提取贴纸包名称，拉取全部贴纸并打包发送至群内 |
+
+源码正则解析逻辑：
+```python
+match = re.search(r"addstickers/([^/]+)", text)
+```
+只要你的消息以 `下载tg贴纸` 开头，且包含带有 `addstickers/<pack_name>` 结构的链接即可被成功捕获！
+
+## 如果你想做什么，应该改哪里？
+
+1. **发送指令后机器人提示“请先配置 Bot Token”**：
+   - 打开 `run/resource_collector/config.yaml`；
+   - 在 `telegram_stickers.bot_token` 中填入你的 Telegram 机器人 Token（例如 `123456789:ABCdefGhIJKlmnoPQRsTUVw`）。
+2. **下载一直卡住或报错 ConnectError**：
+   - 检查 `run/common_config/basic_config.yaml` 中的 `proxy` 配置，确保代理能稳定访问 `api.telegram.org`。

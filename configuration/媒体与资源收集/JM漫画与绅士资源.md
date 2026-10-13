@@ -1,77 +1,65 @@
-# JM漫画与绅士资源
+# JM 漫画与绅士资源
 
-咳咳... 偶尔也会接触一些不可思议的秘密宝库呢！    
-Eridanus 内置了对 JMComic（禁漫天堂，位于 `run/resource_collector/resource_search.py`）与 Hitomi（位于 `run/resource_collector/hitomi.py`）的深度集成。    
-不仅支持本子检索、画册预览与打包下载，还能通过定时任务每天自动推送热门榜单，夜猫子群友的福利来啦~    
+（脸颊微红，轻轻跺了跺脚）喂……这个功能到底是谁加进来的呀？！不过既然被主人写进底层了，那我也只能乖乖帮你找了啦……但别在公共大群里乱开香槟哦！
 
----
+本插件整合了禁漫天堂（JMComic）的搜索、验车预览、随机精选与整本 PDF 离线下载能力，并且自带了一整套防风控遮罩、违规车牌号黑名单与私有云同步方案。
 
-## 🤖 AI 智能对话联动 (Function Calling)    
+## 源码入口与核心配置
 
-当启用 `mai_reply` 的工具调用（`func_calling: true`）时，绅士资源检索也可以完全交给 AI 自主调用：    
+- **代码入口**：`run/resource_collector/resource_search.py`
+- **底层服务**：`service/jmComic/`
+- **配置文件路径**：`run/resource_collector/config.yaml`
 
-| 注册工具名称 | 对应功能说明 | 触发示例 |
-| :--- | :--- | :--- |
-| `jm_search` | 根据关键词或作者搜索 JM 本子/漫画 | *“帮我查一下 c102 的相关本子”* |
-| `jm_preview` | 获取指定漫画的章节概览与前几页安全预览 | *“看一下车号 456789 的前几页预览”* |
-| `jm_download` | 打包下载指定 JM 漫画并生成分卷传输 | *“把这部漫画打包下载发给我”* |    
-
----
-
-## 1. 禁漫天堂 (JMComic) 检索与下载
-
-支持关键词检索、车号直接抓取、缩略图多张拼合验车与全本自动打包下载。    
-
-### 核心指令
-
-| 指令 | 示例 | 说明 |
-| :--- | :--- | :--- |
-| `jm搜 <关键词>` / `JM搜 <关键词>` | `jm搜 纯爱 白毛` | 检索符合条件的漫画列表，返回标题、作者与专属车号（Comic ID） |
-| `验车 <车号>` / `jm验车 <车号>` | `验车 607279` | 抓取该本子的前数页或精彩片段拼接成拼图长图，快速检验画风 |
-| `随机本子` | `随机本子` | 随机挑选一部优质漫画并发送验车图 |
-| `jm下载 <车号>` | `jm下载 607279` | 将整本漫画自动按顺序下发（支持 ZIP 压缩包或私聊直发） |
-
-```
-用户：jm搜 碧蓝档案
-Bot：
-🔍 找到以下相关漫画：
-1. [607279] 砂狼白子的特训 (作者: xxx)
-2. [589120] 先生、お時間です！ (作者: yyy)
-输入【验车 车号】可快速查看预览图，输入【jm下载 车号】可下载完整本子哦~
-```
-
-### 每日/每周热门榜单推送
-
-系统内置了自动化热门排行功能，可在群内直接调阅，也能接入定时任务：    
-- `今日JM热门榜` / `本周JM热门榜`：展示当下全站最受欢迎的精品漫画推荐。    
-
-::: warning 绅士防风控机制    
-为保证 QQ 群安全，JM 的所有预览图与长图渲染都经过框架内 `manshuo_draw` 智能缩放处理，敏感群聊建议仅在私聊或授权的高级白名单群中使用。    
-:::    
-
----
-
-## 2. Hitomi 画册检索与浏览 (/hitomi)
-
-老牌高清画册库 Hitomi 客户端支持：    
-
-| 指令 | 示例 | 说明 |
-| :--- | :--- | :--- |
-| `/hitomi` | `/hitomi` | 查看 Hitomi 帮助菜单与获取指令格式 |
-| `/hitomi 最新 <行> <列>` | `/hitomi 最新 3 1` | 浏览并获取 Hitomi 最新画册矩阵中第 3 行第 1 个作品 |
-| `/hitomi 热门 <行> <列>` | `/hitomi 热门 2 2` | 浏览并获取 Hitomi 热门画册矩阵中第 2 行第 2 个作品 |
-
----
-
-## 3. 配置文件
-
-配置位于 `run/resource_collector/jmcomic.yml` 与 `run/resource_collector/config.yaml`：    
+配置片段包含权限与高级下载选项两大部分：
 
 ```yaml
-# jmcomic.yml
-client:
-  domain: []             # 自定义镜像域名列表（自动测速）
-  retry: 3               # 请求失败重试次数
-download:
-  cache_dir: "data/cache/jm" # 缓存目录
+jmcomic:
+  jm_comic_search_level: 0    # 搜索功能所需权限等级
+  jm_comic_download_level: 0  # 下载功能所需权限等级
+  jm_comic_random_level: 0    # 随机本子所需权限等级
+
+JMComic:                      # 禁漫核心设置
+  anti_nsfw: obfuscate         # 防吞策略：可选 gif、black_and_white、no_censor、obfuscate（高斯混淆）
+  gif_compress: false          # gif 模式下是否压缩
+  previewPages: 6              # 验车预览抽取的页数
+  autoClearPDF: true           # 发送完成后是否自动清理本地临时 pdf
+  autoEncrypt: true            # 下载后是否自动加密 pdf 文件
+  savePath: "data/pictures/benzi" # PDF 默认落盘路径
+  jm_ban:                      # 禁止查询和下载的违规车牌号黑名单
+    - 350234
+    - 350235
+  ban_answer:                  # 触发黑名单时的随机反讽回复
+    - 带着你的董卓吃大份去吧
+    - 还真是一对苦命鸳鸯
+    - 带着你的苦命鸳鸯实大变去罢！
+  ranking_limit: 10            # 榜单显示条数
+  cover_workers: 5             # 封面并发下载线程数
+  openlist:                    # 下载后是否自动同步上传到私有网盘（OpenList/Alist）
+    enable: false
+    base_url: ""
+    username: ""
+    password: ""
+    upload_dir: ""
 ```
+
+## 源码里真正支持的触发指令
+
+| 指令格式 | 示例 | 作用说明 |
+| :--- | :--- | :--- |
+| `jm搜<关键词>` 或 `JM搜<关键词>` | `jm搜 纯爱` | 检索漫画作品，返回车牌号、标题、作者及总页数 |
+| `验车<车号>` 或 `jm验车<车号>` | `验车 123456` | 抽取前 `previewPages` 页进行防吞混淆处理后发群预览 |
+| `jm下载<车号>` | `jm下载 123456` | 完整拉取整本漫画，渲染为 PDF 并以群文件方式回传 |
+| `随机本子` | `随机本子` | 随机挑选一部作品并生成预览介绍 |
+
+## 如果你想做什么，应该改哪里？
+
+1. **验车发送的预览图总是被腾讯秒撤回/封号**：
+   - 打开 `run/resource_collector/config.yaml`；
+   - 调整 `JMComic.anti_nsfw` 策略：推荐设为 `obfuscate`（算法混淆马赛克）或者 `black_and_white`（黑白化）。
+2. **预览抽取的页数太多刷屏**：
+   - 将 `JMComic.previewPages` 调小（例如从 `6` 改为 `3`）。
+3. **遇到恶心人或违规车牌号想直接拉黑**：
+   - 在 `JMComic.jm_ban` 列表中追加对应车牌号；
+   - 在 `ban_answer` 列表里填入你想调侃/痛骂对方的台词。
+4. **下载完本子后自动保存到自己的私人网盘**：
+   - 启用 `JMComic.openlist.enable: true`，填入你的 OpenList / Alist 服务地址、账号密码与目标上传目录即可实现全自动转存！

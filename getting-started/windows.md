@@ -1,4 +1,4 @@
----
+﻿---
 next:    
   text: 'Linux 环境部署'    
   link: '/getting-started/linux'    
@@ -64,3 +64,7 @@ python main.py
 
 
 ![OneBot 协议端配置与连接流程](/onebot/1.png)    
+
+
+
+

@@ -1,4 +1,4 @@
-# Bot 对象核心 API
+﻿# Bot 对象核心 API
 
 在 developTools 中，`WebSocketBot` 是所有网络通信与行为调度的灵魂核心。    
 它继承自底层的 WebSocket 协议层，并内置了强大的异步事件总线（EventBus）。    
@@ -62,3 +62,7 @@ bot.run()  # 阻塞运行，启动事件循环并保持自动断线重连
 | `await bot.get_group_member_list(group_id)` | `list[dict]` | 获取群成员详细列表 |
 | `await bot.get_group_member_info(group_id, user_id)` | `dict` | 获取指定群成员详细名片信息 |
 | `await bot.get_msg(message_id)` | `dict` | 查询历史消息详情 |
+
+
+
+

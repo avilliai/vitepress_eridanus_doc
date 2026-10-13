@@ -1,4 +1,5 @@
-# comfyui接入实战
+﻿# comfyui接入实战
+
 这部分比较复杂，最好先看完其他的框架教程以后再来看这个，以下教程默认你已经看过了
 
 ## 首先，什么是comfyui(cui)
@@ -717,3 +718,6 @@ workflow.add_output_node("127", [
 }
 ```
 然后你就可以通过解析这个run_workflow返回的json来处理不同类型的输出了
+
+
+
