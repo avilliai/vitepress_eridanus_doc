@@ -34,14 +34,56 @@ next:
 | **`启动脚本2(循环重启).bat`** | **守护挂机模式**！如果机器人发生异常崩溃或遇到热更新退出，脚本会在 3 秒后自动拉起重启，适合长期挂机。 |
 | **`更新脚本.bat`** | **一键无损更新**！自动从 Git 源拉取最新代码，并通过内置的 `tool.py` 智能迁移合并你的配置文件，API 密钥完全不会被覆盖！ |
 | `一键部署脚本(整合包用户不要点).bat` | 这是给纯源码用户克隆后自动装依赖用的，整合包用户千~万~不~要~点它哦！ |
-
-### 3. 连接 OneBot 协议端与开机！
+### 3. 配置onebot实现
 1. 启动并扫码登录你的 **[SnowLuma](https://snowluma.github.io/zh/)** 或 NapCat。
 2. 确保协议端里添加了 **WebSocket 服务端 (WebSocket Server)**：端口设为 `3001`，Token 留空。
+
+我们以snowluma为例，这是snowluma-windows版本解压后的资产
+![snowluma目录结构](/onebot/img.png)
+双击启动launcher.bat，你将看到这样的日志
+```log
+C:\Users\Administrator\Downloads\SnowLuma-v1.14.22-win-x64>node ./index.mjs
+(node:3564) ExperimentalWarning: SQLite is an experimental feature and might change at any time
+(Use `node --trace-warnings ...` to show where the warning was created)
+22:20:27 INFO               [App] SnowLuma starting
+22:20:27 INFO               [WebUI] ════════════════════════════════════════════════════════════════
+22:20:27 INFO               [WebUI]   ★ WebUI 初始登录凭据 / Initial WebUI Credentials ★
+22:20:27 INFO               [WebUI]   请立即登录并修改密码 —— 关闭程序后此密码无法找回。
+22:20:27 INFO               [WebUI]   若跳过初始改密，下次启动将自动生成新的随机密码。
+22:20:27 INFO               [WebUI]   Log in and change the password now; it will not be shown again.
+22:20:27 INFO               [WebUI] ────────────────────────────────────────────────────────────────
+22:20:27 INFO               [WebUI] initial credentials: user=admin password=470e5ed82a261b32
+22:20:27 INFO               [WebUI] ════════════════════════════════════════════════════════════════
+22:20:27 INFO               [WebUI] login rate-limit keyed by: socket peer (default)
+22:20:27 INFO               [WebUI] awaiting EULA/PRIVACY consent before the panel unlocks
+22:20:27 INFO               [WebUI] listening http://127.0.0.1:5099
+```
+注意`initial credentials: user=admin password=470e5ed82a261b32`，其中`password=`后面的那一串就是`webui初始密码`，记下它     
+然后浏览器打开`http://127.0.0.1:5099`，输入刚才的`webui初始密码`，即可进入snowluma webui    
+![snowluma webui](/onebot/img_1.png)    
+点击`进程注入`，页面会跳转，点击`加载`
+![snowluma webui](/onebot/img_3.png)     
+然后点击左边的`节点配置`，有时候点完节点配置页面还是啥也没有，此时需要`刷新一下页面`。        
+![snowluma webui](/onebot/img_4.png)    
+找到`ws服务端`，点击编辑，参考下图配置即可    
+![snowluma webui](/onebot/img_5.png)    
+- 勾选启用
+- 端口是3001
+- 路径是/
+- 把默认的鉴权Token删除，留空
+- 点击保存修改
+
+其他onebot实现也是一样，3001，ws服务端，空token。   
+::: danger 安全性警告
+当然，如果你要将你的`snowluma`暴露到公网的话，我们强烈建议你设置一个`token`，此时需要修改`Eridanus`的`basic_config.yaml`，把原来的`ws://127.0.0.1:3001`改成`ws://127.0.0.1:3001?token={你设置的鉴权token}`    
+如果你根本不知道这段话在说什么，那请放心，保持空token即可，这样可以省去额外配置Eridanus的麻烦。
+:::
+
+### 4. 开机！
 3. 双击运行 `启动脚本.bat`！
 4. 看到控制台输出绿色的 `Connected to websocket` 之后，用浏览器打开 `http://127.0.0.1:5007` 就能看到现代化的 WebUI 管理后台啦~
 
-![OneBot 协议端配置与连接流程](/onebot/1.png)
+
 
 ---
 
