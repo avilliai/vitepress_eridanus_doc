@@ -14,16 +14,17 @@ next:
 
 ---
 
-## 路线一：使用 Windows 一键整合包（强烈推荐新手！）
+## 路线一：使用 Windows 整合包（强烈推荐新手！）
 
 如果你只是想开箱即用，不想在电脑里装一堆 Python 版本或者折腾虚拟环境，直接用赖哥和团队准备的整合包就最稳妥啦！整合包里已经塞好了精简且纯净的 Python 运行环境、Git 工具、所有依赖包以及预置好的快捷脚本。
 
 ### 1. 下载与解压
-1. 前往 **[Eridanus GitHub Releases](https://github.com/avilliai/Eridanus/releases)** 页面，或者加入交流群（`913122269`）在群文件中下载最新的 Windows 一键整合包压缩文件。
+1. 前往 **[Eridanus GitHub Releases](https://github.com/avilliai/Eridanus/releases)** 页面，或者加入交流群（`913122269`或`1050663831`）在群文件中下载最新的 Windows 一键整合包压缩文件。
 2. 将压缩包解压到你的硬盘中。
-   ::: danger 路径避坑警告！
-   解压的目标路径 **尽量避免包含中文字符或空格**（例如不要放在 `D:\我的文档\新建文件夹\` 这种地方），建议解压到类似 `D:\Eridanus\` 这样干净简短的纯英文根目录下！
-   :::
+
+::: danger 路径避坑警告！
+解压的目标路径 **尽量避免包含中文字符或空格**（例如不要放在 `D:\我的文档\新建文件夹\` 这种地方），建议解压到类似 `D:\Eridanus\` 这样干净简短的纯英文根目录下！
+:::
 
 ### 2. 认识根目录下的快捷启动脚本
 解压完成后，你会看到根目录下有几个 `.bat` 批处理脚本，它们的分工可清楚啦：
@@ -38,9 +39,9 @@ next:
 1. 启动并扫码登录你的 **[SnowLuma](https://snowluma.github.io/zh/)** 或 NapCat。
 2. 确保协议端里添加了 **WebSocket 服务端 (WebSocket Server)**：端口设为 `3001`，Token 留空。
 
-我们以snowluma为例，这是snowluma-windows版本解压后的资产
+我们以snowluma为例，这是snowluma-windows版本解压后的项目资产    
 ![snowluma目录结构](/onebot/img.png)
-双击启动launcher.bat，你将看到这样的日志
+双击启动launcher.bat，你将看到这样的日志    
 ```log
 C:\Users\Administrator\Downloads\SnowLuma-v1.14.22-win-x64>node ./index.mjs
 (node:3564) ExperimentalWarning: SQLite is an experimental feature and might change at any time
