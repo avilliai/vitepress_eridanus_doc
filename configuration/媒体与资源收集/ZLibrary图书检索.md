@@ -21,7 +21,7 @@ z_library:       # 填入你的 zlib 账号，此功能必须开启代理网络�
   download_operate_level: 998  # 书籍下载所需权限等级（默认极高，防带宽被刷爆）
 ```
 
-## 源码里真正支持的触发指令
+## 触发指令
 
 源码在 `GroupMessageEvent` 与 `PrivateMessageEvent` 下统一监听，支持群聊与私聊：
 

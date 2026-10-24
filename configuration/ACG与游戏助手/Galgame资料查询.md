@@ -7,7 +7,7 @@
 核心代码位于：`run/acg_infromation/galgame.py`  
 配置文件位于：`run/acg_infromation/config.yaml`
 
-## 源码里真正支持的交互指令
+## 交互指令
 
 指令匹配包含特定关键词触发，格式灵动随性：
 

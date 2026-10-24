@@ -5,7 +5,7 @@
 核心代码位于：`run/live2d/main.py`  
 配置文件位于：`run/live2d/config.yaml`
 
-## 源码里真正支持的控制指令
+## 控制指令
 
 - `/live2d on`：在群内或私聊发送，立即持久化保存配置并拉起桌面 Electron 桌宠进程。
 - `/live2d off`：关闭并退出桌面桌宠悬浮窗。

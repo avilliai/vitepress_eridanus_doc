@@ -8,7 +8,7 @@
 服务驱动位于：`service/bangumisearch.py`  
 配置文件位于：`run/acg_infromation/config.yaml`
 
-## 源码里真正支持的交互指令
+## 交互指令
 
 根据 `bangumi.py` 的精确匹配逻辑，指令分为以下几大类：
 

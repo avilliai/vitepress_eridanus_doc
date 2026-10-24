@@ -280,3 +280,43 @@ refresh_tools()
 ```
 
 底层 `func_map_loader.py` 会清空 `dynamic_imports` 并通过 `importlib.reload` 重新载入所有修改后的声明，秒级生效~
+
+
+---
+
+## 七、工具管控中心（`function_control.json`）与 Token 优化机制 🆕
+
+随着机器人支持的功能越来越丰富，如果将全部几十个插件的工具描述一次性塞进 System Prompt，会导致：
+1. **Token 费用与上下文急剧膨胀**：每轮对话仅 Schema 就要消耗数千 Token；
+2. **模型注意力涣散**：工具过多时，大模型更容易产生“幻觉”或错误调用无关工具。
+
+为此，框架引入了全局工具管控文件：`run/mai_reply/function_control.json`
+
+```json
+{
+  "disabled": [
+    "anime_game_service_func_collection",
+    "call_aiArtModerate",
+    "call_bangumi_search",
+    "call_character_identify",
+    "call_clear_all_history",
+    "call_delete_user_history",
+    "call_fortune",
+    "call_tts",
+    "call_user_data_query",
+    "garbage_collection",
+    "get_all_speakers",
+    "operate_group_censor",
+    "parse_cloud_music",
+    "search_with_official_api"
+  ],
+  "disabled_skills": [
+    "reply-live-test"
+  ]
+}
+```
+
+### 工作机制与优势
+1. **动态过滤**：`ReplyEngine` 在每次调用大模型前，都会通过 `function_control.load_disabled()` 实时比对并剔除被禁用的工具。
+2. **零重启解禁**：当你需要临时启用某个功能（例如网易云解析 `parse_cloud_music` 或运势 `call_fortune`）时，只需在 webui中将其从 `disabled` 列表中移除，下一秒对话立即生效！
+3. **已默认移除高消耗与冗余 Tools**：最新版本已默认精简了 `garbage_collection`（低频维护）、`call_character_identify`（高开销图像识别）等冷门工具，使日常问答的 Token 消耗大幅下降！

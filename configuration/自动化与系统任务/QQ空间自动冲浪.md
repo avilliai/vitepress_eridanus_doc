@@ -46,7 +46,7 @@ vtuber日常互动:
   负面提示词: "lowres, bad anatomy, bad hands, text, blurry, nsfw"
 ```
 
-## 源码里真正支持的 Master 控制指令
+## Master 控制指令
 
 源码在 `qzone.py` 中对发送者身份进行硬编码核对，必须是 Master（`common_config.basic_config.master.id`）才能使用：
 

@@ -19,7 +19,7 @@ telegram_stickers:
 
 > **重要依赖**：由于下载 Telegram 资源必须走 Telegram 官方 API，因此除了配置上面的 `bot_token` 外，`run/common_config/basic_config.yaml` 中的 `proxy` 也必须配置好可用的代理端口！
 
-## 源码里真正支持的触发指令
+## 触发指令
 
 源码在 `tg_sticker.py` 中通过正则提取消息：
 
