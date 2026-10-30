@@ -43,5 +43,4 @@ Eridanus 本质上是一个用 Python 编写的 **超强智能大脑（WebSocket
 
 - **[🧴 Windows 环境部署（新手推荐一键整合包）](/getting-started/windows)**：自带绿色 Python 环境与双击脚本，3 分钟就能跑起来！
 - **[🐧 Linux 服务器部署（24 小时云端守护）](/getting-started/linux)**：包含 systemd 守护进程与中文环境防乱码指南。
-- **[✨ 进阶依赖配置（FFmpeg 与中文字体）](/getting-started/glidthelily)**：深入了解多媒体转码、点歌与绘图防乱码配置。
 - **[🛠️ 常见启动与更新问题排查](/getting-started/更新失败)**：遇到 VC 运行库缺失、模块缺失、网络连接超时或配置合并疑问时来看这里。

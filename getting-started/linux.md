@@ -3,8 +3,8 @@ prev:
   text: 'Windows 环境部署'
   link: '/getting-started/windows'
 next:
-  text: '进阶环境配置'
-  link: '/getting-started/glidthelily'
+  text: '常见启动与更新问题排查'
+  link: '/getting-started/更新失败'
 ---
 
 # Linux 服务器部署
