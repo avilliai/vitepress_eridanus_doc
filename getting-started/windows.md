@@ -96,7 +96,7 @@ C:\Users\Administrator\Downloads\SnowLuma-v1.14.22-win-x64>node ./index.mjs
 1. 双击运行根目录下的 **`启动脚本.bat`**！
 2. 看到控制台输出绿色的 `Connected to websocket` 之后，用浏览器打开 `http://127.0.0.1:5007` 就能看到Eridanus的 WebUI 管理后台啦~ (初始账号密码都是`eridanus`)
 
-接下来就该配置对话api啦！
+下一步： [配置ai对话](/configuration/AI对话与语音/新版AI对话_MaiReply) 
 
 ---
 
