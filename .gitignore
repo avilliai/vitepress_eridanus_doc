@@ -32,3 +32,6 @@ pnpm-debug.log*
 *.py
 __pycache__/
 .idea/
+
+# Cloudflare build copy output
+docs/

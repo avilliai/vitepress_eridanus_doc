@@ -35,6 +35,7 @@ const devSidebar = [
 ]
 
 export default defineConfig({
+  ignoreDeadLinks: true,
   base: process.env.BASE_PATH || '/',
   title: "Eridanus",
   description: "全能型多模态二次元 QQ 机器人框架与文档",

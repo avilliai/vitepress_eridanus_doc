@@ -1,7 +1,7 @@
 {
   "scripts": {
     "docs:dev": "vitepress dev",
-    "docs:build": "vitepress build",
+    "docs:build": "vitepress build && node -e \"const fs=require('fs');fs.mkdirSync('docs/.vitepress',{recursive:true});fs.cpSync('.vitepress/dist','docs/.vitepress/dist',{recursive:true});\"",
     "docs:preview": "vitepress preview"
   },
   "devDependencies": {
