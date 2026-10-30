@@ -209,3 +209,49 @@ MaiReply RAG 在架构底层实现了严苛的**防刷与成本保护措施**：
 所有向量与结构化记忆均保存在单文件 SQLite 数据库中：`data/dataBase/mai_rag_memory.db`。  
 数据库开启了 WAL（Write-Ahead Logging）高并发模式，崩溃不丢数据。  
 如果你需要彻底重置所有记忆重新开始，只需在关闭 Bot 后直接删除该 `.db` 文件，重启 Bot 时系统会自动重建全新的空数据库。
+
+### 最佳组合 RAG+Slots
+这是我目前在使用的配置，目前来看，长期记忆表现较好。
+webui打开`mai_reply 新版ai对话.config`，或编辑`Eridanus/run/mai_reply/config.yaml`
+```yaml
+context: # 上下文相关配置
+
+  user_memory_mode: "slots"   
+  group_memory_mode: "none"
+  #....演示需要，隐藏了其他配置项.....
+  user_trigger_turns: 3               # 用户记忆更新间隔（无论是槽位事实还是主观印象，每进行几轮对话触发一次更新，默认3轮）
+
+
+
+  Impression:
+    #....演示需要，隐藏了其他配置项.....
+    enable_impression: false   # 是否启用用户印象记忆（跨会话）
+
+  Slots: # Slots 结构化记忆槽位系统
+    enable_memory_slots: true   # 是开启对用户的记忆槽位
+    #....演示需要，隐藏了其他配置项.....
+    memory_slot_max_chars: 80    # 单条槽位记忆最大字数限制
+    enable_group_memory_slots: false # 关闭群聊记忆槽位(因为有RAG)
+
+```
+我们仅开启私聊Slots，用以强化对单个用户的聊天效果。    
+webui打开`mai_reply 新版ai对话.rag`，或编辑`Eridanus/run/mai_reply/rag.yaml`
+```yaml
+enable: true  
+integration_mode: augment  #兼容slots功能。如为replace则slots和impression都会默认关闭
+#....演示需要，隐藏了其他配置项.....
+private:
+  enable: true
+group:
+  enable: true
+  #....演示需要，隐藏了其他配置项.....
+  observe_untriggered: true  # 旁观消息也做语义分析并参与检索，但绝不替群友抢答
+embedding:
+  provider: openai  # cloudflare: Workers AI；openai: 兼容接口 / 本地 Embedding 服务
+  base_url: http://api.apollodorus.xyz/v1
+  endpoint: embeddings
+  model: qwen3-embedding-4b
+  api_key: ''
+  #....演示需要，隐藏了其他配置项.....
+
+```

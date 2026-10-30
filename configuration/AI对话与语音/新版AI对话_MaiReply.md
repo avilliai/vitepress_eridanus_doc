@@ -67,7 +67,13 @@ trigger_llm:   #ai判断是否触发
 当`whitelist_enabled`为`false`，所有群的每条消息都会发给bot，由`trigger_llm`自行判断是否应当回复。   
 ## Memory Slots 记忆槽位机制 | Impression 印象机制
 这是我们为bot设置的两套长期记忆机制，一般而言，任选其一即可。   
-两套机制均使用`trigger_llm`中配置的模型开展工作。
+两套机制均使用`trigger_llm`中配置的模型开展工作。   
+
+::: tip 免费鸡蛋
+除去这两套机制，Eridanus还设计了第三套机制[RAG](/configuration/AI对话与语音/RAG)，但由于需要额外配置embedding模型，这里不展开讨论
+:::
+
+
 ```yaml
 context: # 上下文相关配置
   max_turns: 20   # 私聊会话最多保留多少轮(一轮=一问一答)
