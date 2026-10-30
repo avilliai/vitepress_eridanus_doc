@@ -60,7 +60,6 @@ export default defineConfig({
             { text: '快速开始导览', link: '/getting-started/' },
             { text: 'Windows 环境部署', link: '/getting-started/windows' },
             { text: 'Linux 环境部署', link: '/getting-started/linux' },
-            { text: '锦上添花 (扩展工具配置)', link: '/getting-started/glidthelily' },
             { text: '常见启动与更新问题排查', link: '/getting-started/更新失败' }
           ]
         }
