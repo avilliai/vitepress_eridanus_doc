@@ -35,11 +35,11 @@ const devSidebar = [
 ]
 
 export default defineConfig({
-  base: process.env.BASE_PATH || '/vitepress_eridanus_doc/',
+  base: process.env.BASE_PATH || '/',
   title: "Eridanus",
   description: "全能型多模态二次元 QQ 机器人框架与文档",
   head: [
-    ['link', { rel: 'icon', href: (process.env.BASE_PATH || '/vitepress_eridanus_doc/') + 'logo.ico' }]
+    ['link', { rel: 'icon', href: '/logo.ico' }]
   ],
   themeConfig: {
     logo: '/eridanus.svg',
