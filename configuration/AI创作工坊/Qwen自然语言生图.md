@@ -17,7 +17,7 @@ ai绘画:
   qwen_image_cookie: "your_modelscope_cookie_here"
 ```
 
-## 源码里真正支持的触发指令
+## 触发指令
 
 源码在 `qwen_img.py` 中通过严格的前缀判断：
 

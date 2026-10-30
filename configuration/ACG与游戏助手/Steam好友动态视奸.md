@@ -7,7 +7,7 @@
 核心代码位于：`run/anime_game_service/SteamSnooping.py`  
 配置文件位于：`run/anime_game_service/config.yaml` 的 `steamsnooping` 区块
 
-## 源码里真正支持的交互指令
+## 交互指令
 
 指令均不区分大小写，支持以下完整管理链路：
 

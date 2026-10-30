@@ -6,12 +6,11 @@ Eridanus 最新版本已彻底淘汰并移除了旧版 `run/ai_voice` 模块，�
 
 核心代码位于：`run/tts_v2/`  
 配置文件位于：`run/tts_v2/config.yaml`
-
+webui中为：`tts_v2.config`
 ---
 
-## 真正的群聊与私聊指令体系
+## 指令
 
-代码在 `run/tts_v2/main.py` 中监听消息事件，支持以下丰富交互指令：
 
 ### 1. 查询可用角色列表
 直接发送以下任意指令，即可快速获取当前系统加载的所有可用音色与快捷别名：
@@ -34,8 +33,16 @@ Eridanus 最新版本已彻底淘汰并移除了旧版 `run/ai_voice` 模块，�
 源码会智能识别斜杠与“说”字之间的角色候选名，自动匹配对应的 TTS 后端引擎并生成语音消息发送至聊天窗口。
 
 ---
-
-## 强大的多发音引擎生态矩阵
+## 默认设置
+```yaml
+tts: # 全局通用配置
+  default_speaker: "natuki"   # 默认发音人，来自tts engines提供的speaker
+  length_limit: 150           # 最大单次合成字符长度上限（超长自动截断）
+  lang_type: "JP"             # 目标发音语言（JP 会将中文自动翻译为自然日文）
+  api_key: ""                 # 不填也能用
+```
+当有人要求bot调用函数`说`某句话时，使用的默认配置。    
+## tts engines
 
 `run/tts_v2` 内置支持了多套成熟的声音合成方案，涵盖数百位二次元经典声线：
 
@@ -61,69 +68,58 @@ Eridanus 最新版本已彻底淘汰并移除了旧版 `run/ai_voice` 模块，�
 收录基沃托斯 95 位学生角色（支持 `JP_角色名` 或直接输入角色名，大小写通用）：
 - 如：`Mari` (玛丽), `Arona` (阿洛娜), `Hina` (日奈), `Yuuka` (优香), `Shiroko` (白子), `Aris` (爱丽丝), `Aru` (亚津子/阿露), `Hoshino` (星野), `Koharu` (小春), `Noa` (诺亚), `Saori` (纱织), `Miyako` (宫子), `Miyu` (美游) 等共 95 位。
 
-### 4. 搞笑与整活音源：电棍 OTTO
+### 4. 电棍 OTTO
 基于活字印刷音源拼接，生动还原电棍鬼畜语调，适合搞笑、整蛊互动。
 
-### 5. 经典声音克隆：GPT-SoVITS
+### 5. GPT-SoVITS
 支持自建或代理的 GPT-SoVITS 声音克隆服务，配备参考音频切片与精准情感复刻。
-
+需自行配置
+```yaml
+gpt_sovits:
+  api_base: ""  # 填写自建或代理服务地址。例如 http://127.0.0.1:9880
+  api_key: ""   # 留空=直连服务端；非空=经过API鉴权
+  ref_audio_path: output/slicer_opt/output.wav_0009342720_0009558400.wav
+  ref_text: 怎么啊？如果有你在也不放心，那就干脆给我也装个限制器或者炸弹呗。
+  speakers:
+    - 达妮娅
+```
 ### 6. Apollodorus 云端语音网关 & 本地 VITS
 提供统一云端在线备用通道，以及经典 `VITS-simple-api` 本地兼容支持。
 
----
+### 7. Breeze tts
+强大的语音合成模型，需自行部署/配置
 
-## 自动多语言翻译引擎（`lang_type: JP`）
-
-许多高质量日系音色模型在直接朗读中文汉字时容易发音怪异或吞字。  
-TTS v2 创新引入了**全自动智能翻译层（`run/tts_v2/service/translator.py`）**：
-- 当配置 `lang_type: "JP"` 时，用户输入的中文文本会在毫秒级由轻量 LLM 自动翻译成地道、自然、符合口语语感的日文假名与汉字；
-- 随后再送入对应的日语音色引擎进行合成；
-- API Key 自动复用 `mai_reply` 中的 `trigger_llm` 配置，无需额外付费或重复配置！
-
----
-
-## 核心配置一览（`run/tts_v2/config.yaml`）
-
+::: tip
+Eridanus开发者的网站`http://api.apollodorus.xyz/` 提供了一定量的Breeze tts接口配额，可前往群`1050663831`申请。   
+自部署服务端`connection_mode`填写为`direct`并配置`direct_url`即可使用。
+:::
 ```yaml
-tts: # 全局通用配置
-  default_speaker: "natuki"   # 默认发音人（未指定角色时使用）
-  length_limit: 150           # 最大单次合成字符长度上限（超长自动截断）
-  lang_type: "JP"             # 目标发音语言（JP 会将中文自动翻译为自然日文）
-  api_key: ""                 # 翻译/在线接口 API Key，留空则自动继承 mai_reply 中的配置
-
-gpt_sovits:                   # GPT-SoVITS 专属配置
-  api_base: ""                # 填入自建或代理服务地址（http://api.apollodorus.xyz/ 提供接口）
-  api_key: ""                 # 留空=直连服务端；非空=经过API鉴权
-  ref_audio_path: output/slicer_opt/output.wav_0009342720_0009558400.wav
-  ref_text: "怎么啊？如果有你在也不放心，那就干脆给我也装个限制器或者炸弹呗。"
-  speakers:
-    - 达尼亚
-  top_k: 15
-  top_p: 1
-  temperature: 1
-  text_split_method: cut1
-  speed_factor: 0.91
-
-pretty_derby:
-  speaker: "natuki"
-
-holive:
-  speaker: "MoriCalliope"
-
-blue_archive:
-  speaker: "JP_Mari"
-
-otto:
-  endpoint: "https://ottohzys.wzq02.top"
-
-vits:
-  speaker: "绫地宁宁"
-  base_url: "http://127.0.0.1:5009"
-
-apollodorus:
-  base_url: "http://api.apollodorus.xyz/v1"
+breeze_tts:
+  connection_mode: "gateway"  # 连接模式: "gateway" (走网关需 api_key) 或 "direct" (直连自建服务端无需 api_key)
+  gateway_url: "http://api.apollodorus.xyz"
+  direct_url: ""
   api_key: ""
+  mode: "breeze_tts"  # 接口模式: "breeze_tts" 或 "openai_speech"  /breeze/tts或/v1/audio/speech
+  auto_generate_instruction: true # 自动生成 instruction 开关: 由 trigger_llm 结合文本与情绪自动生成语气指导语
+  auto_add_audio_tags: false # 自动添加音频表现力标签开关: 由 trigger_llm 自动在台词中适度添加 [叹气]、[轻笑] 等表现力标签
+  default_instruction: "轻柔，温和，慵懒，俏皮"   # 默认配音语气指导语 (当未显式指定且自动生成关闭或失败时使用)
+
+  cfg_scale: 4.0      # 带指导语/声音设计时推荐 4.0，无指导语时自动 1.0
+  voice: "dania"      # 发音人音色标识 (dania / 达妮娅)
+  model: "breeze-tts-2" # 模型名称
+  format: "wav"       # 音频格式: wav / pcm
+  speakers:  # 可用发音人别名列表
+    - 达妮娅
+    - dania
+    - breeze
+    - breeze-tts
+    - breeze-tts-2
 ```
+
+
+
+---
+
 
 ## 如果你想修改，应该改哪里？
 

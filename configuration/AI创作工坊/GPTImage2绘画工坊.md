@@ -1,11 +1,16 @@
 # GPTImage2 绘画工坊
+::: tip 免费鸡蛋
+我们为Eridanus用户准备了若干免费接口，包括`gptimage2`。   
+可前往qq群`1050663831`获取      
+网关在`http://api.apollodorus.xyz/`
+:::
 
 如果说传统的 SD 还要到处找各种生涩难懂的 Danbooru 英文 Tag，那 GPTImage2 就是彻彻底底的自然语言魔法啦。只要你用中文随口描绘你心中的画面，我就能帮你画出色彩斑斓的插画哦~
 
 核心代码位于：`run/ai_generated_art/gptimage2.py`  
 配置文件位于：`run/ai_generated_art/config.yaml` 的 `gptimage2` 区块
 
-## 源码里真正支持的交互指令
+## 交互指令
 
 - `/gpt <画面描述>` 或 `/生图 <画面描述>`
   - 示例：`/gpt 蓝发短发少女坐在窗台边喝热可可，窗外飘着细雪，温暖治愈的二次元插画风格`
@@ -24,7 +29,7 @@ gptimage2:
   apikey: "your_gptimage_key_here"          # 你的接口授权密钥
   model: "gpt-image-2.5-flare"              # 推荐模型：gpt-image-2.5-flare，也可选 nano-banana-2
   aspect_ratio: "1:1"                       # 默认画面比例，可选 1:1, 16:9, 4:3, 9:16 等
-  resolution: "1K"                          # 分辨率：1K 极速稳定；2K 更精细但消耗双倍配额
+  resolution: "2K"                          # 分辨率：1K 极速稳定；2K 更精细但消耗双倍配额
   max_retry: 5                              # 请求失败时的最大重试次数
   权限要求: 0                               # 最低权限要求（0 表示所有群友均可使用）
   接管sd: false                             # 是否全面接管原本的 SD 生图指令

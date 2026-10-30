@@ -7,7 +7,7 @@ Eridanus 深度支持了官方 NovelAI 的最新生成 API（包括 V3 与 V4 �
 核心代码位于：`run/ai_generated_art/aiDraw.py`  
 配置文件位于：`run/ai_generated_art/config.yaml` 的 `ai绘画` 区块
 
-## 源码里真正支持的交互指令
+## 交互指令
 
 请认准下面的精确前缀（**指令与 Tag 之间必须有空格**）：
 

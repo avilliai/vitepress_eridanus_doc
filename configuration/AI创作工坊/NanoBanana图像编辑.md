@@ -7,7 +7,7 @@ Nano-Banana 接入了基于 Gemini 多模态大模型的图像理解与改图编
 核心代码位于：`run/ai_generated_art/gemini_nano_banana.py`  
 配置文件位于：`run/ai_generated_art/config.yaml`
 
-## 源码里真正支持的交互指令
+## 交互指令
 
 整个编辑流程采用状态机交互设计，认准以下特殊指令：
 
