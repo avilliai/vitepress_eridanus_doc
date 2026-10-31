@@ -41,7 +41,7 @@ RAG 记忆是在生成 Bot 回复前，由 `run/mai_reply/service/prompt_builder
 
 【关于当前对话用户 (发言者) 的事实记忆】：
 - 用户赖哥在莫斯科留学，专业为政治学，正处于毕业设计高压期
-- 用户讨厌跨性别人士
+- 用户喜欢做意面
 - 双方已相识5年，曾在2021年首次为Bot命名
 
 【群内其他成员简短认知（你在群里也认识他们）】：
@@ -267,12 +267,11 @@ retrieval:
 
 ::: warning 抄作业提醒
 integration_mode: augment 意味着在使用RAG的同时，开启Slots，将增加tokens开销。
-而RAG和Slots的功能定位在很大程度上是存在重叠的。   
+而RAG和Slots的功能定位在一定程度上是存在重叠的。   
 我这么用只是为了平滑更新。考虑到只用RAG功能而放弃原有Slots的话，一些使用RAG之前的bot关于用户的重要记忆就会丢失，因此我计划过一段时间RAG效果好的话(用户数据已在RAG数据库中累积到一定程度)，就关掉Slots。
 
-**因此，如果你是新搭建bot，并不一定要开RAG+Slots。**   
-integration_mode: replace  既可，RAG会自动禁用开启的Slots和Impression    
-
+**因此，如果你是新搭建bot，并不一定要开RAG+Slots。**    
+**如果你觉得bot RAG系统的长期记忆表现没有达到预期，可以使用此方案，作为RAG的补充**。
 :::
 
 webui打开`mai_reply 新版ai对话.config`，或编辑`Eridanus/run/mai_reply/config.yaml`
@@ -280,7 +279,7 @@ webui打开`mai_reply 新版ai对话.config`，或编辑`Eridanus/run/mai_reply/
 context: # 上下文相关配置
 
   user_memory_mode: "slots"   
-  group_memory_mode: "none"
+  group_memory_mode: "slots"   #下边儿关了就行
   #....演示需要，隐藏了其他配置项.....
   user_trigger_turns: 5               # 用户记忆更新间隔（无论是槽位事实还是主观印象，每进行几轮对话触发一次更新，默认3轮）
 
@@ -297,7 +296,8 @@ context: # 上下文相关配置
     enable_group_memory_slots: false # 关闭群聊记忆槽位(因为有RAG)
 
 ```
-我们仅开启私聊Slots，用以强化对单个用户的聊天效果。    
+我们仅开启私聊Slots，用以强化对单个用户的聊天效果，关闭`enable_group_memory_slots`，因为RAG的群聊表现更加优秀。    
+
 webui打开`mai_reply 新版ai对话.rag`，或编辑`Eridanus/run/mai_reply/rag.yaml`
 ```yaml
 enable: true  
@@ -325,7 +325,7 @@ archive:
 
 ## 性能优化与 API 配额保护机制
 
-有用户担心：*“群里消息那么多，后台每次提取事实和向量化会不会狂刷我的 API，造成账单爆炸？”*
+*“群里消息那么多，后台每次提取事实和向量化会不会狂刷我的 API，造成账单爆炸？”*
 
 MaiReply RAG 在架构底层实现了严苛的**防刷与成本保护措施**：
 
