@@ -94,7 +94,7 @@ private:
 group:
   enable: true  # 是否在群聊中启用 RAG
   whitelist_enabled: false  # true: 仅在下方 whitelist 群中启用；false: 对所有群生效
-  whitelist: []  # 允许启用 RAG 的群号列表，如 [1050663831]
+  whitelist: []  # 允许启用 RAG 的群号列表，留空不动则自动使用trigger_llm中的白名单群配置
   observe_untriggered: true  # 是否沉淀旁观群消息（群友之间日常闲聊即使没艾特Bot，也会自动归档为背景记忆）
 ```
 
