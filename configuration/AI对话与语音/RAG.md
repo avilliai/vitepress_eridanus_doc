@@ -151,8 +151,8 @@ embedding:
 
 ```yaml
 archive:
-  private_turns: 3  # 私聊每累计 3 轮完整对话（一问一答）触发一次归档与事实提取
-  group_messages: 10  # 群聊每累计 10 条用户消息触发一次归档与事实提取
+  private_turns: 6  # 私聊每累计 6 轮完整对话（一问一答）触发一次归档与事实提取
+  group_messages: 15  # 群聊每累计 15 条用户消息触发一次归档与事实提取
   idle_seconds: 600  # 空闲归档：若未达上述条数但会话静默超过 10 分钟，自动将缓冲区落盘
   max_buffer_chars: 6000
   chunk_chars: 1800  # 长对话切片最大字符数
@@ -180,6 +180,7 @@ retrieval:
 ```
 
 ---
+
 ## 最佳组合 RAG+Slots
 这是我目前在使用的配置，目前来看，长期记忆表现较好。
 webui打开`mai_reply 新版ai对话.config`，或编辑`Eridanus/run/mai_reply/config.yaml`
