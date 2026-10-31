@@ -190,7 +190,7 @@ context: # 上下文相关配置
   user_memory_mode: "slots"   
   group_memory_mode: "none"
   #....演示需要，隐藏了其他配置项.....
-  user_trigger_turns: 3               # 用户记忆更新间隔（无论是槽位事实还是主观印象，每进行几轮对话触发一次更新，默认3轮）
+  user_trigger_turns: 6               # 用户记忆更新间隔（无论是槽位事实还是主观印象，每进行几轮对话触发一次更新，默认3轮）
 
 
 
