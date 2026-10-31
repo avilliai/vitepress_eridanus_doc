@@ -253,5 +253,7 @@ embedding:
   model: qwen3-embedding-4b
   api_key: ''
   #....演示需要，隐藏了其他配置项.....
-
+archive:
+  private_turns: 6  # 每6轮完整用户/Bot对话归档一次并抽取Mem0原子事实
+  group_messages: 15  # 群内累计15条用户消息归档，Bot发言一起沉淀
 ```
