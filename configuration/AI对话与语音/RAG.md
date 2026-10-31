@@ -152,7 +152,7 @@ embedding:
 ```yaml
 archive:
   private_turns: 6  # 私聊每累计 6 轮完整对话（一问一答）触发一次归档与事实提取
-  group_messages: 15  # 群聊每累计 15 条用户消息触发一次归档与事实提取
+  group_messages: 10  # 群聊每累计 10 条用户消息触发一次归档与事实提取
   idle_seconds: 600  # 空闲归档：若未达上述条数但会话静默超过 10 分钟，自动将缓冲区落盘
   max_buffer_chars: 6000
   chunk_chars: 1800  # 长对话切片最大字符数
@@ -318,7 +318,7 @@ embedding:
   #....演示需要，隐藏了其他配置项.....
 archive:
   private_turns: 6  # 每6轮完整用户/Bot对话归档一次并抽取Mem0原子事实
-  group_messages: 15  # 群内累计15条用户消息归档，Bot发言一起沉淀
+  group_messages: 10  # 群内累计15条用户消息归档，Bot发言一起沉淀
 ```
 
 ---
