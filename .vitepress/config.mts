@@ -81,8 +81,8 @@ export default defineConfig({
           text: '🤖 AI 对话与人设语音',
           items: [
             { text: '新版人格对话 (MaiReply)', link: '/configuration/AI对话与语音/新版AI对话_MaiReply' },
-            { text: 'ai对话拓展组件(RAG)', link: '/configuration/AI对话与语音/新版AI对话_MaiReply' },
-            { text: '经典模式 AI 对话', link: '/configuration/AI对话与语音/RAG' },
+            { text: 'ai对话拓展组件(RAG)', link: '/configuration/AI对话与语音/RAG' },
+            { text: '旧版AI对话(ai_llm)', link: '/configuration/AI对话与语音/经典AI对话' },
             { text: '个性化语音合成 (TTS)', link: '/configuration/AI对话与语音/文本转语音_TTS' },
             { text: 'Live2D 桌面宠物与形象', link: '/configuration/AI对话与语音/Live2D桌宠与网页形象' },
             { text: 'CLI 自动化终端助手', link: '/configuration/AI对话与语音/CLI编程助手' }
