@@ -43,12 +43,12 @@ sd还可以用来让bot发空间，以及在对话中随时向你发一张可爱
 ```yaml
 # Eridanus项目群提供的api站有免费的sd接口
 ai绘画:
-  sd画图: true                        # 是否开启 SD 本地生图对接
+  sd画图: true                       
   sdUrl:                             # 你的 SD-WebUI API 监听地址
-    - "http://127.0.0.1:7860"
-  apikey: ""                         # WebUI 如设置了 auth 可填
-  sd审核和反推api: ""                  # WD14 反推插件地址（可与 sdUrl 相同）
-  sd默认启动模型: "waiIllustriousSDXL_v170.safetensors"
+    - "http://api.apollodorus.xyz"
+  apikey: ""                         # WebUI 如设置了 auth 可填。你在http://api.apollodorus.xyz申请的apikey同样填在这里
+  sd审核和反推api: "http://api.apollodorus.xyz"                  # WD14 反推插件地址（可与 sdUrl 相同）
+  sd默认启动模型: "waiIllustriousSDXL_v170.safetensors"  #底模
   反推和审核使用模型: "wd14-vit-v2-git"
   sd画图默认分辨率: "1024,1536"       # 默认生成分辨率：宽,高（中间不要留空格）
   sd最大分辨率: "1600,1600"           # 限制最大生成尺寸，防止爆显存

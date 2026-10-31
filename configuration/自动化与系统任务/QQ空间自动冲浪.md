@@ -1,45 +1,25 @@
 ﻿# QQ 空间自动冲浪
 
+::: tip 免费鸡蛋
+我们为Eridanus用户准备了若干免费接口，包括空间功能需要用到的`stable diffusion`。   
+可前往qq群`1050663831`获取      
+网关在`http://api.apollodorus.xyz/`
+:::
 QQ 空间插件为 Bot 赋予了极具活人感的空间互动能力：利用 Stable Diffusion 根据设定提示词自动生成专属人设配图，结合 LLM 生成生活动态说说，并且定时巡检好友评论进行机智风趣的互动回复。
 
 ## 源码入口与核心配置
 
 - **代码入口**：`run/qq_zone/qzone.py`
 - **配置文件路径**：`run/qq_zone/config.yaml`
+- **webui中**：`qq空间.config`
 - **权限限制**：所有手动控制与测试命令**严格限定 Master** 权限触发！
 
 配置片段包含了保活、动态互动、定时任务与绘画提示词：
 
 ```yaml
-cookie设置:
-  保活: true               # 是否开启保活探测
-  保活间隔_秒: 1800        # 保活探测间隔（建议 >= 1800秒，温和低频防风控）
-  失效通知: true           # Cookie 失效时私聊通知 Master
-  失效时自动重新登陆: false # 强烈建议保持 false，避免循环触发风控
-
-定时发空间:
-  早安:
-    enable: true
-    time: 8/30           # 每天 08:30 推送早安说说 (时/分)
-    绘制图片: true         # 是否通过 SD 自动绘制早安插画
-  晚安:
-    enable: true
-    time: 22/30          # 每天 22:30 推送晚安说说
-    绘制图片: true
-
-vtuber日常互动:
-  enable: true             # 是否开启活人感日常碎碎念动态
-  巡检间隔_分钟: 60        # 巡检间隔
-  每日最大发送次数: 3      # 每天最多发送条数
-  触发概率: 0.35           # 白天活跃时段判断触发概率
-  活跃时间段: 10-21        # 仅在白天 10点~21点 之间发说说
-  绘制图片概率: 0.7        # 是否为日常动态配图
-
-动态互动:
-  enable_comment_reply: true  # 是否自动回复空间好友在 Bot 动态下的评论
-  check_interval_秒: 180      # 评论巡检轮询间隔（秒）
-  reply_guidance: "口吻生动鲜活，像关系很好的朋友或Vtuber在自己动态下神回复！严禁车轱辘复读相同的借口或固定句式，针对不同好友给出不同角度的吐槽、反问、接梗；严禁使用任何括号动作描写。"
-
+sd绘画设置:
+   sdUrl: "http://api.apollodorus.xyz" # Stable Diffusion API 地址
+   apikey: "" #sd apikey，从http://api.apollodorus.xyz获取，或者自建sd服务端
 角色绘图设置:
   基础形象设定: "1girl, teenager, solo, grey hair, gradient hair, blue hair..."
   画风与模型设定: "(masterpiece:1.2), extremely detailed, lineart..."
