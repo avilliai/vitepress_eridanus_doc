@@ -24,3 +24,42 @@
 .VPHero .image-bg {
     display: none !important;
 }
+
+/* 将搜索框调整到导航栏右侧（在导航菜单之后） */
+@media (min-width: 768px) {
+  .VPNavBar .content-body {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .VPNavBar .content-body > .menu {
+    order: 0;
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .VPNavBar .content-body > .search {
+    order: 1;
+    flex-grow: 0;
+    padding-left: 16px;
+    padding-right: 8px;
+  }
+
+  .VPNavBar .content-body > .translations {
+    order: 2;
+  }
+
+  .VPNavBar .content-body > .appearance {
+    order: 3;
+  }
+
+  .VPNavBar .content-body > .social-links {
+    order: 4;
+  }
+
+  .VPNavBar .content-body > .extra {
+    order: 5;
+  }
+}
