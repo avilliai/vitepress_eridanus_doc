@@ -1,20 +1,20 @@
 # RAG 长期记忆系统
 
 ::: tip 功能定位
-MaiReply RAG 是专为 Eridanus 架构设计的**下一代长期记忆检索增强系统**。  
+CoreReply RAG 是专为 Eridanus 架构设计的**下一代长期记忆检索增强系统**。\
 它融合了 **Mem0 原子事实提取** 与 **多轮会话情境切片（Episodes）**，并原生支持**群聊多发言人（Multi-Speaker）感知**。  
-你可以在 WebUI 的 `mai_reply 新版ai对话.rag` 找到其配置面板，或直接编辑 `run/mai_reply/rag.yaml`。
+你可以在 WebUI 的 `core_reply 新版ai对话.rag` 找到其配置面板，或直接编辑 `run/core_reply/rag.yaml`。
 :::
 
 ---
 
-## 什么是 MaiReply RAG？
+## 什么是 CoreReply RAG？
 
 传统的群聊 Bot 长期记忆常常面临两难困境：
 1. **传统向量检索（Naive RAG）**：把聊天记录按固定字数机械切片后存入向量库。检索时经常召回零散无序、缺乏主谓语的聊天碎片，不仅消耗大量 Token，还容易导致模型胡言乱语。
 2. **传统记忆槽位（Slots / Impression）**：由大模型对每个用户或群维护固定槽位（如“基础档案”、“喜好”等）。虽然结构清晰，但槽位容量有限，长远来看难以承载数十上百天复杂的真实经历，且每次交互都需要注入全部槽位，非常挤占上下文。
 
-**MaiReply RAG 采用了双层混合架构**：
+**CoreReply RAG 采用了双层混合架构**：
 - **原子事实层（Mem0 架构）**：后台自动调用 `trigger_llm`，从真实聊天中抽取结构化的**原子事实**（例如 *“用户A在莫斯科留学，近期正准备毕业论文”*、*“用户B喜欢机械键盘”*、*“Bot答应了明早叫赖哥起床”*）。
 - **情境切片层（Episodes）**：将多轮真实互动的完整对话上下文结构化归档为片段，保留发言人、昵称与时间线。当用户问起“还记得我们上次聊什么吗”时，能精准还原历史现场。
 - **群聊多发言人（Multi-Speaker）智能感知**：在群聊中，Bot 不仅能记住正在跟自己对话的人，还能通过极低 Token 消耗（每人 1 句精炼认知）识别群内其他在场/被提及的群友，真正做到“认识群里的大家”。
@@ -27,7 +27,7 @@ MaiReply RAG 是专为 Eridanus 架构设计的**下一代长期记忆检索增�
 许多用户好奇：*“RAG 查出来的记忆究竟放在哪里了？为什么有时候看得到，有时候看不到？”*
 
 ### 1. 注入位置
-RAG 记忆是在生成 Bot 回复前，由 `run/mai_reply/service/prompt_builder.py` 动态注入到 **System Prompt（系统提示词）** 内部的。  
+RAG 记忆是在生成 Bot 回复前，由 `run/core_reply/service/prompt_builder.py` 动态注入到 **System Prompt（系统提示词）** 内部的。\
 它位于人格基础设定的下方、对话历史（Chat History）的上方，作为 Bot 思考与回复时的“潜意识背景认知”。
 
 ### 2. 注入模块结构
@@ -64,7 +64,7 @@ RAG 记忆是在生成 Bot 回复前，由 `run/mai_reply/service/prompt_builder
 
 ## 快速配置指南
 
-配置文件位于 `run/mai_reply/rag.yaml`（或在 WebUI 的 `mai_reply 新版ai对话.rag` 中配置）。
+配置文件位于 `run/core_reply/rag.yaml`（或在 WebUI 的 `core_reply 新版ai对话.rag` 中配置）。
 
 ### 1. 核心总开关与接入模式
 
@@ -160,7 +160,7 @@ archive:
 ```
 
 ::: tip 提取模型说明
-原子事实提取（Mem0 机制）无需单独配置大模型 API，系统会自动复用你已经在 `run/mai_reply/config.yaml` 中配置好的 **`trigger_llm`** 廉价/快速小模型进行提取，速度快、成本极低！
+原子事实提取（Mem0 机制）无需单独配置大模型 API，系统会自动复用你已经在 `run/core_reply/config.yaml` 中配置好的 **`trigger_llm`** 廉价/快速小模型进行提取，速度快、成本极低！
 :::
 
 ---
@@ -203,7 +203,7 @@ retrieval:
 > **用户**：*“那家店叫什么来着？”*
 
 * **传统 RAG 的死穴**：直接拿 `"那家店叫什么来着？"` 去计算向量检索。向量模型根本不知道“那家店”是指餐馆、咖啡馆还是服装店，检索必然翻车。
-* **MaiReply 的自适应回溯**：
+* **CoreReply 的自适应回溯**：
   系统在后台内置了指代词检测正则（`上次`、`之前`、`那[个/家/件/天]`、`还记得`、`昨天`等）。一旦触发，系统就会向前截取 **`context_messages`（默认 4 条）**、上限 **`context_chars`（默认 700 字符）** 的对话历史拼入检索词中：
   ```text
   那家店叫什么来着？
@@ -218,7 +218,7 @@ retrieval:
 
 #### 常见场景配置预设推荐
 
-你可以直接参考以下场景，将配置复制到 `run/mai_reply/rag.yaml` 的 `retrieval` 中：
+你可以直接参考以下场景，将配置复制到 `run/core_reply/rag.yaml` 的 `retrieval` 中：
 
 ##### 场景 1：标准平衡型（默认，适合小窗口模型 / 节约免费 API 配额）
 适合对话较多、希望每次调用极其轻快、严格控制上下文长度的场景：
@@ -274,7 +274,7 @@ integration_mode: augment 意味着在使用RAG的同时，开启Slots，将增�
 **如果你觉得bot RAG系统的长期记忆表现没有达到预期，可以使用此方案，作为RAG的补充**。
 :::
 
-webui打开`mai_reply 新版ai对话.config`，或编辑`Eridanus/run/mai_reply/config.yaml`
+webui打开`core_reply 新版ai对话.config`，或编辑`Eridanus/run/core_reply/config.yaml`
 ```yaml
 context: # 上下文相关配置
 
@@ -298,7 +298,7 @@ context: # 上下文相关配置
 ```
 我们仅开启私聊Slots，用以强化对单个用户的聊天效果，关闭`enable_group_memory_slots`，因为RAG的群聊表现更加优秀。    
 
-webui打开`mai_reply 新版ai对话.rag`，或编辑`Eridanus/run/mai_reply/rag.yaml`
+webui打开`core_reply 新版ai对话.rag`，或编辑`Eridanus/run/core_reply/rag.yaml`
 ```yaml
 enable: true  
 integration_mode: augment  #兼容slots功能。如为replace则slots和impression都会默认关闭
@@ -327,7 +327,7 @@ archive:
 
 *“群里消息那么多，后台每次提取事实和向量化会不会狂刷我的 API，造成账单爆炸？”*
 
-MaiReply RAG 在架构底层实现了严苛的**防刷与成本保护措施**：
+CoreReply RAG 在架构底层实现了严苛的**防刷与成本保护措施**：
 
 1. **防抖合并批量请求（Debounce & Batch Embedding）**：  
    在同一个归档周期内，情境对话切片（Episodes）和 Mem0 提取出的多条事实记忆，会经过 **1.0 秒防抖队列**自动打包合并。系统将多条文本合并为一个 HTTP 请求发送至 Embedding 接口（默认单次批处理上限 `batch_size: 16`），避免了逐条单发带来的 HTTP 握手开销与日志刷屏。

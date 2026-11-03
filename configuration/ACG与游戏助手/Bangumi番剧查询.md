@@ -41,4 +41,4 @@ acg_information:
 
 - **不喜欢打斜杠，想直接发“查询番剧 xxx”？**
   - 把 `bangumi_query_prefix` 改成空字符串 `""` 即可！这样在群里直接发 `查询番剧 进击的巨人` 就能立刻响应啦。
-- **AI 智能工具调用**：本插件在 `__init__.py` 导出了 `call_bangumi_search` 工具，当开启 MaiReply 时，大模型也可以在对话中自动为你查询番剧信息。
+- **AI 智能工具调用**：本插件在 `__init__.py` 导出了 `call_bangumi_search` 工具，当开启 CoreReply 时，大模型也可以在对话中自动为你查询番剧信息。

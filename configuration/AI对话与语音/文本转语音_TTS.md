@@ -123,8 +123,8 @@ breeze_tts:
 
 ## 如果你想修改，应该改哪里？
 
-- **如何与 MaiReply 聊天结合，让 Bot 说话自带语音？**
-  - 打开 `run/mai_reply/config.yaml`，设置 `tts.voice_reply_probability: 30`（表示 30% 概率带语音发声），并配置你喜欢的 `speaker`（如 `natuki`、`Mari` 等）。系统采用惰性单例加载机制，TTS 配置更新后实时生效！
+- **如何与 CoreReply 聊天结合，让 Bot 说话自带语音？**
+  - 打开 `run/core_reply/config.yaml`，设置 `tts.voice_reply_probability: 30`（表示 30% 概率带语音发声），并配置你喜欢的 `speaker`（如 `natuki`、`Mari` 等）。系统采用惰性单例加载机制，TTS 配置更新后实时生效！
 - **说话语速太快或者太慢？**
   - 调整 `gpt_sovits.speed_factor`！数值调大说话会更轻快利落，调小会显得更悠闲慵懒哦。
 - **不想自动翻译成日文，想直接念中文？**

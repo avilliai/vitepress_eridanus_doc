@@ -9,9 +9,9 @@ next:
 
 # Function Calling：从动态导入到 AI 调度执行
 
-可千万别被外面那些通用的 OpenAI 教程带偏啦！在咱们 Eridanus 的世界里，MaiReply 拟人人格能够随心所欲地替你点歌、抽卡、查动态甚至下载视频，全靠一套非常规整、优雅且高效的 **Function Calling（工具调用）体系** 哦！
+可千万别被外面那些通用的 OpenAI 教程带偏啦！在咱们 Eridanus 的世界里，CoreReply 拟人人格能够随心所欲地替你点歌、抽卡、查动态甚至下载视频，全靠一套非常规整、优雅且高效的 **Function Calling（工具调用）体系** 哦！
 
-今天我就结合核心加载器 `func_map_loader.py` 与 `mai_reply` 的真实机制，带你彻底搞明白：**工具是怎么声明的**、**函数入参的铁律是什么**，以及 **如何控制是否触发 AI 二次回复**！
+今天我就结合核心加载器 `func_map_loader.py` 与 `core_reply` 的真实机制，带你彻底搞明白：**工具是怎么声明的**、**函数入参的铁律是什么**，以及 **如何控制是否触发 AI 二次回复**！
 
 ---
 
@@ -22,7 +22,7 @@ next:
 ```text
 [群友发消息] -> "Yucca，帮我下载一下这个 B 站视频呗：https://b23.tv/xxx"
       ↓
-[MaiReply 思考]
+[CoreReply 思考]
   - 携带所有已注册插件导出的 function_declarations 向 LLM 发起意图分析
       ↓
 [LLM 返回 Tool Call 请求]
@@ -35,7 +35,7 @@ next:
       ↓
 [工具执行完毕]
   - 若返回 None：流程结束，不再调用大模型（适合已自行完成发图/清记录的静默工具）
-  - 若返回 dict：将数据作为 Tool Output 再次喂给 LLM，触发 MaiReply 二次生成人格化回复！
+  - 若返回 dict：将数据作为 Tool Output 再次喂给 LLM，触发 CoreReply 二次生成人格化回复！
 ```
 
 ---
@@ -141,7 +141,7 @@ async def your_tool_func(bot: ExtendBot, event, config: YAMLManager, ...):
 
 ```python
 async def clear_chat_history(bot: ExtendBot, event, config: YAMLManager):
-    """清除当前用户在本会话的 MaiReply 对话历史"""
+    """清除当前用户在本会话的 CoreReply 对话历史"""
     ctx = ContextManager(config)
     group_id = getattr(event, "group_id", None)
     # 直接利用传入的 event 和 config 结算业务
@@ -152,17 +152,17 @@ async def clear_chat_history(bot: ExtendBot, event, config: YAMLManager):
 
 ---
 
-## 四、核心机制：返回值设计与 MaiReply 二次调用
+## 四、核心机制：返回值设计与 CoreReply 二次调用
 
 工具执行完了，究竟要不要让 AI 再说一句话？**全由你的函数返回值决定！**
 
 ### 规则 1：返回 `None`（或不写 return） -> **静默结束，不二次调用**
 如果你的工具内部已经通过 `await bot.send(...)` 完整发送了最终结果（比如发完了一条语音、或者直接把清理记录的确认语句发给用户了），此时直接返回 `None`。
-- **机制**：MaiReply 发现工具返回为空，本次对话链路直接宣告完成，**绝不会再浪费 token 触发一次大模型回复**，避免机器人像个复读机一样没话找话。
+- **机制**：CoreReply 发现工具返回为空，本次对话链路直接宣告完成，**绝不会再浪费 token 触发一次大模型回复**，避免机器人像个复读机一样没话找话。
 
-### 规则 2：返回一个 `dict` -> **捕获数据，触发 MaiReply 二次调用**
+### 规则 2：返回一个 `dict` -> **捕获数据，触发 CoreReply 二次调用**
 如果你的工具是负责查询数据、或者是抽到卡片后希望 AI 结合角色人设为群友“算命/吐槽”，那你的函数**必须返回一个 Python `dict`**！
-- **机制**：MaiReply 会捕获这个字典，作为 `Tool Output` 提交回大模型，大模型看到真实返回的数据后，会立刻以 Yucca 的性格语气生成最终的回复。
+- **机制**：CoreReply 会捕获这个字典，作为 `Tool Output` 提交回大模型，大模型看到真实返回的数据后，会立刻以 Yucca 的性格语气生成最终的回复。
 
 ### 真实源码示范：塔罗牌占卜工具 (`call_tarot`)
 
@@ -187,7 +187,7 @@ async def call_tarot(bot, event, config):
         # 工具内部先发一张牌面图片
         await bot.send(event, [Text(f"{text}"), Image(file=card_path)])
         
-        # 返回字典，供 MaiReply 获取彩蛋信息并组织生动的解说
+        # 返回字典，供 CoreReply 获取彩蛋信息并组织生动的解说
         return {"text": "开出彩蛋牌，来源：jojo的奇妙冒险", "img": card_path}
 
     # 2. 普通牌面分支：渲染长图后发送
@@ -199,7 +199,7 @@ async def call_tarot(bot, event, config):
         ])
     )))
     
-    # 将抽卡结果字典返回给 mai_reply，触发 AI 结合牌意替用户现场解卦！
+    # 将抽卡结果字典返回给 core_reply，触发 AI 结合牌意替用户现场解卦！
     return {"text": txt, "img": img}
 ```
 
@@ -252,7 +252,7 @@ async def query_user_coins(bot, event, config, target_name: str):
     user = await get_user(event.user_id)
     coin_count = user.coin
     
-    # 按照需求返回结构化 dict，触发 MaiReply 二次用少女口吻夸奖或调侃
+    # 按照需求返回结构化 dict，触发 CoreReply 二次用少女口吻夸奖或调侃
     return {
         "user_id": event.user_id,
         "target": target_name,
@@ -273,7 +273,7 @@ async def query_user_coins(bot, event, config, target_name: str):
 可以直接调用热刷新接口：
 
 ```python
-from run.mai_reply.service.reply_engine import refresh_tools
+from run.core_reply.service.reply_engine import refresh_tools
 
 # 触发全盘重新扫描 run/ 目录并无损更新内存中的工具缓存字典
 refresh_tools()
@@ -290,7 +290,7 @@ refresh_tools()
 1. **Token 费用与上下文急剧膨胀**：每轮对话仅 Schema 就要消耗数千 Token；
 2. **模型注意力涣散**：工具过多时，大模型更容易产生“幻觉”或错误调用无关工具。
 
-为此，框架引入了全局工具管控文件：`run/mai_reply/function_control.json`
+为此，框架引入了全局工具管控文件：`run/core_reply/function_control.json`
 
 ```json
 {

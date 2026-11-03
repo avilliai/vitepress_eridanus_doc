@@ -71,4 +71,4 @@ commands:                      # 映射的系统底层可执行命令
   - 把 `permission_level` 调高到 `1000`！这样只有最高权限的 Master 本人才能通过机器人操控终端执行命令，安全感拉满。
 - **想要接入其它你喜欢的命令行工具？**
   - 在 `commands` 字典里添加新的命令映射（例如添加一条 `python: "python -c"`），不过底层工具必须提前在操作系统的系统环境变量 PATH 中能够直接执行哦。
-- **AI 动态调用支持**：本插件还在 `__init__.py` 注册了 `run_cli_tool` 工具声明，若开启了 MaiReply 的 Function Calling，大模型自身在必要时也可以自主调用该终端工具协助排错。
+- **AI 动态调用支持**：本插件还在 `__init__.py` 注册了 `run_cli_tool` 工具声明，若开启了 CoreReply 的 Function Calling，大模型自身在必要时也可以自主调用该终端工具协助排错。

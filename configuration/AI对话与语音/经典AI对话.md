@@ -12,7 +12,7 @@
 配置文件位于：`run/ai_llm/config.yaml`
 
 ::: tip 注意生效条件
-如果你的 `run/mai_reply/config.yaml` 开启了 `enable: true`，MaiReply 会自动接管对话系统。想要回退使用经典对话模块，记得先去 MaiReply 里将 `enable` 设为 `false` 哦。
+如果你的 `run/core_reply/config.yaml` 开启了 `enable: true`，CoreReply 会自动接管对话系统。想要回退使用经典对话模块，记得先去 CoreReply 里将 `enable` 设为 `false` 哦。
 :::
 
 ## 核心配置片段一览

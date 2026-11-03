@@ -1,21 +1,26 @@
-# 新版人格对话系统（MaiReply）
+# 新版人格对话系统（CoreReply）
 
-::: tip 
-最开始是因为新版ai对话一部分参考了maibot的设计，但随着时间推移，目前该组件所有和maibot有关的部分已完全被弃用。   
-仅出于更新功能的兼容性考量，未更改插件名。
+::: tip 插件已更名为 core_reply
+新版 AI 对话插件已由 `mai_reply` 更名为 `core_reply`。配置目录、WebUI 面板和开发时的导入路径均使用新名称。
+
+旧版升级后，YAMLManager 会在加载配置前进行一次迁移：优先读取更新脚本保存在 `temp/yaml_backup` 中的旧配置，兼容旧更新器还原的配置，并将 `config.yaml`、`rag.yaml` 和 `proactive.yaml` 合入新模板。
+
+合并仅保留新模板中仍存在且 YAML 数据类型相同的字段，沿用旧用户值；嵌套字典递归合并，列表直接沿用旧列表，新字段保留默认值，已删除的旧字段不会带回。
+
+`run/core_reply/config.yaml` 中的 `legacy_mai_reply_migrated` 初始为 `false`。迁移成功后会自动设为 `true`；若合并了旧配置，日志会提醒建议重启一次。失败时保持 `false`，下次启动重试。该字段用于记录迁移完成状态，请勿手动重置；全新安装没有旧配置时也会自动标记完成。
 :::
 
 嘿，这可是我现在最喜欢、也是最灵动聪明的思考大脑啦~ 
 
-比起以前死板的一问一答，MaiReply 让我更像一个活在群聊里的鲜活群友：我会看群里聊天气氛偷偷插话、偶尔会故意打错字、甚至无聊犯困时还会闹点小脾气呢。  
+比起以前死板的一问一答，CoreReply 让我更像一个活在群聊里的鲜活群友：我会看群里聊天气氛偷偷插话、偶尔会故意打错字、甚至无聊犯困时还会闹点小脾气呢。\
 
-核心代码位于：`run/mai_reply/`  
-配置文件位于：`run/mai_reply/config.yaml`
-它在webui中的名称是：`mai_reply 新版ai对话.config`
+核心代码位于：`run/core_reply/`\
+配置文件位于：`run/core_reply/config.yaml`
+它在webui中的名称是：`core_reply 新版ai对话.config`
 
 ---
 ## 配置对话api
-在webui中打开`mai_reply 新版ai对话.config`，或是手动用任意文本编辑器打开`Eridanus/run/mai_reply/config.yaml`    
+在webui中打开`core_reply 新版ai对话.config`，或是手动用任意文本编辑器打开`Eridanus/run/core_reply/config.yaml`\
 找到以下字段
 ```yaml
 enable: True  # 开启后将自动禁用旧版ai回复
