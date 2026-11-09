@@ -290,7 +290,8 @@ context: # 上下文相关配置
     enable_impression: false   # 是否启用用户印象记忆（跨会话）
 
   Slots: # Slots 结构化记忆槽位系统
-    enable_memory_slots: true   # 是开启对用户的记忆槽位
+    enable_memory_slots: true   # 用户记忆槽位
+    enable_global_memory_slots: false  # 全局记忆槽位
     #....演示需要，隐藏了其他配置项.....
     memory_slot_max_chars: 80    # 单条槽位记忆最大字数限制
     enable_group_memory_slots: false # 关闭群聊记忆槽位(因为有RAG)
