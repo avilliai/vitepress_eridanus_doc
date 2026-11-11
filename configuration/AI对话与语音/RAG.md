@@ -142,6 +142,11 @@ embedding:
     timeout_seconds: 30
     query_instruction: ''
 ```
+1.进入控制台 https://dash.cloudflare.com/
+2.点击左侧AI-Workers AI
+3.点右上角 REST API
+4.创建api token，复制account id
+5.填入配置文件对应配置项
 
 ---
 
