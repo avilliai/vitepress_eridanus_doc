@@ -107,6 +107,7 @@ export default defineConfig({
           items: [
             { text: '新版人格对话 (CoreReply)', link: '/configuration/AI对话与语音/新版AI对话_MaiReply' },
             { text: 'ai对话拓展组件(RAG)', link: '/configuration/AI对话与语音/RAG' },
+            { text: '多知识库（外部文档）', link: '/configuration/AI对话与语音/知识库' },
             { text: '旧版AI对话(ai_llm)', link: '/configuration/AI对话与语音/经典AI对话' },
             { text: '个性化语音合成 (TTS)', link: '/configuration/AI对话与语音/文本转语音_TTS' },
             { text: 'Live2D 桌面宠物与形象', link: '/configuration/AI对话与语音/Live2D桌宠与网页形象' },
@@ -148,6 +149,7 @@ export default defineConfig({
             { text: '消息伪造转发 (聊天记录生成器)', link: '/configuration/群聊娱乐与制图/消息伪造转发' },
             { text: '群发言统计与水群排行榜', link: '/configuration/群聊娱乐与制图/群发言统计排行榜' },
             { text: '海量表情包制作', link: '/configuration/群聊娱乐与制图/海量表情包制作' },
+            { text: '表情包工具箱', link: '/configuration/群聊娱乐与制图/表情包工具箱' },
             { text: '二次元奥义图制作', link: '/configuration/群聊娱乐与制图/二次元奥义图制作' },
             { text: 'Emoji 表情合成 (Emojimix)', link: '/configuration/群聊娱乐与制图/Emoji表情合成' },
             { text: '娶群友互动系统 (后宫管理)', link: '/configuration/群聊娱乐与制图/娶群友互动系统' },
