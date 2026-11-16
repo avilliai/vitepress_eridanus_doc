@@ -43,6 +43,7 @@ export default defineConfig({
     ['link', { rel: 'icon', href: '/logo.ico' }]
   ],
   themeConfig: {
+    outline: [2, 3],
     search: {
       provider: 'local',
       options: {
