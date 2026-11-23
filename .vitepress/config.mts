@@ -96,10 +96,10 @@ export default defineConfig({
           text: '⚙️ 核心配置与基础系统',
           items: [
             { text: '基础配置中心', link: '/configuration/基础配置' },
-            { text: 'YAML 字段与插件配置', link: '/configuration/YAML字段与插件配置' },
+            { text: '关于YAML的介绍', link: '/configuration/YAML字段与插件配置' },
             { text: '部署须知与安全提示', link: '/configuration/须知' },
-            { text: '用户注册与个人资产', link: '/configuration/基础系统/用户注册与个人资产' },
-            { text: '权限管理与角色体系', link: '/configuration/基础系统/权限管理与角色体系' },
+            { text: '用户管理', link: '/configuration/基础系统/用户注册与个人资产' },
+            { text: '权限管理', link: '/configuration/基础系统/权限管理与角色体系' },
             { text: '黑白名单与群管控制', link: '/configuration/基础系统/黑白名单与群管' }
           ]
         },
@@ -131,12 +131,12 @@ export default defineConfig({
         {
           text: '🎮 ACG 与游戏助手',
           items: [
-            { text: 'Bangumi 番剧与 ACG 检索', link: '/configuration/ACG与游戏助手/Bangumi番剧查询' },
-            { text: 'Galgame 资料库与推荐', link: '/configuration/ACG与游戏助手/Galgame资料查询' },
+            { text: 'Bangumi 番剧/ACG 检索', link: '/configuration/ACG与游戏助手/Bangumi番剧查询' },
+            { text: 'Galgame 资料库', link: '/configuration/ACG与游戏助手/Galgame资料查询' },
             { text: '蔚蓝档案游戏助手 (Blue Archive)', link: '/configuration/ACG与游戏助手/蔚蓝档案游戏助手' },
-            { text: '二次元角色识别与以图识番', link: '/configuration/ACG与游戏助手/角色识别与以图识番' },
+            { text: '搜图(二次元角色、色情片番号)', link: '/configuration/ACG与游戏助手/角色识别与以图识番' },
             { text: 'Steam 好友动态视奸', link: '/configuration/ACG与游戏助手/Steam好友动态视奸' },
-            { text: 'Steam 游戏资料与史低查询', link: '/configuration/ACG与游戏助手/Steam游戏资料与史低查询' },
+            { text: 'Steam 游戏资料/史低查询', link: '/configuration/ACG与游戏助手/Steam游戏资料与史低查询' },
             { text: 'Epic 喜加一周免监控', link: '/configuration/ACG与游戏助手/Epic喜加一周免' },
             { text: '森空岛明日方舟助手', link: '/configuration/ACG与游戏助手/森空岛明日方舟助手' },
             { text: '米游社全家桶签到助手', link: '/configuration/ACG与游戏助手/米游社助手' },
@@ -157,36 +157,36 @@ export default defineConfig({
             { text: '戒鹿打卡助手', link: '/configuration/群聊娱乐与制图/戒鹿打卡助手' },
             { text: '俄罗斯轮盘赌决斗', link: '/configuration/群聊娱乐与制图/俄罗斯轮盘赌决斗' },
             { text: '井字棋对战', link: '/configuration/群聊娱乐与制图/井字棋对战' },
-            { text: '运势与多主题塔罗', link: '/configuration/群聊娱乐与制图/运势与多主题塔罗' },
+            { text: '运势与塔罗', link: '/configuration/群聊娱乐与制图/运势与多主题塔罗' },
             { text: '日常实用工具箱 (天气/点歌/搜图)', link: '/configuration/群聊娱乐与制图/日常实用工具箱' }
           ]
         },
         {
           text: '📦 媒体与资源收集',
           items: [
-            { text: 'ASMR 音声检索与试听', link: '/configuration/媒体与资源收集/ASMR音声检索' },
-            { text: 'Z-Library 图书检索与下载', link: '/configuration/媒体与资源收集/ZLibrary图书检索' },
-            { text: 'B站 UP主动态监听与推送', link: '/configuration/媒体与资源收集/B站UP主动态监听' },
-            { text: '全网音视频多平台下载', link: '/configuration/媒体与资源收集/全网音视频多平台下载' },
-            { text: 'Iwara 视频解析与下载', link: '/configuration/媒体与资源收集/Iwara视频解析' },
-            { text: 'Telegram 贴纸包转存与下载', link: '/configuration/媒体与资源收集/Telegram贴纸转存' },
-            { text: 'JM 漫画与绅士资源', link: '/configuration/媒体与资源收集/JM漫画与绅士资源' }
+            { text: 'ASMR', link: '/configuration/媒体与资源收集/ASMR音声检索' },
+            { text: 'Z-Library 图书检索下载', link: '/configuration/媒体与资源收集/ZLibrary图书检索' },
+            { text: 'B站 UP主动态监听', link: '/configuration/媒体与资源收集/B站UP主动态监听' },
+            { text: '链接解析(b站、小红书、抖音、x等)', link: '/configuration/媒体与资源收集/全网音视频多平台下载' },
+            { text: 'Iwara 视频解析', link: '/configuration/媒体与资源收集/Iwara视频解析' },
+            { text: 'Telegram 贴纸包下载', link: '/configuration/媒体与资源收集/Telegram贴纸转存' },
+            { text: 'JMcomic 禁漫天堂', link: '/configuration/媒体与资源收集/JM漫画与绅士资源' }
           ]
         },
         {
           text: '⏰ 自动化与系统任务',
           items: [
             { text: '跨时区动态定时任务', link: '/configuration/自动化与系统任务/跨时区动态定时任务' },
-            { text: 'Git 远程更新监控与提醒', link: '/configuration/自动化与系统任务/Git更新监控与提醒' },
+            { text: 'Git 远程更新监控', link: '/configuration/自动化与系统任务/Git更新监控与提醒' },
             { text: 'QQ 空间自动冲浪', link: '/configuration/自动化与系统任务/QQ空间自动冲浪' },
-            { text: '自定义词库与快捷回复', link: '/configuration/自动化与系统任务/自定义词库回复' }
+            { text: '自定义词库', link: '/configuration/自动化与系统任务/自定义词库回复' }
           ]
         },
         {
           text: '🖥️ WebUI 控制台',
           items: [
-            { text: 'WebUI 概述与核心功能', link: '/configuration/webui/介绍' },
-            { text: '初次使用与面板配置', link: '/configuration/webui/初次使用' }
+            { text: 'WebUI 概述', link: '/configuration/webui/介绍' },
+            { text: '初次使用/面板配置', link: '/configuration/webui/初次使用' }
           ]
         }
       ],
