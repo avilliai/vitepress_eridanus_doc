@@ -118,6 +118,8 @@ export default defineConfig({
         {
           text: '🎨 AI 创作工坊',
           items: [
+            { text: 'ComfyUI 工作流绘图 (Illustrious)', link: '/configuration/AI创作工坊/ComfyUI工作流绘图' },
+            { text: '衣橱系统与人设锚点', link: '/configuration/AI创作工坊/衣橱系统与人设锚点' },
             { text: 'GPT-Image2 绘画工坊', link: '/configuration/AI创作工坊/GPTImage2绘画工坊' },
             { text: '九宫格表情包制作', link: '/configuration/AI创作工坊/九宫格表情包制作' },
             { text: 'NovelAI 专业绘画 (NAI3/NAI4)', link: '/configuration/AI创作工坊/NovelAI绘画' },
@@ -150,7 +152,7 @@ export default defineConfig({
             { text: '消息伪造转发 (聊天记录生成器)', link: '/configuration/群聊娱乐与制图/消息伪造转发' },
             { text: '群发言统计与水群排行榜', link: '/configuration/群聊娱乐与制图/群发言统计排行榜' },
             { text: '海量表情包制作', link: '/configuration/群聊娱乐与制图/海量表情包制作' },
-            { text: '表情包工具箱', link: '/configuration/群聊娱乐与制图/表情包工具箱' },
+            { text: '表情包', link: '/configuration/群聊娱乐与制图/表情包工具箱' },
             { text: '二次元奥义图制作', link: '/configuration/群聊娱乐与制图/二次元奥义图制作' },
             { text: 'Emoji 表情合成 (Emojimix)', link: '/configuration/群聊娱乐与制图/Emoji表情合成' },
             { text: '娶群友互动系统 (后宫管理)', link: '/configuration/群聊娱乐与制图/娶群友互动系统' },

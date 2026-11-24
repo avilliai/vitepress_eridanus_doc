@@ -1,68 +1,71 @@
 # Stable Diffusion 本地与云端专业绘图
-::: tip 免费鸡蛋
-我们为Eridanus用户准备了若干免费接口，包括`stable diffusion`。   
-可前往qq群`1050663831`获取      
-网关在`http://api.apollodorus.xyz/`
+
+::: tip 免费接口与多后端并存
+我们为 Eridanus 用户准备了若干免费接口（网关在 `http://api.apollodorus.xyz/`，可前往 QQ 群 `1050663831` 获取 API Key）。  
+当前 Eridanus 绘图体系由 **[ComfyUI（Illustrious）](./ComfyUI工作流绘图.md)**、**Stable Diffusion WebUI** 与 **[GPTImage2（OpenAI 标准）](./GPTImage2绘画工坊.md)** 三大对等后端共同构成，共享同一套 [衣橱系统与人设锚点](./衣橱系统与人设锚点.md)。
 :::
 
-sd还可以用来让bot发空间，以及在对话中随时向你发一张可爱的“自拍”哦~    
-如果你有自己的本地显卡或者搭建好的 SD-WebUI 服务，那这就是最自由、可玩性最高的作画工坊啦！   
-支持模型切换、LoRA 查看、WD14 识图反推、局部重绘以及任务队列管理，简直就像一个全能的小控制台。
+如果你本地或云端搭建了 **SD-WebUI / reForge** 服务，依然可以保留经典的 SD-WebUI 控制台操作（模型切换、LoRA 查看、WD14 识图反推、局部重绘与队列管理）。
 
-核心代码位于：`run/ai_generated_art/aiDraw.py`  
-配置文件位于：`run/ai_generated_art/config.yaml` 的 `ai绘画` 区块
+- **核心代码**：`run/ai_generated_art/aiDraw.py`、`run/ai_generated_art/service/aiDraw.py`
+- **配置文件**：`run/ai_generated_art/config.yaml` 的 `ai绘画` 区块
+
+---
 
 ## 交互指令
 
 ### 基础生图与风格
-- `画 <提示词>`：通用文生图（注意“画”后面必须有空格，例如 `画 1girl,whit hair`）
-- `dan <Tag>`：Danbooru 英文 Tag 格式生图（例如 `dan 1girl, solo, twintails, smile`）
+- **`画 <提示词>`**：并发触发所有在 `ai绘画` 中开启的后端（`comfyui画图`、`sd画图`、`gptimage2画图`、`novel_ai画图` 与内置免费接口等；若开启 `gptimage2.接管sd: true`，则会转由 GPTImage2 生成）。
+- **`dan <Tag>`**：Danbooru 英文 Tag 联想查询（例如 `dan 1girl`）。
 
 ### 图生图与重绘
-- `重绘 <提示词>` 或 `重绘`：进入图生图重绘流程，发送参考底图结合提示词重构
-- `局部重绘 <提示词>`：进入局部重绘
-- `/clearre`：清空当前已缓存的重绘临时状态与底图
+- **`重绘 <提示词>`** / **`重绘`**：进入 SD-WebUI 图生图流程（注：若需调用 ComfyUI 以图生图，请使用 `cf重绘` / `comfy重绘` / `以图生图`，详见 [ComfyUI 工作流绘图](./ComfyUI工作流绘图.md)）。
+- **`局部重绘 <提示词>`**：进入局部蒙版重绘。
+- **`/clearre`**：清空当前缓存的重绘临时状态与底图。
 
 ### 模型控制与参数调整（需开启 `sd画图: true`）
-- `ckpt`：查看 SD-WebUI 当前所有已安装的模型 Checkpoint 列表
-- `ckpt2 <模型名>`：热切换底模（例如：`ckpt2 anime_model_v2.safetensors`）
-- `lora`：获取 WebUI 中所有可用的 LoRA 列表与调用名
-- `sampler`：查看支持的采样器列表（Euler a、DPM++ 2M 等）
-- `scheduler`：查看调度器类型（Karras、Exponential 等）
-- `setsd <宽,高>`：动态修改默认生图分辨率（例如 `setsd 1024,1536`）
-- `setre <参数>`：动态设置重绘重绘幅度等参数
+- `ckpt` / `ckpt2 <模型名>`：查看 / 热切换底模
+- `lora` / `sampler` / `scheduler`：查看可用 LoRA、采样器（如 `Euler a`）与调度器
+- `setsd <参数>` / `setre <参数>`：动态修改文生图与重绘参数（如 `--w 1024 --h 1536 --steps 28`）
 
 ### 辅助工具与识图
-- `tag`：WD14 识图反推！发送 `tag` 随后发送任意二次元插画，自动反推出高质量 Danbooru 标签
-- `imginfo`：读取图片元数据 Exif / PNG Info，还原当初生图的完整 Prompt、Seed 和参数
-- `interrupt`：立即中止当前正在生成的生图任务
-- `skip`：跳过当前生图进度步数
+- `tag`：WD14 识图反推英文标签
+- `imginfo`：读取图片 PNG Info 元数据（Prompt / Seed / 参数）
+- `interrupt` / `skip`：中止或跳过当前 SD 任务
+
+---
 
 ## 核心配置片段一览（`run/ai_generated_art/config.yaml`）
 
 ```yaml
-# Eridanus项目群提供的api站有免费的sd接口
+# 对话 Function Calling 与 QQ 空间默认绘图后端（可选: "comfyui", "sd", "gptimage2", "nano_banana", "novelai"）
+文生图function_calling后端: "sd"
+
 ai绘画:
-  sd画图: true                       
-  sdUrl:                             # 你的 SD-WebUI API 监听地址
-    - "http://api.apollodorus.xyz"
-  apikey: ""                         # WebUI 如设置了 auth 可填。你在http://api.apollodorus.xyz申请的apikey同样填在这里
-  sd审核和反推api: "http://api.apollodorus.xyz"                  # WD14 反推插件地址（可与 sdUrl 相同）
-  sd默认启动模型: "waiIllustriousSDXL_v170.safetensors"  #底模
+  sd画图: false                      # SD-WebUI 后端开关（如使用 ComfyUI 请开启上方 comfyui画图）
+  comfyui画图: true                  # ComfyUI (Illustrious) 开关
+  gptimage2画图: false               # GPTImage2 同级并发生图开关
+  novel_ai画图: false                # NovelAI 开关
+  内置ai绘画1开关: true              # 免费聚合接口
+  内置ai绘画2开关: true              # ModelScope NoobXL 免费生图
+
+  sdUrl:
+    - "http://api.apollodorus.xyz"   # 你的 SD-WebUI 地址或网关地址
+  apikey: ""                         # 网关/WebUI API Key
+  sd审核和反推api: ""                # WD14 反推插件地址（支持与 sdUrl 共用）
+  sd默认启动模型: "waiIllustriousSDXL_v170.safetensors"
   反推和审核使用模型: "wd14-vit-v2-git"
-  sd画图默认分辨率: "1024,1536"       # 默认生成分辨率：宽,高（中间不要留空格）
-  sd最大分辨率: "1600,1600"           # 限制最大生成尺寸，防止爆显存
-  sd队列长度限制: 6                   # 并发等待队列上限，防止刷屏
-  sd超时时间: 600                     # 单张图生成超时时间（秒）
-  内置ai绘画1开关: true                # 聚合接口免费生图
-  内置ai绘画2开关: true                # ModelScope NoobXL 免费生图
+  sd画图默认分辨率: "1280,1728"      # 宽,高（推荐 1200-1800 区间）
+  sd最大分辨率: "1800,1800"
+  sd队列长度限制: 6
+  sd超时时间: 600
 ```
 
-## 如果你想修改，应该改哪里？
+---
 
-- **画图提示拒绝连接或者超时？**
-  - 检查 SD-WebUI 启动时是否添加了 `--api` 和 `--listen` 参数，并在 `sdUrl` 列表里填上正确的 IP 和端口（例如 `http://127.0.0.1:7860`）。
-- **生成图片老是超显存（CUDA out of memory）？**
-  - 把 `sd画图默认分辨率` 调小一些（例如 `"832,1216"` 或 `"512,768"`），并在启动 SD 时开启 `--medvram` 或 `--xformers` 加速。
-# function calling
-sd还可以用来让bot发空间，以及在对话中随时向你发一张可爱的“自拍”哦~
+## 三大后端如何选择与搭配
+
+- **追求极致二次元手绘线稿与开源自定义 LoRA**：推荐设 `文生图function_calling后端: "comfyui"` 并配置 [ComfyUI 工作流绘图](./ComfyUI工作流绘图.md)。
+- **追求自然语言语义理解、多图编辑或省去本地部署**：推荐设 `文生图function_calling后端: "gptimage2"`，参见 [GPTImage2 绘画工坊](./GPTImage2绘画工坊.md)。
+- **已有本地 SD-WebUI / reForge 实例**：将 `ai绘画.sd画图` 设为 `true` 并填好 `sdUrl` 即可。
+- **QQ 空间配图与角色人设统一管理**：三者均直接读取 [衣橱系统与人设锚点](./衣橱系统与人设锚点.md) 与 `run/ai_generated_art/config.yaml`，无需重复配置。
