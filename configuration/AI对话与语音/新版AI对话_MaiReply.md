@@ -309,3 +309,10 @@ mcp:  # MCP stdio server 配置。启动后会把 MCP tools 暴露为 mcp__serve
         - "@modelcontextprotocol/server-filesystem"
         - "D:/some/allowed/path"
 ```
+## 指令
+```yaml
+/clear   #清除对话上下文
+/clear rag  #清除RAG
+/clear slots  #清除记忆槽位
+/clear impression  #清除impression
+```
