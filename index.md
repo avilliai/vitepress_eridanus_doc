@@ -13,10 +13,10 @@ hero:
       text: "🚀 快速上手部署"
       link: /getting-started/
     - theme: alt
-      text: "⚙️ 54+ 功能与配置手册"
+      text: "⚙️ 功能配置"
       link: /configuration/须知
     - theme: alt
-      text: "🛠️ 架构与插件开发"
+      text: "🛠️ 开发"
       link: /framework/
 
 features:
