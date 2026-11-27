@@ -24,7 +24,7 @@ Eridanus 本质上是一个用 Python 编写的 **超强智能大脑（WebSocket
 
 ```
 +-------------------+        WebSocket 连接        +-------------------+
-|  OneBot 协议端     | <=========================> |  Eridanus 本体    |
+|  OneBot/Milky协议端 | <=========================> |  Eridanus 本体    |
 | (如 SnowLuma)     |    ws://127.0.0.1:3001      |  (Python 智能大脑) |
 | [WebSocket Server]|                             | [WebSocket Client]|
 +-------------------+                             +-------------------+

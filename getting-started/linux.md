@@ -52,6 +52,13 @@ sudo apt install -y nodejs
 
 ## 2. 部署 OneBot v11 协议端
 
+::: danger     
+目前snowluma、napcat、llob已相继停更/删库    
+如果你在部署Eridanus时找不到现存的snowluma/napcat安装包，可以使用下面的      
+[qsign签名服务](/getting-started/签名服务.md)    
+并跟随这篇文档完成部署
+:::
+
 在 Linux 服务器上，推荐选用独立二进制或者 Docker 容器方式运行协议端：
 - **[SnowLuma](https://snowluma.github.io/zh/)**：下载对应 Linux 架构的二进制包运行，通过自带的 Web 面板扫码即可登录（依赖刚才装好的 Node 环境）。
 - **[NapCatQQ (Docker / Shell)](https://napneko.github.io/)**：如果习惯 Docker，NapCat 提供了成熟的一键脚本与镜像。

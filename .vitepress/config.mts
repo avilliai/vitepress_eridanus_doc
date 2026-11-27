@@ -87,6 +87,7 @@ export default defineConfig({
             { text: '快速开始导览', link: '/getting-started/' },
             { text: 'Windows 环境部署', link: '/getting-started/windows' },
             { text: 'Linux 环境部署', link: '/getting-started/linux' },
+            { text: 'qsign签名服务', link: '/getting-started/签名服务' },
             { text: '常见启动与更新问题排查', link: '/getting-started/更新失败' }
           ]
         }

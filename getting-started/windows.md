@@ -44,6 +44,14 @@ bot必须要一直开着才可以在群里收发消息，如果想要自己的�
 ### 2. 启动 `部署引导程序.exe`
 一键部署完成后根目录会出现Eridanus目录，点进去即可看到`启动脚本.bat`。   
 ### 3. 配置 OneBot 协议端（以 SnowLuma 为例）
+
+::: danger     
+目前snowluma、napcat、llob已相继停更/删库    
+如果你在部署Eridanus时找不到现存的snowluma/napcat安装包，可以使用下面的      
+[qsign签名服务](/getting-started/签名服务.md)    
+并跟随这篇文档完成部署
+:::
+
 在Eridanus准备完成后，我们来启动协议端：
 1. 启动并扫码登录你的 **[SnowLuma](https://snowluma.github.io/zh/)** 或 NapCat。
 2. 确保协议端里添加了 **正向 WebSocket 服务 (WebSocket Server)**：端口设为 `3001`，Token 留空。
