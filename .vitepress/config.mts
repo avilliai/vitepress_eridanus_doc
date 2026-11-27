@@ -94,7 +94,7 @@ export default defineConfig({
       ],
       '/configuration/': [
         {
-          text: '⚙️ 核心配置与基础系统',
+          text: '⚙️ 基础系统',
           items: [
             { text: '基础配置中心', link: '/configuration/基础配置' },
             { text: '关于YAML的介绍', link: '/configuration/YAML字段与插件配置' },
@@ -105,7 +105,7 @@ export default defineConfig({
           ]
         },
         {
-          text: '🤖 AI 对话与人设语音',
+          text: '🎊 AI 对话',
           items: [
             { text: '新版人格对话 (CoreReply)', link: '/configuration/AI对话与语音/新版AI对话_MaiReply' },
             { text: 'ai对话拓展组件(RAG)', link: '/configuration/AI对话与语音/RAG' },
@@ -117,7 +117,7 @@ export default defineConfig({
           ]
         },
         {
-          text: '🎨 AI 创作工坊',
+          text: '🎨 AI 创作工具',
           items: [
             { text: 'ComfyUI 工作流绘图 (Illustrious)', link: '/configuration/AI创作工坊/ComfyUI工作流绘图' },
             { text: '衣橱系统与人设锚点', link: '/configuration/AI创作工坊/衣橱系统与人设锚点' },
@@ -132,7 +132,7 @@ export default defineConfig({
           ]
         },
         {
-          text: '🎮 ACG 与游戏助手',
+          text: '🎮 ACG 工具箱',
           items: [
             { text: 'Bangumi 番剧/ACG 检索', link: '/configuration/ACG与游戏助手/Bangumi番剧查询' },
             { text: 'Galgame 资料库', link: '/configuration/ACG与游戏助手/Galgame资料查询' },
@@ -148,7 +148,7 @@ export default defineConfig({
           ]
         },
         {
-          text: '🎉 群聊娱乐与制图',
+          text: '🎉 群聊娱乐功能',
           items: [
             { text: '消息伪造转发 (聊天记录生成器)', link: '/configuration/群聊娱乐与制图/消息伪造转发' },
             { text: '群发言统计与水群排行榜', link: '/configuration/群聊娱乐与制图/群发言统计排行榜' },
@@ -165,7 +165,7 @@ export default defineConfig({
           ]
         },
         {
-          text: '📦 媒体与资源收集',
+          text: '📦 媒体资源收集',
           items: [
             { text: 'ASMR', link: '/configuration/媒体与资源收集/ASMR音声检索' },
             { text: 'Z-Library 图书检索下载', link: '/configuration/媒体与资源收集/ZLibrary图书检索' },
@@ -177,7 +177,7 @@ export default defineConfig({
           ]
         },
         {
-          text: '⏰ 自动化与系统任务',
+          text: '⏰ 自动化系统',
           items: [
             { text: '跨时区动态定时任务', link: '/configuration/自动化与系统任务/跨时区动态定时任务' },
             { text: 'Git 远程更新监控', link: '/configuration/自动化与系统任务/Git更新监控与提醒' },
