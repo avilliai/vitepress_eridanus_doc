@@ -27,7 +27,7 @@ features:
   - title: "🎨 多样化的AI创作拓展"
     details: "无缝对接 NovelAI / Stable Diffusion /Comfyui、Gemini NanoBanana / Qwen 智能改图、GPT-Image2 表情包制作、Suno 音乐生成。"
   - title: "🎮 ACG工具箱"
-    details: "内置 Steam 好友视奸播报、森空岛/绝区零/米游社每日签到、雀魂战绩面板、B 站动态与视频解析、JM 漫画、ASMR.one、Z-Library 搜书、 QQ 空间自动冲浪。"
+    details: "内置 Steam 好友视奸播报、森空岛/绝区零/米游社每日签到、雀魂战绩面板、B站/小红书/抖音/X动态与视频解析、JM 漫画、ASMR.one、Z-Library 搜书、 QQ 空间自动冲浪。"
   - title: "🧩 极简二次开发与双框架支持"
     details: "提供 Framework 高度解耦的消息与事件流总线，同时提供轻量 developTools (SDK)，极高开发自由度"
   - title: "🖥️ 开箱即用的响应式 WebUI 后台"
