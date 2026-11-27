@@ -3,8 +3,8 @@ layout: home
 
 hero:
   name: "Eridanus"
-  text: "基于OneBot v11/Milky 协议的bot框架"
-  tagline: "#异步 #function-calling #mcp #agent"
+  text: "基于OneBot v11 / Milky 协议的bot框架"
+  tagline: ""
   image:
     src: /eridanus.svg
     alt: Eridanus Logo
